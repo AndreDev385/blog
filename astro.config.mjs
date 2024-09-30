@@ -1,5 +1,21 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
+import icon from "astro-icon";
+// markdown plugins
+import remarkToc from "remark-toc";
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  markdown: {
+    remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
+  },
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    react(),
+    icon(),
+  ],
+});

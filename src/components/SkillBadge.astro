@@ -1,0 +1,20 @@
+---
+import type { Skill } from "@/lib/skillIconMap";
+import { Icon } from "astro-icon/components";
+import { Badge } from "./ui/badge";
+
+type Props = {
+  skill: Skill;
+  color?: string;
+};
+
+const {
+  skill: { name, icon },
+  color,
+} = Astro.props as Props;
+---
+
+<Badge color={color} variant="outline" className="py-1">
+  <Icon name={icon} class="w-5 h-5 mr-1 rounded-full" />
+  <span class="text-xs font-bold">{name}</span>
+</Badge>

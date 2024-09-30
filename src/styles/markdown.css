@@ -1,0 +1,61 @@
+/* Custom styles for markdown content */
+.prose {
+  @apply text-gray-900 leading-normal break-words;
+}
+
+.prose p {
+  @apply mb-4 text-xl;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold mb-4 mt-6;
+}
+
+.prose h2 {
+  @apply text-3xl font-bold mb-4 mt-6;
+}
+
+.prose h3 {
+  @apply text-2xl font-bold mb-4 mt-6;
+}
+
+.prose h4 {
+  @apply text-xl font-bold mb-4 mt-6;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 pl-8;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose a {
+  @apply text-blue-600 hover:underline;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+}
+
+.prose code {
+  @apply rounded font-mono text-sm;
+}
+
+.prose pre {
+  @apply bg-gray-100 rounded p-4 mb-4 overflow-x-auto;
+}
+
+.prose img {
+  @apply max-w-full h-auto my-4 rounded;
+}

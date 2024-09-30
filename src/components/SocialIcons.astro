@@ -1,0 +1,31 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  socials: Array<{
+    icon: string;
+    ariaLabel: string;
+    href: string;
+  }>;
+};
+
+const { socials } = Astro.props;
+---
+
+<div class={`flex space-x-4 justify-center mb-8`}>
+  {
+    socials.map(function displaySocialIcon(info) {
+      return (
+        <a
+          href={info.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:scale-125 transition-transform duration-300"
+          aria-label={info.ariaLabel}
+        >
+          <Icon name={info.icon} class="w-10 h-10" />
+        </a>
+      );
+    })
+  }
+</div>

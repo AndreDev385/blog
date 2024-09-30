@@ -1,0 +1,52 @@
+---
+import SkillBadge from "@/components/SkillBadge.astro";
+
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Image } from "astro:assets";
+import { skillIconMap } from "@/lib/skillIconMap";
+
+const { post } = Astro.props;
+---
+
+<Card
+  id={post.data.title}
+  className="card group gap-4 border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10 grid grid-cols-1 md:grid-cols-2"
+>
+  <a href={`/blog/${post.slug}`}>
+    <div class="grid gap-4">
+      <CardHeader>
+        <h2 class="text-3xl font-bold leading-tight">{post.data.title}</h2>
+      </CardHeader>
+      <CardContent className="grid grid-cols-5 gap-4">
+        <div class="col-span-5 space-y-4">
+          <time datetime={post.data.date.toISOString()}
+            >Posted on {post.data.date.toLocaleDateString()}</time
+          >
+          <p class="text-sm">
+            {post.data.description}
+          </p>
+          <div class="flex items-center space-x-4 overflow-hidden">
+            {
+              post.data.tags.map((tag: string) => (
+                <SkillBadge
+                  skill={skillIconMap[tag as keyof typeof skillIconMap]}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </CardContent>
+    </div>
+  </a>
+  <a
+    class="relative h-full overflow-hidden rounded-2xl hidden md:block"
+    href={`/blog/${post.slug}`}
+  >
+    <Image
+      src={post.data.image}
+      alt="post image"
+      class="rounded-2xl object-cover transition-all duration-300 group-hover:scale-125"
+      style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+    />
+  </a>
+</Card>

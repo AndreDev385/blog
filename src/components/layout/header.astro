@@ -1,0 +1,99 @@
+---
+const navItems = [
+  { href: "/", text: "Home" },
+  { href: "/tags/all", text: "Blog" },
+];
+---
+
+<header
+  class="sticky top-0 z-40 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60"
+>
+  <div class="max-w-6xl mx-auto px-6 md:px-4 lg:px-2 flex h-16 items-center justify-between">
+    <a href="/" class="flex items-center space-x-2">
+      <span class="font-bold text-2xl">André Izarra</span>
+    </a>
+
+    <nav class="hidden md:flex space-x-6 text-sm font-medium">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="transition-colors px-2 py-1 hover:bg-gray-200 rounded hover:text-primary font-bold text-gray-700 text-lg"
+          >
+            {item.text}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      id="menuButton"
+      class="md:hidden p-2 rounded-md hover:bg-gray-100"
+      aria-label="Toggle menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div id="mobileMenu" class="fixed inset-0 bg-white z-50 hidden md:hidden">
+  <div class="flex flex-col h-full p-4">
+    <div class="flex justify-end">
+      <button
+        id="closeMenuButton"
+        class="p-2 rounded-md hover:bg-gray-100"
+        aria-label="Close menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          class="transition-colors hover:text-gray-700 text-gray-600"
+        >
+          {item.text}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const menuButton = document.getElementById("menuButton");
+  const closeMenuButton = document.getElementById("closeMenuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.remove("hidden");
+  });
+
+  closeMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.add("hidden");
+  });
+</script>
