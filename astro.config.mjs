@@ -6,11 +6,14 @@ import icon from "astro-icon";
 // markdown plugins
 import remarkToc from "remark-toc";
 
+import vercel from "@astrojs/vercel/serverless";
+
 // https://astro.build/config
 export default defineConfig({
   markdown: {
     remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
   },
+
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -18,4 +21,7 @@ export default defineConfig({
     react(),
     icon(),
   ],
+
+  output: "server",
+  adapter: vercel(),
 });

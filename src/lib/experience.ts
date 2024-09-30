@@ -2,8 +2,18 @@ import BioonixIcon from "@/assets/bioonix_logo.png";
 import NediITIcon from "@/assets/nedi_icon.png";
 import GameMindIcon from "@/assets/gamemind_icon.png";
 
-import { skillIconMap } from "@/lib/skillIconMap";
-import type { ExperienceCardProps } from "@/components/ExperienceCard";
+import { skillIconMap, type Skill } from "@/lib/skillIconMap";
+
+export type ExperienceCardProps = {
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: string[];
+  skills: readonly Skill[];
+  logo?: ImageMetadata;
+};
 
 export const experiences: ExperienceCardProps[] = [
   {
@@ -36,14 +46,12 @@ export const experiences: ExperienceCardProps[] = [
     startDate: "October 2022",
     endDate: "May 2023",
     description: [
-      ,
       "I Developed the fronted of a cryptocurrency platform",
       "I integrated various APIs services",
       "I participated in database design",
       "Enhanced API robustness using a better error handling",
     ],
     skills: [
-      ,
       skillIconMap.angular,
       skillIconMap.nestjs,
       skillIconMap.postgresql,
