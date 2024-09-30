@@ -1,0 +1,100 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SocialIcons from "@/components/SocialIcons.astro";
+import ExperienceCard from "@/components/ExperienceCard.astro";
+
+import avatarPic from "@/assets/profile_pic.jpeg";
+import { experiences } from "@/lib/experience";
+
+const socials = [
+	{
+		icon: "devicon:linkedin",
+		ariaLabel: "LinkedIn",
+		href: "https://www.linkedin.com/in/andr%C3%A9-izarra/",
+	},
+	{
+		icon: "devicon:github",
+		ariaLabel: "GitHub",
+		href: "https://github.com/AndreDev385",
+	},
+	{
+		icon: "logos:google-gmail",
+		ariaLabel: "Gmail",
+		href: "mailto:andre.izarra@gmail.com",
+	},
+];
+
+---
+
+<Layout>
+	<div id="hero" class="mb-16 sm-px-4">
+		<!-- Hero Section -->
+		<section
+			class="mx-auto max-w-4xl text-center flex flex-col items-center justify-center h-screen"
+		>
+			<h2 class="text-4xl font-bold mb-4 text-gray-300">
+				Hi, I'm André Izarra
+			</h2>
+			<h1 class="text-6xl font-bold mb-4 text-gray-100">
+				Full Stack Developer
+			</h1>
+			<p class="text-xl text-white mb-4">
+				Web Developer | Tech Enthusiast | Blogger
+			</p>
+			<SocialIcons socials={socials} />
+			<!-- CV button -->
+		</section>
+	</div>
+	<div class="max-w-6xl mx-auto px-6 md:px-4 lg:px-2">
+		<!-- About Me Section -->
+		<section class="mb-16">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div>
+					<h2 class="text-3xl font-bold mb-4 text-center">
+						About Me
+					</h2>
+					<p class="text-lg text-gray-700 mb-4">
+						I'm a passionate web developer with 3+ years of
+						experience in creating robust and scalable web
+						applications. My journey in tech has been driven by a
+						curiosity to understand how things work and a desire to
+						create solutions that make a difference.
+					</p>
+					<p class="text-lg text-gray-700">
+						When I'm not coding, you can find me exploring new
+						technologies, looking for new plugins to add in my
+						neovim configuration or writing about my discoveries on
+						this blog.
+					</p>
+				</div>
+				<div class="flex items-center justify-center">
+					<img
+						class="w-64 h-64 rounded-full"
+						src={avatarPic.src}
+						alt="André Izarra Profile Picture"
+						width={avatarPic.width}
+						height={avatarPic.height}
+					/>
+				</div>
+			</div>
+		</section>
+
+		<!-- Experience Section -->
+		<section class="mb-16">
+			<h2 class="text-3xl font-bold mb-6 text-center">My Experience</h2>
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+				{
+					experiences.map((experience) => (
+						<ExperienceCard {...experience} />
+					))
+				}
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	#hero {
+		background-image: url("/public/clouds_dark.png");
+	}
+</style>
