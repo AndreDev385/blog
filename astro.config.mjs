@@ -6,7 +6,7 @@ import icon from "astro-icon";
 
 import remarkToc from "remark-toc";
 
-import vercel from "@astrojs/vercel/serverless"; //adapter
+import netlify from "@astrojs/netlify";
 
 export default defineConfig({
   markdown: {
@@ -23,6 +23,5 @@ export default defineConfig({
     icon(),
   ],
   output: "server",
-  adapter: vercel(),
+  adapter: netlify(),
 });
-
