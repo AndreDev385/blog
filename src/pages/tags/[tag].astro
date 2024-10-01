@@ -6,6 +6,8 @@ import { Tag as TagComponent } from "@/components/ui/tag";
 import { collectTags } from "@/lib/collectTags";
 import { getCollection } from "astro:content";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
 	const blogPosts = await getCollection("blog");
 
@@ -60,7 +62,10 @@ const { posts } = Astro.props;
 				{
 					tags.map((currTag) => (
 						<li>
-							<TagComponent tag={currTag} selected={tag === currTag} />
+							<TagComponent
+								tag={currTag}
+								selected={tag === currTag}
+							/>
 						</li>
 					))
 				}

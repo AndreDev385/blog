@@ -1,21 +1,20 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import icon from "astro-icon";
-// markdown plugins
+
 import remarkToc from "remark-toc";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/serverless"; //adapter
 
-import netlify from "@astrojs/netlify";
-
-// https://astro.build/config
 export default defineConfig({
   markdown: {
     remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
   },
-
+  image: {
+    service: passthroughImageService(),
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -23,7 +22,7 @@ export default defineConfig({
     react(),
     icon(),
   ],
-
   output: "server",
-  adapter: netlify(),
+  adapter: vercel(),
 });
+
