@@ -6,24 +6,31 @@ const { headings } = Astro.props;
 
 <Card>
   <nav class="toc" aria-labelledby="toc-heading">
-    <h2 id="toc-heading" class="text-lg font-semibold mb-4">Tabla Contenido</h2>
+    <h2 id="toc-heading" class="text-lg font-semibold mb-4">
+      Table of Contents
+    </h2>
     <ul class="space-y-2">
-      {headings.map((heading: any) => (
-      <li class={`toc-item toc-item-${heading.depth}`}>
-        <a
-          href={`#${heading.slug}`}
-          class="text-gray-700 hover:text-gray-900 hover:underline"
-        >
-          {heading.text}
-        </a>
-      </li>
-      ))}
+      {
+        headings.map((heading: any) => (
+          <li class={`toc-item toc-item-${heading.depth}`}>
+            <a
+              href={`#${heading.slug}`}
+              class="text-gray-700 hover:text-gray-900 hover:underline"
+            >
+              {heading.text}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </Card>
 
 <style>
   .toc-item {
+    margin-left: 0rem;
+  }
+  .toc-item-2 {
     margin-left: 1rem;
   }
   .toc-item-3 {

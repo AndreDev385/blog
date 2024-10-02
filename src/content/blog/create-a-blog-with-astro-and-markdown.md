@@ -1,6 +1,6 @@
 ---
 title: Create a blog with astro and markdown P1
-description: Discover how to create yout own blog with astro, a web framework for fast content sites and mardown, a markup language with a great ease to use to write conent and take notes. 
+description: Discover how to create yout own blog with astro, a web framework for fast content sites and mardown, a markup language with a great ease to use to write content and take notes. 
 date: 2024-09-30
 image: ../../assets/posts-images/astro_post.webp
 tags:
