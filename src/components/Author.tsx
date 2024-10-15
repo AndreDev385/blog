@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import avatarPic from "@/assets/profile_pic.jpeg";
 import { format } from "date-fns";
 
 interface AuthorAvatarProps {
@@ -11,9 +10,9 @@ export function Author({ publishDate }: AuthorAvatarProps) {
     <div className="my-4 flex items-center space-x-4">
       <Avatar>
         <img
-          src={avatarPic.src}
-          width={avatarPic.width}
-          height={avatarPic.height}
+          src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
+          width="320"
+          height="320"
           alt={"André Izarra Profile Picture"}
         />
         <AvatarFallback>AI</AvatarFallback>
