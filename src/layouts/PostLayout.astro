@@ -11,41 +11,37 @@ const { post, headings } = Astro.props;
 ---
 
 <Layout>
-	<div
-		class="max-w-6xl grid grid-cols-1 lg:grid-cols-5 px-6 md:px-4 lg:px-2 gap-8 mx-auto mt-4"
-	>
-		<article class="lg:col-span-4">
-			<header class="mb-8 relative">
-				<h1 class="text-4xl font-bold text-foreground mb-2 lg:text-5xl">
-					{post.data.title}
-				</h1>
-				<Author publishDate={post.data.date} />
-				{
-					post.data.tags && (
-						<div class="mt-2">
-							{post.data.tags.map((tag: string) => (
-								<a href={`/tags/${tag.toLowerCase()}`}>
-									<SkillBadge
-										skill={
-											skillIconMap[
-												tag as keyof typeof skillIconMap
-											]
-										}
-									/>
-								</a>
-							))}
-						</div>
-					)
-				}
-			</header>
-			<div class="prose prose-lg max-w-none relative">
-				<slot />
-			</div>
-		</article>
-		<aside class="lg:col-span-1 hidden lg:block flex-shrink-0">
-			<div class="sticky top-8">
-				<TableOfContent headings={headings} />
-			</div>
-		</aside>
-	</div>
+  <div
+    class="mx-auto mt-4 grid max-w-6xl grid-cols-1 gap-8 px-6 md:px-4 lg:grid-cols-5 lg:px-2"
+  >
+    <article class="lg:col-span-4">
+      <header class="relative mb-8">
+        <h1 class="mb-2 text-4xl font-bold text-foreground lg:text-5xl">
+          {post.data.title}
+        </h1>
+        <Author publishDate={post.data.date} />
+        {
+          post.data.tags && (
+            <div class="mt-2">
+              {post.data.tags.map((tag: string) => (
+                <a href={`/tags/${tag.toLowerCase()}`}>
+                  <SkillBadge
+                    skill={skillIconMap[tag as keyof typeof skillIconMap]}
+                  />
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </header>
+      <div class="prose prose-lg relative max-w-none">
+        <slot />
+      </div>
+    </article>
+    <aside class="hidden flex-shrink-0 lg:col-span-1 lg:block">
+      <div class="sticky top-8">
+        <TableOfContent headings={headings} />
+      </div>
+    </aside>
+  </div>
 </Layout>

@@ -20,10 +20,10 @@ const { socials } = Astro.props;
           href={info.href}
           target="_blank"
           rel="noopener noreferrer"
-          class="hover:scale-125 transition-transform duration-300"
+          class="transition-transform duration-300 hover:scale-125"
           aria-label={info.ariaLabel}
         >
-          <Icon name={info.icon} class="w-10 h-10" />
+          <Icon name={info.icon} class="h-10 w-10" />
         </a>
       );
     })

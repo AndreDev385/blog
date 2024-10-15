@@ -1,6 +1,6 @@
 /* Custom styles for markdown content */
 .prose {
-  @apply text-gray-900 leading-normal break-words;
+  @apply break-words leading-normal text-gray-900;
 }
 
 .prose p {
@@ -8,19 +8,19 @@
 }
 
 .prose h1 {
-  @apply text-4xl font-bold mb-4 mt-6;
+  @apply mb-4 mt-6 text-4xl font-bold;
 }
 
 .prose h2 {
-  @apply text-3xl font-bold mb-4 mt-6;
+  @apply mb-4 mt-6 text-3xl font-bold;
 }
 
 .prose h3 {
-  @apply text-2xl font-bold mb-4 mt-6;
+  @apply mb-4 mt-6 text-2xl font-bold;
 }
 
 .prose h4 {
-  @apply text-xl font-bold mb-4 mt-6;
+  @apply mb-4 mt-6 text-xl font-bold;
 }
 
 .prose ul,
@@ -45,7 +45,7 @@
 }
 
 .prose blockquote {
-  @apply border-l-4 border-gray-300 pl-4 italic my-4;
+  @apply my-4 border-l-4 border-gray-300 pl-4 italic;
 }
 
 .prose code {
@@ -53,9 +53,9 @@
 }
 
 .prose pre {
-  @apply bg-gray-100 rounded p-4 mb-4 overflow-x-auto;
+  @apply mb-4 overflow-x-auto rounded bg-gray-100 p-4;
 }
 
 .prose img {
-  @apply max-w-full h-auto my-4 rounded;
+  @apply my-4 h-auto max-w-full rounded;
 }

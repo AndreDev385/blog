@@ -8,7 +8,7 @@ interface AuthorAvatarProps {
 
 export function Author({ publishDate }: AuthorAvatarProps) {
   return (
-    <div className="flex items-center space-x-4 my-4">
+    <div className="my-4 flex items-center space-x-4">
       <Avatar>
         <img
           src={avatarPic.src}
@@ -19,7 +19,7 @@ export function Author({ publishDate }: AuthorAvatarProps) {
         <AvatarFallback>AI</AvatarFallback>
       </Avatar>
       <div>
-        <p className="text-lg leading-none font-bold">André Izarra</p>
+        <p className="text-lg font-bold leading-none">André Izarra</p>
         <time
           dateTime={publishDate.toISOString()}
           className="text-muted-foreground"

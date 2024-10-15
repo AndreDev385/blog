@@ -22,7 +22,7 @@ const {
 <Card
   className="card border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10"
 >
-  <div class="flex items-center mb-4">
+  <div class="mb-4 flex items-center">
     <div class="flex items-center space-x-3">
       {
         logo ? (
@@ -31,16 +31,16 @@ const {
             width={logo.width}
             height={logo.height}
             alt={`${company} logo`}
-            class="w-12 h-12 object-contain rounded-full"
+            class="h-12 w-12 rounded-full object-contain"
           />
         ) : (
-          <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
-            <Icon name="mdi:briefcase" class="w-6 h-6 text-gray-500" />
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200">
+            <Icon name="mdi:briefcase" class="h-6 w-6 text-gray-500" />
           </div>
         )
       }
     </div>
-    <div class="text-center w-full">
+    <div class="w-full text-center">
       <div>
         <h3 class="text-xl font-bold text-gray-800">{title} | {company}</h3>
       </div>
@@ -48,7 +48,7 @@ const {
     </div>
   </div>
   <div class="mb-4">
-    <ul class="list-disc list-inside space-y-1">
+    <ul class="list-inside list-disc space-y-1">
       {description.map((item: string) => <li class="text-gray-700">{item}</li>)}
     </ul>
   </div>

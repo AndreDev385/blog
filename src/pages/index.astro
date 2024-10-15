@@ -1,106 +1,96 @@
 ---
-import { Image } from "astro:assets";
-
 import Layout from "@/layouts/Layout.astro";
 import SocialIcons from "@/components/SocialIcons.astro";
 import ExperienceCard from "@/components/ExperienceCard.astro";
 
-import avatarPic from "@/assets/profile_pic.jpeg";
-import codingSketch from "@/assets/coding_sketch.png";
 import { experiences } from "@/lib/experience";
 
 const socials = [
-	{
-		icon: "devicon:linkedin",
-		ariaLabel: "LinkedIn",
-		href: "https://www.linkedin.com/in/andr%C3%A9-izarra/",
-	},
-	{
-		icon: "devicon:github",
-		ariaLabel: "GitHub",
-		href: "https://github.com/AndreDev385",
-	},
-	{
-		icon: "logos:google-gmail",
-		ariaLabel: "Gmail",
-		href: "mailto:andre.izarra@gmail.com",
-	},
+  {
+    icon: "devicon:linkedin",
+    ariaLabel: "LinkedIn",
+    href: "https://www.linkedin.com/in/andr%C3%A9-izarra/",
+  },
+  {
+    icon: "devicon:github",
+    ariaLabel: "GitHub",
+    href: "https://github.com/AndreDev385",
+  },
+  {
+    icon: "logos:google-gmail",
+    ariaLabel: "Gmail",
+    href: "mailto:andre.izarra@gmail.com",
+  },
 ];
 ---
 
 <Layout>
-	<div id="hero" class="mb-16 sm-px-4">
-		<!-- Hero Section -->
-		<section
-			class="mx-auto max-w-6xl text-center h-screen grid grid-cols-1 lg:grid-cols-2 gap-4 items-center"
-		>
-			<div>
-				<h2 class="text-4xl font-bold mb-4 text-gray-300">
-					Hi, I'm André Izarra
-				</h2>
-				<h1 class="text-6xl font-bold mb-4 text-gray-100">
-					Full Stack Developer
-				</h1>
-				<p class="text-xl text-white mb-4">
-					Web Developer | Tech Enthusiast | Blogger
-				</p>
-				<SocialIcons socials={socials} />
-				<!-- CV button -->
-			</div>
-			<Image class="hidden lg:block" src={codingSketch} alt="Coding" />
-		</section>
-	</div>
-	<div class="max-w-6xl mx-auto px-6 md:px-4 lg:px-2">
-		<!-- About Me Section -->
-		<section class="py-16">
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-				<div>
-					<h2 class="text-3xl font-bold mb-4 text-center">
-						About Me
-					</h2>
-					<p class="text-lg text-gray-700 mb-4">
-						I'm a passionate web developer with 3+ years of
-						experience in creating robust and scalable web
-						applications. My journey in tech has been driven by a
-						curiosity to understand how things work and a desire to
-						create solutions that make a difference.
-					</p>
-					<p class="text-lg text-gray-700">
-						When I'm not coding, you can find me exploring new
-						technologies, looking for new plugins to add in my
-						neovim configuration or writing about my discoveries on
-						this blog.
-					</p>
-				</div>
-				<div class="flex items-center justify-center">
-					<img
-						class="w-64 h-64 rounded-full"
-						src={avatarPic.src}
-						alt="André Izarra Profile Picture"
-						width={avatarPic.width}
-						height={avatarPic.height}
-					/>
-				</div>
-			</div>
-		</section>
-
-		<!-- Experience Section -->
-		<section class="py-16">
-			<h2 class="text-3xl font-bold mb-6 text-center">My Experience</h2>
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-				{
-					experiences.map((experience) => (
-						<ExperienceCard {...experience} />
-					))
-				}
-			</div>
-		</section>
-	</div>
+  <section
+    id="hero"
+    class="mx-auto grid h-screen max-w-6xl grid-cols-1 items-center gap-4 text-center lg:grid-cols-2"
+  >
+    <div>
+      <h2 class="mb-4 text-4xl font-bold text-gray-700">
+        Hi, I'm André Izarra
+      </h2>
+      <h1 class="mb-4 text-6xl font-bold">Full Stack Developer</h1>
+      <p class="mb-4 text-xl text-gray-700">
+        Web Developer | Tech Enthusiast | Blogger
+      </p>
+      <SocialIcons socials={socials} />
+      <!-- CV button -->
+    </div>
+    <img
+      class="hidden lg:block"
+      src="https://andre385.sirv.com/Portfolio%20%26%20Blog/coding_sketch.png"
+      width="500"
+      height="500"
+      alt="coding sketch"
+    />
+  </section>
+  <!-- About Me Section -->
+  <div class="bg-zinc-100">
+    <section
+      class="mx-auto grid h-screen max-w-6xl grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-4 lg:px-2"
+    >
+      <div class="flex flex-col items-center justify-center">
+        <h2 class="mb-4 text-center text-4xl font-bold">About Me</h2>
+        <p class="mb-4 text-lg text-gray-700">
+          I'm a passionate web developer with 3+ years of experience in creating
+          robust and scalable web applications. My journey in tech has been
+          driven by a curiosity to understand how things work and a desire to
+          create solutions that make a difference.
+        </p>
+        <p class="text-lg text-gray-700">
+          When I'm not coding, you can find me exploring new technologies,
+          looking for new plugins to add in my neovim configuration or writing
+          about my discoveries on this blog.
+        </p>
+      </div>
+      <div class="flex items-center justify-center">
+        <img
+          class="w- rounded-full"
+          src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
+          width="320"
+          height="320"
+          alt="André Izarra Profile Picture"
+        />
+      </div>
+    </section>
+  </div>
+  <!-- Experience Section -->
+  <section
+    class="mx-auto mt-16 flex max-w-6xl flex-col items-center justify-center px-6 md:px-4 lg:px-2"
+  >
+    <h2 class="mb-6 text-center text-4xl font-bold">My Experience</h2>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {experiences.map((experience) => <ExperienceCard {...experience} />)}
+    </div>
+  </section>
 </Layout>
 
 <style>
-	#hero {
-		background-image: url("/public/clouds_dark.png");
-		background-size: cover;
-	}
+  #hero {
+    background-size: cover;
+  }
 </style>
