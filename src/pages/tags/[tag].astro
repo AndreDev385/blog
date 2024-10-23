@@ -1,9 +1,9 @@
 ---
-import PostCard from "@/components/PostCard.astro";
+import PostCard from "@/modules/blog/components/PostCard.astro";
 import Layout from "@/layouts/Layout.astro";
 import { Tag as TagComponent } from "@/components/ui/tag";
 
-import { collectTags } from "@/lib/collectTags";
+import { collectTags } from "@/modules/blog/utils/collectTags";
 import { getCollection } from "astro:content";
 
 export const prerender = true;

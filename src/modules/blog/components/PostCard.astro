@@ -9,7 +9,7 @@ const { post } = Astro.props;
 
 <Card
   id={post.data.title}
-  className="rounded-2xl card group grid grid-cols-1 gap-4 border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10 md:grid-cols-2"
+  className="card group grid grid-cols-1 gap-4 rounded-2xl border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10 md:grid-cols-2"
 >
   <a href={`/blog/${post.slug}`}>
     <div class="grid gap-4">

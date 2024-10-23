@@ -1,9 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import SocialIcons from "@/components/SocialIcons.astro";
-import ExperienceCard from "@/components/ExperienceCard.astro";
+import SocialIcons from "@/modules/portfolio/components/SocialIcons.astro";
+import ExperienceCard from "@/modules/portfolio/components/ExperienceCard.astro";
 
-import { experiences } from "@/lib/experience";
+import { experiences } from "@/modules/portfolio/utils/experience";
 
 const socials = [
   {
@@ -64,7 +64,7 @@ const socials = [
         <p class="text-lg text-gray-700">
           When I'm not coding, you can find me exploring new technologies,
           looking for new plugins to add in my neovim configuration or writing
-          about my discoveries on this blog.
+          about my discoveries on my blog.
         </p>
       </div>
       <div class="flex items-center justify-center">
