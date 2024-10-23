@@ -17,7 +17,7 @@ I find that problematic. You will end with unhanded edge cases, those errors can
 The next code is an example of a function that does not handle errors or edge cases and can be very common.
 
 ```typescript
-async function getUser(id: number): User {
+async function getUser(id: number): Promise<User> {
   const response = await fetch(`${API_URL}/users/${id}`);
   return await response.json();
 }
@@ -46,7 +46,7 @@ I used to struggle with these problems in my code involving:
 - Fetching data 
 - Querying databases 
 
-I always ended up with may `try/catch` blocks in my code, unsure how to manage the error in the calling code. When I decided to address every error I encountered, I often overlooked some or told myself, "Then I will handle that case," and of course, I didn't. Then these errors would pop up at runtime and i felt insecure about when my code was free of bugs or not.
+I always ended up with many `try/catch` blocks in my code, unsure how to manage the error in the calling code. When I decided to address every error I encountered, I often overlooked some or told myself, "Then I will handle that case," and of course, I didn't. Then these errors would pop up at runtime and I felt insecure about when my code was free of bugs or not.
 
 ## How other languages handle errors?
 For the past year, I've been very interested in [Rust](https://www.rust-lang.org/) and I've learned a little bit about it, I found that is a interesting language with a very different way (at least for me) to deal with issues like safety, performance and memory management.
@@ -88,7 +88,7 @@ fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, Pars
 }
 ```
 
-In this function, we used the `?` operator to return the error if the string is not a valid value to be parsed as an integer (number). This eliminates the verbosity of match/if statement to check if the parse is successful.
+In this function, we used the `?` operator to return the error if the string is not a valid value to be parsed as an integer (number). This eliminates the verbosity of `match/if` statement to check if the parse is successful.
 
 This level of conciseness isn't achievable using a wrapper class like `Result` in TypeScript, resulting in more verbose code. The caller always has to deal with the `Error` case using an `if` statement, as in [Go](https://go.dev/).
 
@@ -127,7 +127,7 @@ Now it's possible for us to know if a function can fail looking at its signature
 With that in mind, let's refactor our initial code to handle every edge case and enforce that the calling code deals with the error case.
 
 ```typescript
-async function getUser(id: number): User | Error {
+async function getUser(id: number): Promise<User | Error> {
   try {
     const response = await fetch(`/users/${id}`);
 
@@ -143,7 +143,7 @@ async function getUser(id: number): User | Error {
 }
 ```
 
-Refactoring the function signature to return a `User | Error` type forces the caller code to handle the error case.
+Refactoring the function signature to return a `Promise<User | Error>` type forces the caller code to handle the error case.
 
 In the `if` statement we check if the response is a 200 OK, and if not, we return an error.
 
@@ -161,7 +161,7 @@ if (userOrError instanceof Error) {
 // below this part of the code userOrError will always be type User
 ```
 
-In this caller code we can deal with the error case by using the `instanceof` operator to check if the value is an instance of `Error`.
+In this caller code when the `Promise` is resolved we got a union type `User | Error`, we can deal with the error case by using the `instanceof` operator to check if the value is an instance of `Error`.
 
 Depending on what you want, you can deal with the error differently or you can return the error one level up.
 
