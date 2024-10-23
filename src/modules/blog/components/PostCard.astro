@@ -1,4 +1,6 @@
 ---
+import { format } from "date-fns";
+
 import SkillBadge from "@/components/SkillBadge.astro";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -19,7 +21,7 @@ const { post } = Astro.props;
       <CardContent className="grid grid-cols-5 gap-4">
         <div class="col-span-5 space-y-4">
           <time datetime={post.data.date.toISOString()}
-            >Posted on {post.data.date.toLocaleDateString()}</time
+            >Posted on {format(post.data.date, "dd/MM/yyyy")}</time
           >
           <p class="text-sm">
             {post.data.description}
