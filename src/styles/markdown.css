@@ -41,15 +41,11 @@
 }
 
 .prose a {
-  @apply text-blue-600 hover:underline;
+  @apply font-bold no-underline;
 }
 
 .prose blockquote {
   @apply my-4 border-l-4 border-gray-300 pl-4 italic;
-}
-
-.prose code {
-  @apply rounded font-mono text-sm;
 }
 
 .prose pre {
@@ -58,4 +54,8 @@
 
 .prose img {
   @apply my-4 h-auto max-w-full rounded;
+}
+
+.prose :where(code):not(:where([class~=not-prose] *)) {
+  @apply bg-gray-200 px-1 py-1 rounded;
 }
