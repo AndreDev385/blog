@@ -27,14 +27,14 @@ const socials = [
 <Layout>
   <section
     id="hero"
-    class="mx-auto grid h-screen max-w-6xl grid-cols-1 items-center gap-4 text-center lg:grid-cols-2"
+    class="mx-auto grid min-h-screen max-w-6xl grid-cols-1 items-center gap-4 py-32 text-center lg:grid-cols-2"
   >
     <div>
-      <h2 class="mb-4 text-4xl font-bold text-gray-700">
+      <h2 class="mb-8 text-4xl font-bold text-gray-700">
         Hi, I'm André Izarra
       </h2>
-      <h1 class="mb-4 text-6xl font-bold">Full Stack Developer</h1>
-      <p class="mb-4 text-xl text-gray-700">
+      <h1 class="mb-8 text-6xl font-bold">Full Stack Developer</h1>
+      <p class="mb-8 text-2xl text-gray-700">
         Web Developer | Tech Enthusiast | Blogger
       </p>
       <SocialIcons socials={socials} />
@@ -49,9 +49,9 @@ const socials = [
     />
   </section>
   <!-- About Me Section -->
-  <div class="bg-zinc-100">
-    <section
-      class="mx-auto grid h-screen max-w-6xl grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-4 lg:px-2"
+  <section class="bg-zinc-100 py-32">
+    <div
+      class="mx-auto grid max-w-6xl grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-4 lg:px-2"
     >
       <div class="flex flex-col items-center justify-center">
         <h2 class="mb-4 text-center text-4xl font-bold">About Me</h2>
@@ -76,11 +76,11 @@ const socials = [
           alt="André Izarra Profile Picture"
         />
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
   <!-- Experience Section -->
   <section
-    class="mx-auto mt-16 flex max-w-6xl flex-col items-center justify-center px-0 md:px-4 lg:px-2"
+    class="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-0 py-32 md:px-4 lg:px-2"
   >
     <h2 class="mb-6 text-center text-4xl font-bold">My Experience</h2>
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
