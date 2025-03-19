@@ -24,7 +24,7 @@ const { post } = Astro.props;
       <CardContent className="grid grid-cols-5 gap-4">
         <div class="col-span-5 space-y-4">
           <time datetime={post.data.date.toISOString()}
-            >{t("posted/on")}
+            >{t("posted.on")}
             {formatDate(post.data.date, lang)}</time
           >
           <p class="text-sm">
