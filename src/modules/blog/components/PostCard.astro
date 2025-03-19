@@ -1,10 +1,13 @@
 ---
-import { format } from "date-fns";
-
 import SkillBadge from "@/components/SkillBadge.astro";
 
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { skillIconMap } from "@/lib/skillIconMap";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import { formatDate } from "../utils/formatDate";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { post } = Astro.props;
 ---
@@ -13,7 +16,7 @@ const { post } = Astro.props;
   id={post.data.title}
   className="card group grid grid-cols-1 gap-4 rounded-2xl border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10 md:grid-cols-2"
 >
-  <a href={`/blog/${post.slug}`}>
+  <a href={`/${post.slug.split("/")[0]}/blog/${post.slug.split("/")[1]}`}>
     <div class="grid gap-4">
       <CardHeader>
         <h2 class="text-3xl font-bold leading-tight">{post.data.title}</h2>
@@ -21,7 +24,8 @@ const { post } = Astro.props;
       <CardContent className="grid grid-cols-5 gap-4">
         <div class="col-span-5 space-y-4">
           <time datetime={post.data.date.toISOString()}
-            >Posted on {format(post.data.date, "dd/MM/yyyy")}</time
+            >{t("posted/on")}
+            {formatDate(post.data.date, lang)}</time
           >
           <p class="text-sm">
             {post.data.description}
@@ -41,7 +45,7 @@ const { post } = Astro.props;
   </a>
   <a
     class="relative hidden h-full overflow-hidden rounded-lg md:block"
-    href={`/blog/${post.slug}`}
+    href={`/${post.slug.split("/")[0]}/blog/${post.slug.split("/")[1]}`}
   >
     <img
       src={post.data.image}

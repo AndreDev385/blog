@@ -1,0 +1,116 @@
+---
+import BioonixIcon from "@/assets/bioonix_logo.png";
+import NediITIcon from "@/assets/nedi_icon.png";
+import GameMindIcon from "@/assets/gamemind_icon.png";
+import OnTheCourtIcon from "@/assets/on_the_court.png";
+import { skillIconMap, type Skill } from "@/lib/skillIconMap";
+
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import ExperienceCard from "./ExperienceCard.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const experiences: ExperienceCardProps[] = [
+  {
+    title: t("experiences.onthecourt.title"),
+    company: t("experiences.onthecourt.company"),
+    location: t("experiences.onthecourt.location"),
+    startDate: t("experiences.onthecourt.startDate"),
+    endDate: t("experiences.onthecourt.endDate"),
+    description: t("experiences.onthecourt.description"),
+    logo: OnTheCourtIcon,
+    skills: [
+      skillIconMap.remix,
+      skillIconMap.react,
+      skillIconMap.typescript,
+      skillIconMap.tailwindcss,
+      skillIconMap.git,
+      skillIconMap.postgresql,
+    ],
+  },
+  {
+    title: t("experiences.gamemind.title"),
+    company: t("experiences.gamemind.company"),
+    location: t("experiences.gamemind.location"),
+    startDate: t("experiences.gamemind.startDate"),
+    endDate: t("experiences.gamemind.endDate"),
+    description: t("experiences.gamemind.description"),
+    logo: GameMindIcon,
+    skills: [
+      skillIconMap.flutter,
+      skillIconMap.typescript,
+      skillIconMap.nodejs,
+      skillIconMap.react,
+      skillIconMap.tailwindcss,
+      skillIconMap.git,
+      skillIconMap.postgresql,
+    ],
+  },
+  {
+    title: t("experiences.bioonix.title"),
+    company: t("experiences.bioonix.company"),
+    location: t("experiences.bioonix.location"),
+    startDate: t("experiences.bioonix.startDate"),
+    endDate: t("experiences.bioonix.endDate"),
+    description: t("experiences.bioonix.description"),
+    logo: BioonixIcon,
+    skills: [
+      skillIconMap.angular,
+      skillIconMap.nestjs,
+      skillIconMap.postgresql,
+      skillIconMap.tailwindcss,
+      skillIconMap.typescript,
+      skillIconMap.react,
+      skillIconMap.nextjs,
+      skillIconMap.nodejs,
+      skillIconMap.git,
+    ],
+  },
+  {
+    title: t("experiences.eurocambios.title"),
+    company: t("experiences.eurocambios.company"),
+    location: t("experiences.eurocambios.location"),
+    startDate: t("experiences.eurocambios.startDate"),
+    endDate: t("experiences.eurocambios.endDate"),
+    description: t("experiences.eurocambios.description"),
+    skills: [
+      skillIconMap.nodejs,
+      skillIconMap.typescript,
+      skillIconMap.postgresql,
+      skillIconMap.git,
+    ],
+  },
+  {
+    title: t("experiences.nediit.title"),
+    company: t("experiences.nediit.company"),
+    location: t("experiences.nediit.location"),
+    startDate: t("experiences.nediit.startDate"),
+    endDate: t("experiences.nediit.endDate"),
+    description: t("experiences.nediit.description"),
+    logo: NediITIcon,
+    skills: [
+      skillIconMap.react,
+      skillIconMap.javascript,
+      skillIconMap.git,
+      skillIconMap.postgresql,
+      skillIconMap.css,
+    ],
+  },
+];
+
+type ExperienceCardProps = {
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: readonly string[];
+  skills: readonly Skill[];
+  logo?: ImageMetadata;
+};
+---
+
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+  {experiences.map((experience) => <ExperienceCard {...experience} />)}
+</div>

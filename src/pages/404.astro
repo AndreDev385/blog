@@ -1,6 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="404: Not Found">
@@ -9,14 +13,14 @@ import { Button } from "@/components/ui/button";
   >
     <h1 class="mb-4 text-6xl font-bold text-gray-900">404</h1>
     <p class="mb-8 text-2xl font-semibold text-gray-700">
-      Oops! Pagina no encontrada
+      {t("404.title")}
     </p>
     <div class="mb-8 max-w-md text-gray-600">
-      <p>La pagina que buscas no existe o ha sido eliminada.</p>
+      <p>{t("404.message")}</p>
     </div>
     <div class="space-x-4">
       <Button asChild>
-        <a href="/">&larr; Volver al inicio</a>
+        <a href="/">&larr; {t("404.action")}</a>
       </Button>
     </div>
   </div>

@@ -1,11 +1,10 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { format } from "date-fns";
 
-interface AuthorAvatarProps {
-  publishDate: Date;
+type AuthorAvatarProps = {
+  postedString: string;
 }
 
-export function Author({ publishDate }: AuthorAvatarProps) {
+export function Author({ postedString }: AuthorAvatarProps) {
   return (
     <div className="my-4 flex items-center space-x-4">
       <Avatar>
@@ -20,10 +19,9 @@ export function Author({ publishDate }: AuthorAvatarProps) {
       <div>
         <p className="text-lg font-bold leading-none">André Izarra</p>
         <time
-          dateTime={publishDate.toISOString()}
           className="text-muted-foreground"
         >
-          Posted on {format(publishDate, "dd/MM/yyyy")}
+          {postedString}
         </time>
       </div>
     </div>

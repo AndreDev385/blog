@@ -1,6 +1,6 @@
 ---
-title: Create a blog with astro and markdown P1
-description: Discover how to create yout own blog with astro, a web framework for fast content sites and mardown, a markup language with a great ease to use to write content and take notes.
+title: Crear un blog con Astro y Markdown P1
+description: Descubre cómo crear tu propio blog con Astro, un framework web para sitios de contenido rápido, y Markdown, un lenguaje de marcado con gran facilidad para escribir contenido y tomar notas.
 date: 2024-09-30
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp
 tags:
@@ -10,37 +10,35 @@ tags:
 
 ![Astro](https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp)
 
-I created this blog to share content about my personal experiences in programming.
-For the first post I was wondering what to write about, so I thought if I'm going to share my experiences why not to start with how I built this blog?.
+Creé este blog para compartir contenido sobre mis experiencias personales en programación.
+Para la primera publicación, me preguntaba sobre qué escribir, así que pensé: si voy a compartir mis experiencias, ¿por qué no empezar con cómo construí este blog?.
 
 # Astro
 
-[Astro](https://asatro.build/) is a web framework for building fast and SEO friendly content sites like blogs, portfolios and e commerce.
-Almost all websites in the world have a lot of static content and in this kind of websites is where astro shines.
-So let's find out how to create a blog with astro.
+[Astro](https://astro.build/) es un framework web para construir sitios de contenido rápidos y optimizados para SEO, como blogs, portafolios y comercios electrónicos.
+Casi todos los sitios web del mundo tienen mucho contenido estático, y en este tipo de sitios es donde Astro brilla.
+Así que descubramos cómo crear un blog con Astro.
 
-## Create a new project
+## Crear un nuevo proyecto
 
-Run the following command in your terminal to create a new project.
-
+Ejecuta el siguiente comando en tu terminal para crear un nuevo proyecto.
 ```bash
 npm create astro@latest
 ```
+Este comando te guiará a través de varios pasos con una CLI muy amigable donde seleccionarás entre algunas opciones:
 
-This command will guide you through some steps with a really nice CLI where you're going to select between some options:
+1. Nombre del proyecto
+2. Plantilla inicial
+3. TypeScript o JavaScript
+    1. Si eliges TypeScript, podrás seleccionar la configuración
+4. Instalar dependencias
+5. Crear un repositorio git
 
-1. Project name
-2. Starter template
-3. TypeScript or JavaScript
-   1. If you choose Typescript you'll be able to select the configuration
-4. Install dependencies
-5. Create a git repository
+## Estructura del proyecto
 
-## Project Tree
+Al final de estos pasos, Astro creará un nuevo proyecto con una estructura similar a esta, dependiendo de la plantilla elegida.
 
-At the end of those steps astro will create a new project with a [structure](https://docs.astro.build/en/basics/layouts/) similar to this depending on the template that you chose.
-
-```project
+```text
 ├── node_modules/
 ├── public/
 ├── src/
@@ -51,45 +49,36 @@ At the end of those steps astro will create a new project with a [structure](htt
 │   └── styles/
 ├── astro.config.mjs
 ├── package.json
-├── packagea-lock.json
+├── package-lock.json
 └── README.md
 ```
 
-Inside the `src` folder is where we are going to work.
+Dentro de la carpeta `src` es donde trabajaremos.
 
-## Adding Tailwindcss
+## Añadir Tailwindcss
 
-In this case I will be using [Tailwindcss](https://docs.astro.build/en/guides/integrations-guide/tailwind/) to style the pages, so I'm going to add it to my project with the following command:
-
+En este caso usaré [Tailwindcss](https://docs.astro.build/en/guides/integrations-guide/tailwind/) para estilizar las páginas. Lo añadiré al proyecto con:
 ```bash
 npx astro add tailwind
 ```
+Este comando añadirá Tailwindcss y creará el archivo `tailwind.config.cjs`.
+También actualizará `astro.config.mjs` para incluir el plugin de Tailwindcss.
 
-This command will add Tailwindcss to your project and create a new file `tailwind.config.cjs`.
-And will update the `astro.config.mjs` file to include the Tailwindcss plugin.
+## Estructura del proyecto
+### Páginas
 
-## Project Structure
-
-### Pages
-
-The [pages](https://docs.astro.build/en/basics/astro-pages/) folder is where our routes will live. Inside this folder every sub folder and file will define our routes. Index.astro files are the entry
-point for every folder so in this case the file `src/pages/index.astro` will be the entry point for the `/` route.
-In this file will be the first page of our blog.
+La carpeta [pages](https://docs.astro.build/en/basics/astro-pages/) contiene nuestras rutas. Cada subcarpeta y archivo aquí define una ruta. Los archivos `index.astro` son el punto de entrada de cada carpeta. Por ejemplo, `src/pages/index.astro` corresponde a la ruta `/`.
+En este archivo estará la página inicial del blog.
 
 ### Layouts
+Los [layouts](https://docs.astro.build/en/basics/layouts/) son componentes reutilizables que proveen estructura a las páginas, como headers, barras de navegación y footers.
 
-[Layouts](https://docs.astro.build/en/basics/layouts/) are Astro components used to provide a reusable structure for our pages such as a page template.
-Headers, navigation bars, and footers are good examples of layouts.
-
-#### Default Layout
-
-In the file `src/layouts/DefaultLayout.astro` we will define the default layout for our pages.
-
-In `src/components/Header.astro` we will define the Header [component](https://docs.astro.build/en/basics/layouts/) for the default layout.
-
+#### Layout por defecto
+En `src/layouts/DefaultLayout.astro` definiremos el layout base.
+En `src/components/Header.astro` crearemos el componente del header:
 ```astro
 ---
-const navItems = [{ href: "/", text: "Home" }];
+const navItems = [{ href: "/", text: "Inicio" }];
 ---
 
 <header
@@ -118,7 +107,7 @@ const navItems = [{ href: "/", text: "Home" }];
     <button
       id="menuButton"
       class="rounded-md p-2 hover:bg-gray-100 md:hidden"
-      aria-label="Toggle menu"
+      aria-label="Alternar menú"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +132,7 @@ const navItems = [{ href: "/", text: "Home" }];
       <button
         id="closeMenuButton"
         class="rounded-md p-2 hover:bg-gray-100"
-        aria-label="Close menu"
+        aria-label="Cerrar menú"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -187,18 +176,7 @@ const navItems = [{ href: "/", text: "Home" }];
   });
 </script>
 ```
-
-We are defining a header component with a navigation bar and a mobile menu for the mobile version.
-
-The `---` notation is the frontmatter for astro files, inside this notation we can define some variables and inject them into the component's HTML template using JSX-like expression.
-
-With the `navItems` we can keep adding buttons to the navigation bar and this buttons will redirect us to the corresponding page.
-
-In the script tag we just add some vanilla Javascript code to make the mobile menu work correctly.
-
-Now we are going to use the Header component in the default layout.
-`src/layouts/DefaultLayout.astro` file.
-
+Ahora usamos este header en el layout por defecto (`src/layouts/DefaultLayout.astro`):
 ```astro
 ---
 import "@/styles/global.css";
@@ -211,10 +189,10 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full">
+<html lang="es" class="h-full">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content="Descripción de Astro" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -227,33 +205,27 @@ const { title } = Astro.props;
     </main>
     <footer class="mt-4 bg-white shadow">
       <div class="container mx-auto px-4 py-6 text-center text-gray-600">
-        © 2023 André Izarra Blog. Todos los derechos reservados.
+        © 2023 Blog de André Izarra. Todos los derechos reservados.
       </div>
     </footer>
   </body>
 </html>
 ```
+### Contenido
+Con esta carpeta astro nos ayuda a crear y presentar contenido con gran facilidad para ser leído y usado
+Lo lograremos con:
 
-### Content
+- aRchivos Markdown
+- Archivos MDX
+- CMS
 
-With this folder astro helps us to create and present content in a way that is easy to read and understand.
-There are some ways to do this:
+En nuestro caso usaremos archivos `Markdown` en la carpeta `src/content` donde cada archivo va a ser equivalente a un post de nuestro blog.
 
-- Markdown files
-- MDX files
-- With Third Party CMS
-
-In our case we will use markdown files so in the `src/content` folder we will store all the markdown files that we want to use in our blog as posts.
-
-#### Collections
-
-[Collections](https://docs.astro.build/en/guides/content-collections/) are a way to organize our content. We can create collections in our content folder and use them in our pages.
+#### Colecciones
+Las [colecciones](https://docs.astro.build/en/guides/content-collections/) organizan y validan nuestro contenido. Podemos crear colecciones en nuestra carpeta `conent` y luego usarlas en nuestras páginas.
 
 #### Post Collection
-
-In the file `src/content/config.{ts,js}` we will define the schema for our post collection. Content collections are the best way create content is astro.
-Collections help us to organize our documents, validate our frontmatter and give us auto complete with Typescript.
-
+En el archivo `src/content/config.{ts,js}` crearemos nuestro primer `schema` para nuestra colección de post.
 ```ts
 import { defineCollection, z } from "astro:content";
 
@@ -269,34 +241,28 @@ export const collections = {
   }),
 };
 ```
+Estamos definiendo nuestra colección llamada `block` con propiedades que queremos que estén en cada post.
 
-We are defining a collection called `blog` with some properties that we want to be present in every blog post.
-
-#### Adding our first post
-
-In the file `src/content/blog/first.md` we will create our first post.
-
+#### Agregando nuestro primer post
+En el archivo `src/content/blog/first.md` agregaremos nuestro primero post
 ```md
 ---
-title: First post
-description: This is my first post with astro and markdown
+title: Primera publicación
+description: Mi primera publicación con Astro y Markdown
 date: 2024-09-30
 tags:
   - astro
   - markdown
 ---
 
-# Title
+# Título
 
-This is my first post
+Esta es mi primera publicación
 ```
+Con esto echo tenemos el contenido de nuestro primer post listo para ser mostrado en nuestra ruta inicial.
 
-With this done now we have our first post content ready to be displayed in our initial route
-
-## Post List
-
-In the file `src/pages/index.astro` we will create a page for list all the posts
-
+## List de post
+En el archivo `src/pages/index.astro` crearemos la pagina para listar nuestros posts.
 ```astro
 ---
 import Layout from "@/layouts/DefaultLayout.astro";
@@ -333,23 +299,20 @@ const posts = await getCollection("blog");
   </main>
 </Layout>
 ```
+Deberíamos ver una `card` en nuestra pagina mostrando los datos en el archivo `src/content/blog/first.md`.
 
-We should be able to see a card in our page displaying the data inside de file `src/content/blog/first.md`.
+Pero esto no es suficiente, tenemos que agregar una pagina para este y cada uno de los post que agreguemos en el futuro.
+Crearemos una pagina que funcione como una plantilla para cada post, the esta manera reutilizamos el código.
 
-But this in not enough, we need to create a page for this post and for every post in the future.
-We're going to create a page that works as a template for every post, in this way, we can reuse the same code for every post.
+## Routing Dinámico
+En un archivo de página de astro podemos especificar parámetros de ruta en el nombre del archivo para generar multiples páginas. Por ejemplo `src/pages/authors/[author].astro` generaría una pagina de biografía para cada uno de nuestros autores. `author` se convierte en un parámetro al cual podemos acceder dentro de la página y por ende a su información.
 
-## Dynamic Routing
-
-An Astro page file can specify dynamic route parameters in its file name to generate multiple, matching pages. For example, `src/pages/authors/[author].astro` generates a bio page for every author on your blog. Author becomes a parameter that you can access from inside the page.
-
-First let's create what we need to create this dynamic route.
+Primero agreguemos lo que necesitamos para crear esta ruta dinámica
 
 #### Markdown styles
+Crearemos una plantilla para cada post con sus estilos y estructura propios
 
-We are going to create a layout for every post with its own styles and structure.
-
-`/src/styles/markdown.css` will contain the styles for the markdown content.
+`/src/styles/markdown.css` agreguemos algo de `ccs` para el markdown
 
 ```css
 .prose {
@@ -415,9 +378,7 @@ We are going to create a layout for every post with its own styles and structure
 ```
 
 #### Post Layout
-
-`/src/layouts/PostLayout.astro` will contain the layout for every post.
-
+`/src/layouts/PostLayout.astro` sera el `layout` para nuestros posts.
 ```astro
 ---
 import "@/styles/markdown.css";
@@ -443,15 +404,11 @@ const { post } = Astro.props;
   </div>
 </Layout>
 ```
-
 ### Static (SSG)
+Con la function [`getStaticPaths`](https://docs.astro.build/en/guides/routing/#static-ssg-mode) es que generamos una pagina estática para cada post dentro de `/src/content/blog` en `build time`.
 
-With [`getStaticPaths`](https://docs.astro.build/en/guides/routing/#static-ssg-mode) we can create a page for every post inside our `/src/content/blog` folder at build time.
-
-#### Post Page
-
-We need to create a file with a special name `/src/pages/blog/[slug].astro` and inside this file we will create the page for every post.
-
+#### Post 
+Ahora creamos el archivo `/src/pages/blog/[slug].astro`.
 ```astro
 ---
 import { getCollection } from "astro:content";
@@ -475,20 +432,16 @@ const { Content } = await post.render();
 </PostLayout>
 ```
 
-With this done we can now go to the url `/blog/first` and see our first post.
+Con esto hecho si visitamos la URL `/blog/first` veremos nuestro primer post.
+Si seguiste el post hasta aquí ahora tendrás un setup inicial para tu blog con: 
+- Una colección de post con un `schema`, podemos crear nuevos post tan solo agregando un archivo markdown con el contenido del post a la carpeta `src/content/blog`.
+- Una pagina que lista cada uno de nuestros posts.
+- Una pagina dinámica que muestra el contenido del post seleccionado
 
-Now we have the initial setup for our blog, so what we build?
+Este es un setup bastante básico, pero puedes agregar mas funcionalidades como:
+- Imágenes para los post
+- Tabla de contenido en la página del post
+- Filtros para los post por `tag`
+- Paginación
 
-- A blog collection to store our posts with a schema, we can create a new post just by adding a markdown file to the `src/content/blog` folder
-- A page to list all the posts in this page, this page will read all the files inside the `src/content/blog` folder and display them in a list
-- A page to display a single post content, this page will read the file and display it's content following the template defined in the `PostLayout` component
-
-This is a very basic setup, but we can add more features to our blog like:
-
-- Images for our posts
-- Table of content in the post page
-- Filter our post by tags in the post list page
-- Pagination in the list post page
-
-I hope this post was useful for you, if you have any question or suggestion please let me know.
-If you read until here thank you for reading my blog, I hope you enjoy it.
+Si leíste hasta aquí te lo agradezco y espero que haya sido de utilidad para ti.

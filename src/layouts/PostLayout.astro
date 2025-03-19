@@ -4,8 +4,14 @@ import Layout from "@/layouts/Layout.astro";
 import TableOfContent from "@/modules/blog/components/TableOfContent.astro";
 import SkillBadge from "@/components/SkillBadge.astro";
 
-import { Author } from "@/components/Author";
 import { skillIconMap } from "@/lib/skillIconMap";
+import { Author } from "@/components/Author";
+
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { formatDate } from "@/modules/blog/utils/formatDate";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const { post, headings } = Astro.props;
 ---
@@ -19,7 +25,9 @@ const { post, headings } = Astro.props;
         <h1 class="mb-2 text-4xl font-bold text-foreground lg:text-5xl">
           {post.data.title}
         </h1>
-        <Author publishDate={post.data.date} />
+        <Author
+          postedString={`${t("posted.on")} ${formatDate(post.data.date, lang)}`}
+        />
         {
           post.data.tags && (
             <div class="mt-2">

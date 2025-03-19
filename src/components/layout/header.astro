@@ -1,7 +1,17 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const isSpanish = lang == "es";
+
 const navItems = [
-  { href: "/", text: "Home" },
-  { href: "/tags/all", text: "Blog" },
+  { href: `/${lang}`, text: t("header.home") },
+  {
+    href: `/${lang}/tags/${lang == "es" ? "todos" : "all"}`,
+    text: t("header.blog"),
+  },
 ];
 ---
 
@@ -15,17 +25,71 @@ const navItems = [
       <span class="text-2xl font-bold">André Izarra</span>
     </a>
 
-    <nav class="hidden space-x-6 text-sm font-medium md:flex">
-      {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            class="rounded px-2 py-1 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-200 hover:text-primary"
-          >
-            {item.text}
-          </a>
-        ))
-      }
+    <nav>
+      <ul class="hidden space-x-6 text-sm font-medium md:flex">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="rounded px-2 py-1 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-200 hover:text-primary"
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <div class="relative inline-block text-left">
+            <details class="group [&_svg]:transition-transform">
+              <summary
+                class="flex cursor-pointer items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {isSpanish ? "Español" : "English"}
+                <svg
+                  class="h-5 w-5 text-gray-400 group-open:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+
+              <div
+                class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+              >
+                <div class="py-1">
+                  <a
+                    href="/en"
+                    class={`block px-4 py-2 text-sm ${
+                      !isSpanish
+                        ? "bg-blue-50 text-blue-700"
+                        : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    }`}
+                  >
+                    English
+                  </a>
+                  <a
+                    href="/es"
+                    class={`block px-4 py-2 text-sm ${
+                      isSpanish
+                        ? "bg-blue-50 text-blue-700"
+                        : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    }`}
+                  >
+                    Español
+                  </a>
+                </div>
+              </div>
+            </details>
+          </div>
+        </li>
+      </ul>
     </nav>
 
     <button

@@ -16,6 +16,7 @@ export const skillIconMap = {
   nextjs: { name: "Next", icon: "devicon:nextjs" },
   astro: { name: "Astro", icon: "devicon:astro" },
   tailwindcss: { name: "Tailwindcss", icon: "devicon:tailwindcss" },
+  remix: { name: "Remix", icon: "devicon:remix" },
   //  Back end
   nodejs: { name: "Node.js", icon: "devicon:nodejs" },
   nestjs: { name: "Nestjs", icon: "devicon:nestjs" },
@@ -25,4 +26,7 @@ export const skillIconMap = {
   // Tools
   git: { name: "Git", icon: "devicon:git" },
   postgresql: { name: "Postgresql", icon: "devicon:postgresql" },
+  apollo: { name: "Apollo-graphql", icon: "devicon:apollographql-wordmark" },
+  //
+  neovim: { name: "Neovim", icon: "devicon:neovim" },
 } as const;
