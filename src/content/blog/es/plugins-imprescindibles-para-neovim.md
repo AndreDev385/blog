@@ -56,13 +56,13 @@ Por otro lado [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) te mostrar�
 
 ## Harpoon
 ![Harpoon](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/harpoon.png)
-El creador de este plugin [ThePrimeagen](https://www.youtube.com/c/theprimeagen) es básicamente una de las personas que mas ha influido en mi dcisión de usar `Neovim` como mi editor. Aún recuerdo la primera vez que vi uno de sus vídeos, escribía código demasiado rápido, navegaba de un archivo a otro y luego de vuelta en un pestañeo. Al ver lo productivo que era decidí que quería tener un setup que me permitiera hacer eso.   
+El creador de este plugin [ThePrimeagen](https://www.youtube.com/c/theprimeagen) es básicamente una de las personas que mas ha influido en mi decisión de usar `Neovim` como mi editor. Aún recuerdo la primera vez que vi uno de sus vídeos, escribía código demasiado rápido, navegaba de un archivo a otro y luego de vuelta en un pestañeo. Al ver lo productivo que era decidí que quería tener un setup que me permitiera hacer eso.   
 
 Normalmente cuando estamos implementando una solución pasamos un tiempo considerable editando un grupo selecto de archivos yendo de uno a otro y devuelta lo cual se puede volver tedioso.
 
 [Harpoon](https://github.com/ThePrimeagen/harpoon) es un plugin que te permite 'marcar' archivos y asignarles una posición y cambiar de uno a otro solo utilizando el comando que tienes asignado para dicha posición, permitiéndote cambiar de un archivo a otro de manera instantánea 
 
-## Obsidian
+# Obsidian
 ![Obsidian](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/obsidian.png)
 Tomar notas es una tarea que realizo constantemente, hay muchas cosas que recordar cuando programas, comandos que no utilizas seguido, un concepto en específico que estas tratando de aprender, incluso el nombre de ciertas herramientas. 
 
