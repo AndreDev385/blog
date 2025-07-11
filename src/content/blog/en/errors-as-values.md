@@ -14,6 +14,7 @@ One of the most important problems I find in the JavaScript/Typescript ecosystem
 I find that problematic. You will end with unhanded edge cases, those errors can remain hidden until runtime, and no one wants an unexpected error to pop up in production.
 
 ## The problem
+
 The next code is an example of a function that does not handle errors or edge cases and can be very common.
 
 ```typescript
@@ -34,7 +35,9 @@ Moreover, the result of fetching is always unknown; it could be a 400 or 500 sta
 So we have some edge cases to handle.
 
 ## Dealing with errors
+
 Have you ever found yourself wondering:
+
 - Where do you throw an error to be consumed by a `try/catch` block?
 - Should the `try/catch` block be in your function or in the calling code?
 - Where should the error be handled?
@@ -42,13 +45,15 @@ Have you ever found yourself wondering:
 Many questions arise when dealing with errors.
 
 I used to struggle with these problems in my code involving:
-- Validations 
-- Fetching data 
-- Querying databases 
+
+- Validations
+- Fetching data
+- Querying databases
 
 I always ended up with many `try/catch` blocks in my code, unsure how to manage the error in the calling code. When I decided to address every error I encountered, I often overlooked some or told myself, "Then I will handle that case," and of course, I didn't. Then these errors would pop up at runtime and I felt insecure about when my code was free of bugs or not.
 
 ## How other languages handle errors?
+
 For the past year, I've been very interested in [Rust](https://www.rust-lang.org/) and I've learned a little bit about it, I found that is a interesting language with a very different way (at least for me) to deal with issues like safety, performance and memory management.
 
 I discovered that [Rust](https://www.rust-lang.org/) has a fascinating approach to handling errors. There's an Enum called `Result` that contains a `Ok` or `Error` value.
@@ -72,13 +77,15 @@ let number = match number_str.parse::<i32>() {
 ```
 
 ## Converting errors to values
+
 Since learning about [Rust](https://www.rust-lang.org/) I decided to try to do the same in my Typescript codebases. I created a `Result` class that can be used to wrap a `Ok` or `Error` value, improving the code safety and robustness.
 
-In this article from [Khalil Stemmler](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/handling-errors-result-class/) he show us a way to implement this `Result` class in our typescript code. 
+In this article from [Khalil Stemmler](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/handling-errors-result-class/) he show us a way to implement this `Result` class in our typescript code.
 
 With the result class Errors are values now and they are returned from the function instead of being thrown to be caught by some try/catch block.
 
 As I continued learning Rust, I found that it has tools to deal with errors more effectively. The `?` operator can be used to early-return from a function with a compatible return type with the value where `?` operator is used. This operator greatly enhances code readability, allowing you to focus more on the logic of the code rather than on error handling.
+
 ```rust
 fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, ParseIntError> {
     let first_number = first_number_str.parse::<i32>()?;
@@ -102,7 +109,7 @@ func Hello(name string) (string, error) {
     // in a greeting message.
     message := fmt.Sprintf("Hi, %v. Welcome!", name)
     return message, nil
-} 
+}
 ```
 
 The caller code would look like this:
@@ -118,6 +125,7 @@ func main() {
 ```
 
 ## Relaying on the type system
+
 Since there's no way to replicate the `?` operator in Typescript, using the type system to assist with error handling is preferable to using a wrapper like `Result` or `Either` (from functional programming) for error management. This approach avoids the need to add this wrapper while maintaining the same verbosity as using `if` statements to check for errors.
 
 The typescript type system can help us to create a behavior that is similar to the `Result` wrapper by simply creating an union type `Success | Error` in our function signature.
@@ -132,13 +140,12 @@ async function getUser(id: number): Promise<User | Error> {
     const response = await fetch(`/users/${id}`);
 
     if (!response.ok) {
-      return new Error('Something went wrong');
+      return new Error("Something went wrong");
     }
 
     return await response.json();
-
   } catch (error) {
-    return new Error('Something went wrong');
+    return new Error("Something went wrong");
   }
 }
 ```
@@ -155,7 +162,7 @@ Our caller code can look something like this:
 const userOrError = await getUser(1);
 
 if (userOrError instanceof Error) {
-  // Handle the error case by returning the error one level up 
+  // Handle the error case by returning the error one level up
   return userOrError;
 }
 // below this part of the code userOrError will always be type User
@@ -168,6 +175,7 @@ Depending on what you want, you can deal with the error differently or you can r
 After the `if` statement typescript will ensure that `userOrError` variable is always a `User` object.
 
 ## Use case
+
 In the following example, I'm defining a function that maps a string in ISO format `2024-10-21` to an object with year, month and day properties called `DateValues`.
 
 ```typescript
@@ -182,7 +190,7 @@ export function mapISODateToDateValues(date: ISODate): DateValues {
 Even though the function is simple, it has a lot of edge cases and errors that can be considered.
 
 The type alias `ISODate` is a string that could be different from what we expect; if that's the case, the positions in the array could also be incorrect,
- leaving our object in an invalid state.
+leaving our object in an invalid state.
 
 After splitting, the values in the array are mapped to numbers, but these strings can be invalid to parse into numbers, which would yield `NaN`.
 
@@ -207,6 +215,7 @@ export function mapISODateToDateValues(date: ISODate): Error | DateValues {
   };
 }
 ```
+
 The validations implementation is outside the scope of this article, but they are simple functions that return whether the argument matches the validation criteria.
 
 In this new version of our function we check if the values are valid four our purpose, if any validation fails, we return an `Error` object, holding a message that correspond to the error.
@@ -220,8 +229,11 @@ const dateValuesResult = mapISODateToDateValues(iso);
 if (dateValuesResult instanceof Error) return dateValuesResult; // Return one level up the error
 // below this part of the code dateValuesResult will always be type `DateValues`
 ```
+
 ## Conclusion
+
 By relaying on the type system and making this changes we can be sure that:
+
 - Our errors are handled in every function that return a union type like `User | Error`
 - Our caller code must deal with the error case
 - Our code is safer, more robust, and we handle edge cases.

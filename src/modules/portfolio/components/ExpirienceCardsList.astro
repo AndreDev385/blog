@@ -13,6 +13,21 @@ const t = useTranslations(lang);
 
 const experiences: ExperienceCardProps[] = [
   {
+    title: t("experiences.time-tracker.title"),
+    company: t("experiences.time-tracker.company"),
+    location: t("experiences.time-tracker.location"),
+    startDate: t("experiences.time-tracker.startDate"),
+    endDate: t("experiences.time-tracker.endDate"),
+    description: t("experiences.time-tracker.description"),
+    skills: [
+      skillIconMap.remix,
+      skillIconMap.typescript,
+      skillIconMap.tailwindcss,
+      skillIconMap.nodejs,
+      skillIconMap.electron,
+    ],
+  },
+  {
     title: t("experiences.onthecourt.title"),
     company: t("experiences.onthecourt.company"),
     location: t("experiences.onthecourt.location"),

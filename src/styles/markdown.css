@@ -56,6 +56,6 @@
   @apply my-4 h-auto max-w-full rounded;
 }
 
-.prose :where(code):not(:where([class~=not-prose] *)) {
-  @apply bg-gray-200 px-1 py-1 rounded;
+.prose :where(code):not(:where([class~="not-prose"] *)) {
+  @apply rounded bg-gray-200 px-1 py-1;
 }

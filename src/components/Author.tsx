@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 type AuthorAvatarProps = {
   postedString: string;
-}
+};
 
 export function Author({ postedString }: AuthorAvatarProps) {
   return (
@@ -18,11 +18,7 @@ export function Author({ postedString }: AuthorAvatarProps) {
       </Avatar>
       <div>
         <p className="text-lg font-bold leading-none">André Izarra</p>
-        <time
-          className="text-muted-foreground"
-        >
-          {postedString}
-        </time>
+        <time className="text-muted-foreground">{postedString}</time>
       </div>
     </div>
   );

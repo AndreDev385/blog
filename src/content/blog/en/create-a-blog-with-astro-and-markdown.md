@@ -233,6 +233,7 @@ const { title } = Astro.props;
 ```
 
 ### Content
+
 With this folder astro helps us to create and present content in a way that is easy to read and understand.
 There are some ways to do this:
 
@@ -243,9 +244,11 @@ There are some ways to do this:
 In our case we will use markdown files so in the `src/content` folder we will store all the markdown files that we want to use in our blog as posts.
 
 #### Collections
+
 [Collections](https://docs.astro.build/en/guides/content-collections/) are a way to organize our content. We can create collections in our content folder and use them in our pages.
 
 #### Post Collection
+
 In the file `src/content/config.{ts,js}` we will define the schema for our post collection. Content collections are the best way create content is astro.
 Collections help us to organize our documents, validate our `frontmatter` and give us auto complete with Typescript.
 
@@ -289,6 +292,7 @@ This is my first post
 With this done now we have our first post content ready to be displayed in our initial route
 
 ## Post List
+
 In the file `src/pages/index.astro` we will create a page for list all the posts
 
 ```astro

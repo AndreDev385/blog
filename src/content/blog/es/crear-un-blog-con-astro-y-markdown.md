@@ -22,15 +22,17 @@ Así que descubramos cómo crear un blog con Astro.
 ## Crear un nuevo proyecto
 
 Ejecuta el siguiente comando en tu terminal para crear un nuevo proyecto.
+
 ```bash
 npm create astro@latest
 ```
+
 Este comando te guiará a través de varios pasos con una CLI muy amigable donde seleccionarás entre algunas opciones:
 
 1. Nombre del proyecto
 2. Plantilla inicial
 3. TypeScript o JavaScript
-    1. Si eliges TypeScript, podrás seleccionar la configuración
+   1. Si eliges TypeScript, podrás seleccionar la configuración
 4. Instalar dependencias
 5. Crear un repositorio git
 
@@ -58,24 +60,30 @@ Dentro de la carpeta `src` es donde trabajaremos.
 ## Añadir Tailwindcss
 
 En este caso usaré [Tailwindcss](https://docs.astro.build/en/guides/integrations-guide/tailwind/) para estilizar las páginas. Lo añadiré al proyecto con:
+
 ```bash
 npx astro add tailwind
 ```
+
 Este comando añadirá Tailwindcss y creará el archivo `tailwind.config.cjs`.
 También actualizará `astro.config.mjs` para incluir el plugin de Tailwindcss.
 
 ## Estructura del proyecto
+
 ### Páginas
 
 La carpeta [pages](https://docs.astro.build/en/basics/astro-pages/) contiene nuestras rutas. Cada subcarpeta y archivo aquí define una ruta. Los archivos `index.astro` son el punto de entrada de cada carpeta. Por ejemplo, `src/pages/index.astro` corresponde a la ruta `/`.
 En este archivo estará la página inicial del blog.
 
 ### Layouts
+
 Los [layouts](https://docs.astro.build/en/basics/layouts/) son componentes reutilizables que proveen estructura a las páginas, como headers, barras de navegación y footers.
 
 #### Layout por defecto
+
 En `src/layouts/DefaultLayout.astro` definiremos el layout base.
 En `src/components/Header.astro` crearemos el componente del header:
+
 ```astro
 ---
 const navItems = [{ href: "/", text: "Inicio" }];
@@ -176,7 +184,9 @@ const navItems = [{ href: "/", text: "Inicio" }];
   });
 </script>
 ```
+
 Ahora usamos este header en el layout por defecto (`src/layouts/DefaultLayout.astro`):
+
 ```astro
 ---
 import "@/styles/global.css";
@@ -211,7 +221,9 @@ const { title } = Astro.props;
   </body>
 </html>
 ```
+
 ### Contenido
+
 Con esta carpeta astro nos ayuda a crear y presentar contenido con gran facilidad para ser leído y usado
 Lo lograremos con:
 
@@ -222,10 +234,13 @@ Lo lograremos con:
 En nuestro caso usaremos archivos `Markdown` en la carpeta `src/content` donde cada archivo va a ser equivalente a un post de nuestro blog.
 
 #### Colecciones
+
 Las [colecciones](https://docs.astro.build/en/guides/content-collections/) organizan y validan nuestro contenido. Podemos crear colecciones en nuestra carpeta `conent` y luego usarlas en nuestras páginas.
 
 #### Post Collection
+
 En el archivo `src/content/config.{ts,js}` crearemos nuestro primer `schema` para nuestra colección de post.
+
 ```ts
 import { defineCollection, z } from "astro:content";
 
@@ -241,10 +256,13 @@ export const collections = {
   }),
 };
 ```
+
 Estamos definiendo nuestra colección llamada `block` con propiedades que queremos que estén en cada post.
 
 #### Agregando nuestro primer post
+
 En el archivo `src/content/blog/first.md` agregaremos nuestro primero post
+
 ```md
 ---
 title: Primera publicación
@@ -259,10 +277,13 @@ tags:
 
 Esta es mi primera publicación
 ```
+
 Con esto echo tenemos el contenido de nuestro primer post listo para ser mostrado en nuestra ruta inicial.
 
 ## List de post
+
 En el archivo `src/pages/index.astro` crearemos la pagina para listar nuestros posts.
+
 ```astro
 ---
 import Layout from "@/layouts/DefaultLayout.astro";
@@ -299,17 +320,20 @@ const posts = await getCollection("blog");
   </main>
 </Layout>
 ```
+
 Deberíamos ver una `card` en nuestra pagina mostrando los datos en el archivo `src/content/blog/first.md`.
 
 Pero esto no es suficiente, tenemos que agregar una pagina para este y cada uno de los post que agreguemos en el futuro.
 Crearemos una pagina que funcione como una plantilla para cada post, the esta manera reutilizamos el código.
 
 ## Routing Dinámico
+
 En un archivo de página de astro podemos especificar parámetros de ruta en el nombre del archivo para generar multiples páginas. Por ejemplo `src/pages/authors/[author].astro` generaría una pagina de biografía para cada uno de nuestros autores. `author` se convierte en un parámetro al cual podemos acceder dentro de la página y por ende a su información.
 
 Primero agreguemos lo que necesitamos para crear esta ruta dinámica
 
 #### Markdown styles
+
 Crearemos una plantilla para cada post con sus estilos y estructura propios
 
 `/src/styles/markdown.css` agreguemos algo de `ccs` para el markdown
@@ -378,7 +402,9 @@ Crearemos una plantilla para cada post con sus estilos y estructura propios
 ```
 
 #### Post Layout
+
 `/src/layouts/PostLayout.astro` sera el `layout` para nuestros posts.
+
 ```astro
 ---
 import "@/styles/markdown.css";
@@ -404,11 +430,15 @@ const { post } = Astro.props;
   </div>
 </Layout>
 ```
+
 ### Static (SSG)
+
 Con la function [`getStaticPaths`](https://docs.astro.build/en/guides/routing/#static-ssg-mode) es que generamos una pagina estática para cada post dentro de `/src/content/blog` en `build time`.
 
-#### Post 
+#### Post
+
 Ahora creamos el archivo `/src/pages/blog/[slug].astro`.
+
 ```astro
 ---
 import { getCollection } from "astro:content";
@@ -433,12 +463,14 @@ const { Content } = await post.render();
 ```
 
 Con esto hecho si visitamos la URL `/blog/first` veremos nuestro primer post.
-Si seguiste el post hasta aquí ahora tendrás un setup inicial para tu blog con: 
+Si seguiste el post hasta aquí ahora tendrás un setup inicial para tu blog con:
+
 - Una colección de post con un `schema`, podemos crear nuevos post tan solo agregando un archivo markdown con el contenido del post a la carpeta `src/content/blog`.
 - Una pagina que lista cada uno de nuestros posts.
 - Una pagina dinámica que muestra el contenido del post seleccionado
 
 Este es un setup bastante básico, pero puedes agregar mas funcionalidades como:
+
 - Imágenes para los post
 - Tabla de contenido en la página del post
 - Filtros para los post por `tag`

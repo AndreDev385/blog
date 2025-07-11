@@ -10,94 +10,89 @@ import type { Lang } from "@/i18n/ui";
 export const prerender = true;
 
 export async function getStaticPaths() {
-	const blogPosts = await getCollection("blog");
-	blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const blogPosts = await getCollection("blog");
+  blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-	const tags: string[] = [];
-	const langs: Lang[] = [];
+  const tags: string[] = [];
+  const langs: Lang[] = [];
 
-	for (const post of blogPosts) {
-		collectTags(tags, post.data.tags);
-		const lang = post.slug.split("/")[0];
-		if (!langs.includes(lang as Lang)) {
-			langs.push(lang as Lang);
-		}
-	}
+  for (const post of blogPosts) {
+    collectTags(tags, post.data.tags);
+    const lang = post.slug.split("/")[0];
+    if (!langs.includes(lang as Lang)) {
+      langs.push(lang as Lang);
+    }
+  }
 
-	return [
-		...langs.flatMap((lang) => {
-			return tags.map((tag) => {
-				const posts = blogPosts.filter(
-					(post) =>
-						post.data.tags.includes(tag) &&
-						post.slug.split("/")[0] == lang,
-				);
+  return [
+    ...langs.flatMap((lang) => {
+      return tags.map((tag) => {
+        const posts = blogPosts.filter(
+          (post) =>
+            post.data.tags.includes(tag) && post.slug.split("/")[0] === lang,
+        );
 
-				return {
-					params: { tag, lang },
-					props: {
-						posts,
-					},
-				};
-			});
-		}),
-		...langs.map((lang) => {
-			const posts = blogPosts.filter((p) => p.slug.split("/")[0] == lang);
-			return {
-				params: { tag: lang == "es" ? "todos" : "all", lang },
-				props: { posts },
-			};
-		}),
-	];
+        return {
+          params: { tag, lang },
+          props: {
+            posts,
+          },
+        };
+      });
+    }),
+    ...langs.map((lang) => {
+      const posts = blogPosts.filter((p) => p.slug.split("/")[0] === lang);
+      return {
+        params: { tag: lang === "es" ? "todos" : "all", lang },
+        props: { posts },
+      };
+    }),
+  ];
 }
 
 const { tag, lang } = Astro.params;
 const blogPosts = await getCollection("blog");
 
-const tags: string[] = [lang == "es" ? "todos" : "all"];
+const tags: string[] = [lang === "es" ? "todos" : "all"];
 for (const post of blogPosts) {
-	collectTags(tags, post.data.tags);
+  collectTags(tags, post.data.tags);
 }
 
 const { posts } = Astro.props;
 ---
 
 <Layout>
-	{/* Mobile */}
-	<div class="mt-4 flex-wrap gap-2 border bg-white p-2 md:flex lg:hidden">
-		{
-			tags.map((currTag) => (
-				<TagComponent
-					lang={lang}
-					tag={currTag}
-					selected={tag === currTag}
-				/>
-			))
-		}
-	</div>
-	{/* desktop */}
-	<div
-		class="mx-auto mt-4 flex max-w-6xl flex-col gap-8 px-6 md:px-4 lg:flex-row lg:px-2"
-	>
-		<div class="lg:w-4/5">
-			<ul class="align-center flex flex-col justify-center space-y-6">
-				{posts.map((post: any) => <PostCard post={post} />)}
-			</ul>
-		</div>
-		<aside class="hidden flex-shrink-0 lg:block lg:w-1/5">
-			<ul class="space-y-2">
-				{
-					tags.map((currTag) => (
-						<li>
-							<TagComponent
-								lang={lang}
-								tag={currTag}
-								selected={tag === currTag}
-							/>
-						</li>
-					))
-				}
-			</ul>
-		</aside>
-	</div>
+  {/* Mobile */}
+  <div class="mt-4 flex-wrap gap-2 border bg-white p-2 md:flex lg:hidden">
+    {
+      tags.map((currTag) => (
+        <TagComponent lang={lang} tag={currTag} selected={tag === currTag} />
+      ))
+    }
+  </div>
+  {/* desktop */}
+  <div
+    class="mx-auto mt-4 flex max-w-6xl flex-col gap-8 px-6 md:px-4 lg:flex-row lg:px-2"
+  >
+    <div class="lg:w-4/5">
+      <ul class="align-center flex flex-col justify-center space-y-6">
+        {posts.map((post: any) => <PostCard post={post} />)}
+      </ul>
+    </div>
+    <aside class="hidden flex-shrink-0 lg:block lg:w-1/5">
+      <ul class="space-y-2">
+        {
+          tags.map((currTag) => (
+            <li>
+              <TagComponent
+                lang={lang}
+                tag={currTag}
+                selected={tag === currTag}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+  </div>
 </Layout>
