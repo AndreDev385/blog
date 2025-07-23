@@ -141,22 +141,22 @@ type ExperienceCardProps = {
 };
 ---
 
-  <section
-    class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-6"
-  >
-<div class="min-h-screen p-6">
-  <div class="mx-auto max-w-4xl">
-    <div class="mb-12 text-center">
-      <h1 class="mb-4 text-4xl font-bold text-gray-900">
-        {t("experience.title")}
-      </h1>
-      <p class="text-lg text-gray-600">
-        {t("experience.subtitle")}
-      </p>
-    </div>
-    <div class="space-y-8">
-      {experiences.map((experience) => <ExperienceCard {...experience} />)}
+<section
+  class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-6"
+>
+  <div class="min-h-screen p-6">
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-12 text-center">
+        <h1 class="mb-4 text-4xl font-bold text-gray-900">
+          {t("experience.title")}
+        </h1>
+        <p class="text-lg text-gray-600">
+          {t("experience.subtitle")}
+        </p>
+      </div>
+      <div class="space-y-8">
+        {experiences.map((experience) => <ExperienceCard {...experience} />)}
+      </div>
     </div>
   </div>
-</div>
-  </section>
+</section>

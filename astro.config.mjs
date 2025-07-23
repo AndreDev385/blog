@@ -14,6 +14,7 @@ export default defineConfig({
   },
   image: {
     service: passthroughImageService(),
+    domains: ["https://andre385.sirv.com"],
   },
   integrations: [
     tailwind({
@@ -23,5 +24,7 @@ export default defineConfig({
     icon(),
   ],
   output: "server",
-  adapter: netlify(),
+  adapter: netlify({
+    imageCDN: false,
+  }),
 });
