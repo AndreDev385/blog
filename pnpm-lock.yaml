@@ -49,6 +49,9 @@ importers:
       "@types/sanitize-html":
         specifier: ^2.13.0
         version: 2.13.0
+      animate.css:
+        specifier: ^4.1.1
+        version: 4.1.1
       astro:
         specifier: ^4.2.0
         version: 4.15.9(@types/node@22.5.5)(rollup@4.22.2)(typescript@5.6.2)
@@ -1548,6 +1551,12 @@ packages:
     resolution:
       {
         integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==,
+      }
+
+  animate.css@4.1.1:
+    resolution:
+      {
+        integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==,
       }
 
   ansi-align@3.0.1:
@@ -6083,6 +6092,8 @@ snapshots:
       fast-uri: 3.0.1
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
+
+  animate.css@4.1.1: {}
 
   ansi-align@3.0.1:
     dependencies:

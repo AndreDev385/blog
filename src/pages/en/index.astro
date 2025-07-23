@@ -1,95 +1,13 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import SocialIcons from "@/modules/portfolio/components/SocialIcons.astro";
-import ExpirienceCardsList from "@/modules/portfolio/components/ExpirienceCardsList.astro";
 
-const socials = [
-  {
-    icon: "devicon:linkedin",
-    ariaLabel: "LinkedIn",
-    href: "https://www.linkedin.com/in/andr%C3%A9-izarra/",
-  },
-  {
-    icon: "devicon:github",
-    ariaLabel: "GitHub",
-    href: "https://github.com/AndreDev385",
-  },
-  {
-    icon: "logos:google-gmail",
-    ariaLabel: "Gmail",
-    href: "mailto:andre.izarra@gmail.com",
-  },
-  {
-    icon: "logos:whatsapp-icon",
-    ariaLabel: "Whatsapp",
-    href: "https://wa.me/584241756082",
-  },
-];
+import Hero from "@/modules/portfolio/components/Hero.astro";
+import AboutMe from "@/modules/portfolio/components/AboutMe.astro";
+import ExperienceSection from "@/modules/portfolio/components/ExpirienceSection.astro";
 ---
 
 <Layout>
-  <section
-    id="hero"
-    class="mx-auto grid min-h-screen max-w-6xl grid-cols-1 items-center gap-4 py-32 text-center lg:grid-cols-2"
-  >
-    <div>
-      <h2 class="mb-8 text-4xl font-bold text-gray-700">
-        Hi, I'm André Izarra
-      </h2>
-      <h1 class="mb-8 text-6xl font-bold">Full Stack Developer</h1>
-      <p class="mb-8 text-2xl text-gray-700">Software developer | Blogger</p>
-      <SocialIcons socials={socials} />
-      <!-- CV button -->
-    </div>
-    <img
-      class="hidden lg:block"
-      src="https://andre385.sirv.com/Portfolio%20%26%20Blog/coding_sketch.png"
-      width="500"
-      height="500"
-      alt="coding sketch"
-    />
-  </section>
-  <!-- About Me Section -->
-  <section class="bg-zinc-100 py-32">
-    <div
-      class="mx-auto grid max-w-6xl grid-cols-1 gap-4 px-6 md:grid-cols-2 md:px-4 lg:px-2"
-    >
-      <div class="flex flex-col items-center justify-center">
-        <h2 class="mb-4 text-center text-4xl font-bold">About Me</h2>
-        <p class="mb-4 text-lg text-gray-700">
-          I'm a passionate software developer with 3+ years of experience in
-          creating robust and scalable software. My journey in tech has been
-          driven by a curiosity to understand how things work and a desire to
-          create solutions that make a difference.
-        </p>
-        <p class="text-lg text-gray-700">
-          When I'm not coding, you can find me exploring new technologies,
-          looking for new plugins or configuration to add in my neovim setup or
-          writing about my discoveries on my blog.
-        </p>
-      </div>
-      <div class="flex items-center justify-center">
-        <img
-          class="w- rounded-full"
-          src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
-          width="320"
-          height="320"
-          alt="André Izarra Profile Picture"
-        />
-      </div>
-    </div>
-  </section>
-  <!-- Experience Section -->
-  <section
-    class="mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-0 py-32 md:px-4 lg:px-2"
-  >
-    <h2 class="mb-6 text-center text-4xl font-bold">My Experience</h2>
-    <ExpirienceCardsList />
-  </section>
+  <Hero />
+  <AboutMe />
+  <ExperienceSection />
 </Layout>
-
-<style>
-  #hero {
-    background-size: cover;
-  }
-</style>

@@ -1,8 +1,9 @@
 ---
-import BioonixIcon from "@/assets/bioonix_logo.png";
-import NediITIcon from "@/assets/nedi_icon.png";
-import GameMindIcon from "@/assets/gamemind_icon.png";
-import OnTheCourtIcon from "@/assets/on_the_court.png";
+import BioonixLogo from "@/assets/bioonix_logo.png";
+import NediITLogo from "@/assets/nedi_icon.png";
+import GameMindLogo from "@/assets/gamemind_icon.png";
+import OnTheCourtLogo from "@/assets/on_the_court.png";
+import BruschiRentalsLogo from "@/assets/bruschi_rentals.svg";
 import { skillIconMap, type Skill } from "@/lib/skillIconMap";
 
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
@@ -12,6 +13,20 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const experiences: ExperienceCardProps[] = [
+  {
+    title: t("experiences.bruschi-rentals-landing.title"),
+    company: t("experiences.bruschi-rentals-landing.company"),
+    location: t("experiences.bruschi-rentals-landing.location"),
+    startDate: t("experiences.bruschi-rentals-landing.startDate"),
+    endDate: t("experiences.bruschi-rentals-landing.endDate"),
+    description: t("experiences.bruschi-rentals-landing.description"),
+    logo: BruschiRentalsLogo,
+    skills: [
+      skillIconMap.typescript,
+      skillIconMap.tailwindcss,
+      skillIconMap.astro,
+    ],
+  },
   {
     title: t("experiences.time-tracker.title"),
     company: t("experiences.time-tracker.company"),
@@ -34,7 +49,7 @@ const experiences: ExperienceCardProps[] = [
     startDate: t("experiences.onthecourt.startDate"),
     endDate: t("experiences.onthecourt.endDate"),
     description: t("experiences.onthecourt.description"),
-    logo: OnTheCourtIcon,
+    logo: OnTheCourtLogo,
     skills: [
       skillIconMap.remix,
       skillIconMap.react,
@@ -51,7 +66,7 @@ const experiences: ExperienceCardProps[] = [
     startDate: t("experiences.gamemind.startDate"),
     endDate: t("experiences.gamemind.endDate"),
     description: t("experiences.gamemind.description"),
-    logo: GameMindIcon,
+    logo: GameMindLogo,
     skills: [
       skillIconMap.flutter,
       skillIconMap.typescript,
@@ -69,7 +84,7 @@ const experiences: ExperienceCardProps[] = [
     startDate: t("experiences.bioonix.startDate"),
     endDate: t("experiences.bioonix.endDate"),
     description: t("experiences.bioonix.description"),
-    logo: BioonixIcon,
+    logo: BioonixLogo,
     skills: [
       skillIconMap.angular,
       skillIconMap.nestjs,
@@ -103,7 +118,7 @@ const experiences: ExperienceCardProps[] = [
     startDate: t("experiences.nediit.startDate"),
     endDate: t("experiences.nediit.endDate"),
     description: t("experiences.nediit.description"),
-    logo: NediITIcon,
+    logo: NediITLogo,
     skills: [
       skillIconMap.react,
       skillIconMap.javascript,
@@ -126,6 +141,22 @@ type ExperienceCardProps = {
 };
 ---
 
-<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-  {experiences.map((experience) => <ExperienceCard {...experience} />)}
+  <section
+    class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-6"
+  >
+<div class="min-h-screen p-6">
+  <div class="mx-auto max-w-4xl">
+    <div class="mb-12 text-center">
+      <h1 class="mb-4 text-4xl font-bold text-gray-900">
+        {t("experience.title")}
+      </h1>
+      <p class="text-lg text-gray-600">
+        {t("experience.subtitle")}
+      </p>
+    </div>
+    <div class="space-y-8">
+      {experiences.map((experience) => <ExperienceCard {...experience} />)}
+    </div>
+  </div>
 </div>
+  </section>

@@ -3,8 +3,11 @@ import { Icon } from "astro-icon/components";
 
 import type { Skill } from "@/lib/skillIconMap";
 import SkillBadge from "@/components/SkillBadge.astro";
-import { Card } from "@/components/ui/card";
 import { Image } from "astro:assets";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {
   title,
@@ -18,44 +21,115 @@ const {
 } = Astro.props;
 ---
 
-<Card
-  className="card border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10"
+<div
+  class="group relative transform overflow-hidden rounded-xl border-0 bg-white shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
 >
-  <div class="mb-4 flex items-center">
-    <div class="flex items-center space-x-3">
-      {
-        logo ? (
-          <Image
-            src={logo}
-            width={logo.width}
-            height={logo.height}
-            alt={`${company} logo`}
-            class="h-12 w-12 rounded-full object-contain"
-          />
-        ) : (
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-gray-200">
-            <Icon name="mdi:briefcase" class="h-6 w-6 text-gray-500" />
+  {/* Gradient Background */}
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 opacity-0 transition-opacity duration-500 group-hover:opacity-10"
+  >
+  </div>
+
+  {/* Decorative Elements */}
+  <div
+    class="absolute right-0 top-0 h-32 w-32 -translate-y-16 translate-x-16 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 transition-transform duration-700 group-hover:scale-150"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 left-0 h-24 w-24 -translate-x-12 translate-y-12 rounded-full bg-gradient-to-tr from-indigo-400/20 to-blue-400/20 transition-transform duration-700 group-hover:scale-150"
+  >
+  </div>
+
+  <div class="relative p-8">
+    <div class="flex flex-col space-y-6">
+      {/* Header Section */}
+      <div class="space-y-3">
+        <div class="flex gap-4">
+          {
+            logo ? (
+              <Image
+                src={logo}
+                width={logo.width}
+                height={logo.height}
+                alt={`${company} logo`}
+                class="size-14 rounded-full object-contain"
+              />
+            ) : (
+              <div class="flex size-14 items-center justify-center rounded-full bg-gray-200">
+                <Icon name="mdi:briefcase" class="size-8 text-gray-500" />
+              </div>
+            )
+          }
+
+          <div>
+            <h2
+              class="text-2xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-700"
+            >
+              {company}
+            </h2>
+            <h3
+              class="text-xl font-semibold text-blue-600 transition-colors duration-300 group-hover:text-purple-600"
+            >
+              {title}
+            </h3>
           </div>
-        )
-      }
-    </div>
-    <div class="w-full text-center">
-      <div>
-        <h3 class="text-xl font-bold text-gray-800">{title} | {company}</h3>
+        </div>
+
+        {/* Date and Location */}
+        <div class="flex flex-wrap gap-4 text-gray-600">
+          <div class="flex items-center gap-2">
+            <Icon name="mdi:calendar-month" class="size-6 text-blue-500" />
+            <span class="font-medium">{startDate} - {endDate}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <Icon name="mdi:location-on" class="size-6 text-purple-500" />
+            <span class="font-medium">{location}</span>
+          </div>
+        </div>
       </div>
-      <p class="text-sm text-gray-500">{startDate} - {endDate} | {location}</p>
+
+      {/* Achievements Section */}
+      <div class="space-y-4">
+        <h4
+          class="border-b border-gray-200 pb-2 text-lg font-semibold text-gray-800"
+        >
+          {t("experience.card.achievements")}
+        </h4>
+        <ul class="space-y-3">
+          {
+            description.map((item: string) => (
+              <li class="group/item flex items-start gap-3">
+                <div class="mt-2 h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 transition-transform duration-300 group-hover/item:scale-150" />
+                <span class="leading-relaxed text-gray-700 transition-colors duration-300 group-hover/item:text-gray-900">
+                  {item}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {/* Tools Section */}
+      <div class="space-y-4">
+        <h4
+          class="border-b border-gray-200 pb-2 text-lg font-semibold text-gray-800"
+        >
+          {t("experience.card.tool")}
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          {
+            skills.map(function displaySkill(skill: Skill) {
+              return <SkillBadge skill={skill} />;
+            })
+          }
+        </div>
+      </div>
     </div>
   </div>
-  <div class="mb-4">
-    <ul class="list-inside list-disc space-y-1">
-      {description.map((item: string) => <li class="text-gray-700">{item}</li>)}
-    </ul>
+
+  {/* Bottom Accent Line */}
+  <div
+    class="absolute bottom-0 left-0 right-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 transition-transform duration-500 group-hover:scale-x-100"
+  >
   </div>
-  <div class="flex flex-wrap gap-2">
-    {
-      skills.map(function displaySkill(skill: Skill) {
-        return <SkillBadge skill={skill} />;
-      })
-    }
-  </div>
-</Card>
+</div>

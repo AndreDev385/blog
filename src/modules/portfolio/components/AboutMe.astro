@@ -1,0 +1,198 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+import { getLangFromUrl, useTranslations } from "@/i18n/utils"
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const description = t("about.description").toString().split("\n\n");
+const interestsTitles = t("about.interests.content")
+
+const interests = [
+  {
+    icon: "mdi:web",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    icon: "mdi:google-gamepad",
+    color: "from-purple-500 to-pink-500",
+  },
+  {
+    icon: "mdi:note-edit",
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    icon: "mdi:school",
+    color: "from-orange-500 to-red-500",
+  },
+    {  icon: "logos:opensource", color: "from-indigo-300 to-purple-300" },
+    {  icon: "mdi:book", color: "from-teal-500 to-blue-500" },
+    ].map((o, i) => ({...o, name: interestsTitles[i]}));
+
+/*const stats = [
+  { number: "3+", label: "Años de Experiencia", icon: "mdi:work" },
+  {
+    number: "25+",
+    label: "Proyectos Completados",
+    icon: "mdi:folder-open",
+  },
+  {
+    number: "10+",
+    label: "Tecnologías Dominadas",
+    icon: "mdi:code",
+  },
+  { number: "100%", label: "Dedicación", icon: "mdi:favorite" },
+  ];*/
+
+---
+
+<section
+  id="about"
+  class="relative overflow-hidden bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/50 py-20"
+>
+  {/* Background Decorative Elements */}
+  <div class="absolute inset-0 overflow-hidden">
+    <div
+      class="absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-gradient-to-r from-blue-400/10 to-purple-400/10 blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute bottom-1/4 left-1/4 h-96 w-96 rounded-full bg-gradient-to-r from-purple-400/10 to-indigo-400/10 blur-3xl"
+    >
+    </div>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
+    {/* Section Header */}
+    <div class="mb-16 text-center">
+      <h2
+        class="mb-4 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-4xl font-bold text-transparent md:text-5xl"
+      >
+      {t("about.title")}
+      </h2>
+      <p class="mx-auto max-w-2xl text-xl text-gray-600">
+      {t("about.subtitle")}
+      </p>
+    </div>
+
+    <div class="mb-20 grid items-center gap-12 lg:grid-cols-2">
+      {/* Profile Image */}
+      <div class="group relative">
+        <div
+          class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-500 opacity-30 blur-xl transition-opacity duration-500 group-hover:opacity-50"
+        >
+        </div>
+        <div
+          class="relative transform rounded-2xl bg-white p-8 shadow-xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl"
+        >
+          <div
+            class="mb-6 flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-blue-100 to-purple-100"
+          >
+        <Image
+              class="h-full w-full rounded-xl object-cover"
+          src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
+          width="320"
+          height="320"
+          alt="André Izarra Profile"
+        />
+          </div>
+          <div class="text-center">
+            <h3 class="mb-2 text-2xl font-bold text-gray-900">André Izarra</h3>
+            <p class="font-semibold text-blue-600">{t("hero.role1")} {t("hero.role2")}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* About Content */}
+      <div class="space-y-6">
+        <div class="group">
+          <div class="space-y-4 leading-relaxed text-gray-700">
+            {description.map(p => (
+            <p>{p}</p>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Facts */}
+        <div
+          class="rounded-xl border border-blue-100 bg-gradient-to-r from-blue-50 to-purple-50 p-6"
+        >
+          <h4 class="mb-3 flex items-center gap-2 font-semibold text-gray-900">
+            <Icon name="mdi:lightbulb" class="h-5 w-5 text-yellow-500" />
+            {t("about.fun-facts.title")}
+          </h4>
+          <ul class="space-y-2 text-gray-700">
+            <li class="flex items-center gap-2">
+              <Icon name="mdi:sugar-cube-off" class="text-brown-500 size-6" />
+              {t("about.fun-facts.content")[0]}
+            </li>
+            <li class="flex items-center gap-2">
+              <Icon name="mdi:code" class="size-6 text-green-500" />
+              {t("about.fun-facts.content")[1]}
+            </li>
+            <li class="flex items-center gap-2">
+              <Icon name="mdi:world" class="size-6 text-blue-500" />
+              {t("about.fun-facts.content")[2]}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {/* Stats Section */}
+    {/*<div class="mb-20">
+      <div class="grid grid-cols-2 gap-6 md:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="group relative transform rounded-xl bg-white/80 p-6 text-center shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div class="relative z-10">
+                <Icon
+                  name={stat.icon}
+                  class="mx-auto mb-3 h-8 w-8 text-blue-600 transition-transform duration-300 group-hover:scale-110"
+                />
+                <div class="mb-1 text-3xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-600">
+                  {stat.number}
+                </div>
+                <div class="text-sm font-medium text-gray-600">
+                  {stat.label}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>*/}
+
+    {/* Interests Section */}
+    <div>
+      <h3 class="mb-4 text-center text-3xl font-bold text-gray-900">
+        {t("about.interests.title")}
+      </h3>
+
+      <div class="grid grid-cols-2 gap-6 md:grid-cols-3">
+        {
+          interests.map((interest) => (
+            <div class="group relative transform overflow-hidden rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div
+                class={`absolute inset-0 bg-gradient-to-r ${interest.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+              />
+              <div class="relative z-10 text-center">
+                <div
+                  class={`inline-flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r ${interest.color} mb-4 transition-transform duration-300 group-hover:scale-110`}
+                >
+                  <Icon name={interest.icon} class="h-6 w-6 text-white" />
+                </div>
+                <h4 class="font-semibold text-gray-900 transition-colors duration-300 group-hover:text-gray-700">
+                  {interest.name}
+                </h4>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
