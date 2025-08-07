@@ -24,7 +24,7 @@ export const ui = {
     // About
     "about.title": "Know my history",
     "about.subtitle":
-      "I'm a curious person interested in learn how computers work and how to implement solutions that improve our lives",
+      "I'm a curious person, interested in learn how computers work and how to implement solutions that improve our lives",
     "about.description":
       "I'm a passionate software developer with 4+ years of experience in creating reliable and performant software. My journey in tech has been driven by a curiosity to understand how things work and a desire to create solutions that make a difference. I'm always willing to improve and be better.\n\nWhen I'm not coding, you can find me exploring new technologies, looking for new plugins or configuration to add in my neovim setup or writing about my discoveries on my blog.\n\nLastly I've been interested en learn game development as a hobbie",
     "about.fun-facts.title": "Fun facts",
@@ -147,7 +147,7 @@ export const ui = {
     // About
     "about.title": "Conoce mi historia",
     "about.subtitle":
-      "Soy una persona curiosa interesada en aprender cómo funcionan las computadoras y cómo implementar soluciones que mejoren nuestras vidas",
+      "Soy una persona curiosa, interesada en aprender cómo funcionan las computadoras y cómo implementar soluciones que mejoren nuestras vidas",
     "about.description":
       "Soy un desarrollador de software apasionado con 4+ años de experiencia en la creación de software confiable y adaptado a las necesidades del cliente. Mi viaje en la tecnología ha sido impulsado por la curiosidad por comprender cómo funcionan las cosas y el deseo de crear soluciones que marquen la diferencia. Siempre estoy dispuesto a aprender y ser mejor.\n\nCuando no estoy codeando, puedes encontrarme explorando nuevas tecnologías, buscando nuevos plugins o configuraciones para añadir a neovim o escribiendo sobre mis descubrimientos en mi blog.\n\nPor último, me ha interesado aprender a desarrollar juegos como pasatiempo",
     "about.fun-facts.title": "Datos curiosos",
