@@ -154,7 +154,7 @@ type ExperienceCardProps = {
 >
   <div class="min-h-screen">
     <div class="mx-auto max-w-4xl">
-      <div class="mb-12 text-center">
+      <div class="mb-12 text-center" data-reveal>
         <h1 class="mb-4 text-4xl font-bold text-gray-900">
           {t("experience.title")}
         </h1>
@@ -163,7 +163,11 @@ type ExperienceCardProps = {
         </p>
       </div>
       <div class="space-y-8">
-        {experiences.map((experience) => <ExperienceCard {...experience} />)}
+        {experiences.map((experience, index) => (
+          <div data-reveal style={`transition-delay: ${index * 100}ms`}>
+            <ExperienceCard {...experience} />
+          </div>
+        ))}
       </div>
     </div>
   </div>
