@@ -8,6 +8,7 @@ export const skillIconMap = {
 	markdown: { name: "Markdown", icon: "devicon:markdown" },
 	javascript: { name: "JavaScript", icon: "devicon:javascript" },
 	typescript: { name: "TypeScript", icon: "devicon:typescript" },
+	go: { name: "Go", icon: "devicon:go" },
 	rust: { name: "Rust", icon: "devicon:rust" },
 	// Fronted
 	css: { name: "CSS", icon: "devicon:css3" },

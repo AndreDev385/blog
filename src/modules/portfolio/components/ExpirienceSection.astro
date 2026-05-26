@@ -21,10 +21,15 @@ const experiences: ExperienceCardProps[] = [
     endDate: t("experiences.bruschi-rentals-landing.endDate"),
     description: t("experiences.bruschi-rentals-landing.description"),
     logo: BruschiRentalsLogo,
+    link: "https://bruschirentals.com/",
     skills: [
+      skillIconMap.go,
       skillIconMap.typescript,
-      skillIconMap.tailwindcss,
+      skillIconMap.react,
       skillIconMap.astro,
+      skillIconMap.tailwindcss,
+      skillIconMap.postgresql,
+      skillIconMap.git,
     ],
   },
   {
@@ -85,6 +90,7 @@ const experiences: ExperienceCardProps[] = [
     endDate: t("experiences.bioonix.endDate"),
     description: t("experiences.bioonix.description"),
     logo: BioonixLogo,
+    link: "https://bioonix.com/",
     skills: [
       skillIconMap.angular,
       skillIconMap.nestjs,
@@ -119,6 +125,7 @@ const experiences: ExperienceCardProps[] = [
     endDate: t("experiences.nediit.endDate"),
     description: t("experiences.nediit.description"),
     logo: NediITLogo,
+    link: "https://www.nedi.cl/",
     skills: [
       skillIconMap.react,
       skillIconMap.javascript,
@@ -137,6 +144,7 @@ type ExperienceCardProps = {
   endDate: string;
   description: readonly string[];
   skills: readonly Skill[];
+  link?: string;
   logo?: ImageMetadata;
 };
 ---
@@ -144,7 +152,7 @@ type ExperienceCardProps = {
 <section
   class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-6"
 >
-  <div class="min-h-screen p-6">
+  <div class="min-h-screen">
     <div class="mx-auto max-w-4xl">
       <div class="mb-12 text-center">
         <h1 class="mb-4 text-4xl font-bold text-gray-900">

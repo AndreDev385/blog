@@ -49,16 +49,17 @@ export const ui = {
     // Experience Cards
     "experience.card.achievements": "Key achievements",
     "experience.card.tool": "Technologies & Tools",
-    // Paulina's landing page
-    "experiences.bruschi-rentals-landing.title": "Frontend Developer",
+    // Bruschi Rentals
+    "experiences.bruschi-rentals-landing.title": "Full Stack Developer",
     "experiences.bruschi-rentals-landing.company":
-      "Bruschi Rentals Landing Page",
+      "Bruschi Rentals",
     "experiences.bruschi-rentals-landing.location": "Miami, USA | Remote",
-    "experiences.bruschi-rentals-landing.startDate": "July 2025",
-    "experiences.bruschi-rentals-landing.endDate": "July 2025",
+    "experiences.bruschi-rentals-landing.startDate": "May 2025",
+    "experiences.bruschi-rentals-landing.endDate": "Present",
     "experiences.bruschi-rentals-landing.description": [
-      "Design the landing page",
-      "Implementation of the design with Astro.js",
+      "Built a Go REST API with Twilio messaging, WebSocket updates, and client lifecycle management",
+      "Developed an admin dashboard with React Router v7 for client management, KPIs, and real-time notifications",
+      "Created a client landing page with multi-step registration, Auth0 auth, and Turnstile security",
     ],
     // time tracker
     "experiences.time-tracker.title": "Full Stack Developer",
@@ -173,16 +174,17 @@ export const ui = {
     "experience.card.achievements": "Logros",
     "experience.card.tool": "Tecnologías & Herramientas",
     // Experience Cards
-    // Paulina's landing page
-    "experiences.bruschi-rentals-landing.title": "Desarrollador Frontend",
+    // Bruschi Rentals
+    "experiences.bruschi-rentals-landing.title": "Desarrollador Full Stack",
     "experiences.bruschi-rentals-landing.company":
-      "Bruschi Rentals Landing Page",
+      "Bruschi Rentals",
     "experiences.bruschi-rentals-landing.location": "Miami, USA | Remoto",
-    "experiences.bruschi-rentals-landing.startDate": "Julio 2025",
-    "experiences.bruschi-rentals-landing.endDate": "Julio 2025",
+    "experiences.bruschi-rentals-landing.startDate": "Mayo 2025",
+    "experiences.bruschi-rentals-landing.endDate": "Presente",
     "experiences.bruschi-rentals-landing.description": [
-      "Diseño de la página",
-      "Implementación del modelo diseñado en Astro",
+      "Construí una API REST en Go con mensajería Twilio, WebSockets y gestión de ciclo de vida de clientes",
+      "Desarrollé un panel administrativo en React Router v7 con gestión de clientes, KPIs y notificaciones en tiempo real",
+      "Creé una landing page con registro multi-paso, autenticación Auth0 y seguridad Turnstile",
     ],
     // time tracker
     "experiences.time-tracker.title": "Desarrollador Full Stack",
