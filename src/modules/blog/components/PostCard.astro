@@ -49,7 +49,7 @@ const { post } = Astro.props;
   >
     <img
       src={post.data.image}
-      alt="post image"
+      alt={`Featured image for "${post.data.title}"`}
       class="object-cover transition-all duration-300 group-hover:scale-125"
       style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
     />

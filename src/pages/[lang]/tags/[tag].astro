@@ -61,7 +61,7 @@ for (const post of blogPosts) {
 const { posts } = Astro.props;
 ---
 
-<Layout>
+<Layout title={tag === "all" || tag === "todos" ? "All posts" : `Tag: ${tag}`} description={`Browse blog posts tagged with "${tag}" — André Izarra's blog about software development, TypeScript, DDD, and more.`}>
   {/* Mobile */}
   <div class="mt-4 flex-wrap gap-2 border bg-white p-2 md:flex lg:hidden">
     {

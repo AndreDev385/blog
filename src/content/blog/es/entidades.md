@@ -8,7 +8,7 @@ tags:
   - ddd
 ---
 
-![Entities](https://andre385.sirv.com/Portfolio%20%26%20Blog/entities.png?w=1280)
+![Entidades en Domain-Driven Design - ilustración conceptual](https://andre385.sirv.com/Portfolio%20%26%20Blog/entities.png?w=1280)
 
 # Entidades
 En mi último post hablé sobre los [Value Objects]() y como nos ayudan a modelar nuestro dominio, evitar el code smell primitive obsession y validar que nuestros data structures siempre tengan un valor válido. En esta ocasión hablaremos sobre las `Entidades`, como se diferencian de los `Value Objects` y que aportan a nuestro código.

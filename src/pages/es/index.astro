@@ -3,13 +3,17 @@ import Layout from "@/layouts/Layout.astro";
 import ScrollReveal from "@/components/ScrollReveal.astro";
 
 import Hero from "@/modules/portfolio/components/Hero.astro";
-import AboutMe from "@/modules/portfolio/components/AboutMe.astro";
+// import AboutMe from "@/modules/portfolio/components/AboutMe.astro";
+import ProjectsSection from "@/modules/projects/components/ProjectsSection.astro";
 import ExperienceSection from "@/modules/portfolio/components/ExpirienceSection.astro";
 ---
 
-<Layout>
+<Layout
+  description="Desarrollador de software full-stack especializado en construir aplicaciones web confiables, APIs REST y soluciones en la nube. Más de 4 años de experiencia entregando software de alto rendimiento."
+>
   <Hero />
   <ScrollReveal />
-  <AboutMe />
+  {/* <AboutMe /> */}
+  <ProjectsSection />
   <ExperienceSection />
 </Layout>

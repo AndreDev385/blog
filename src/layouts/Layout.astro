@@ -3,12 +3,23 @@ import "@/styles/global.css";
 import Header from "@/components/layout/header.astro";
 interface Props {
 	title?: string;
+	description?: string;
 }
 import { getLangFromUrl } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 
-const { title } = Astro.props;
+const SITE_URL = "https://andre-izarra.netlify.app";
+const SITE_NAME = "André Izarra";
+const DEFAULT_DESCRIPTION = {
+  en: "Full-stack software developer specializing in reliable, performant web applications, APIs, and cloud solutions. Hire André Izarra for your next project.",
+  es: "Desarrollador de software full-stack especializado en aplicaciones web confiables, APIs y soluciones en la nube. Contrata a André Izarra para tu próximo proyecto.",
+} as const;
+
+const { title, description } = Astro.props;
+
+const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+const pageDescription = description || DEFAULT_DESCRIPTION[lang as keyof typeof DEFAULT_DESCRIPTION] || DEFAULT_DESCRIPTION.en;
 ---
 
 <!doctype html>
@@ -16,17 +27,54 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta property="og:title" content={title ? `${title} | André Izarra` : "André Izarra"} />
-    <meta name="description" content="Andre Izarra personal profolio & Blog" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://andre-izarra.netlify.app" />
+    <meta property="og:url" content={SITE_URL + Astro.url.pathname} />
     <meta
       property="og:image"
       content="https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp"
     />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content="https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title ? `${title} | André Izarra` : "André Izarra"}</title>
+    <link rel="canonical" href={SITE_URL + Astro.url.pathname} />
+
+    <!-- Structured Data: Person & WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "André Izarra",
+      "url": SITE_URL,
+      "jobTitle": lang === "es" ? "Desarrollador de Software" : "Software Developer",
+      "sameAs": [
+        "https://github.com/AndreDev385",
+        "https://www.linkedin.com/in/andr%C3%A9-izarra/"
+      ],
+      "knowsAbout": ["Software Development", "Web Development", "TypeScript", "Domain-Driven Design", "API Design"]
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": SITE_URL,
+      "name": SITE_NAME,
+      "description": pageDescription,
+      "inLanguage": lang,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": `${SITE_URL}/{lang}/search?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    })} />
   </head>
   <body class="flex h-full flex-col">
     <Header />

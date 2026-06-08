@@ -3,13 +3,17 @@ import Layout from "@/layouts/Layout.astro";
 import ScrollReveal from "@/components/ScrollReveal.astro";
 
 import Hero from "@/modules/portfolio/components/Hero.astro";
-import AboutMe from "@/modules/portfolio/components/AboutMe.astro";
+// import AboutMe from "@/modules/portfolio/components/AboutMe.astro";
+import ProjectsSection from "@/modules/projects/components/ProjectsSection.astro";
 import ExperienceSection from "@/modules/portfolio/components/ExpirienceSection.astro";
 ---
 
-<Layout>
+<Layout
+  description="Full-stack software developer specializing in building reliable web applications, REST APIs, and cloud solutions. 4+ years of experience delivering performant software for businesses."
+>
   <Hero />
   <ScrollReveal />
-  <AboutMe />
+  {/* <AboutMe /> */}
+  <ProjectsSection />
   <ExperienceSection />
 </Layout>

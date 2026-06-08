@@ -7,7 +7,7 @@ tags:
   - typescript
 ---
 
-![Typescript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
+![Logo de TypeScript - imagen destacada para errores como valores en TypeScript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
 Uno de los problemas más importantes con el que me encuentro en el ecosistema de JavaScript/TypeScript es el flujo oculto de los errores. Cuanto vas a invocar una función no hay forma de saber si esta function puede fallar y enviar un error mirando la firma de la función. Ir hasta la definición de la función no es exactamente la mejor idea. Si tu base de código es lo suficientemente grande, puedes tener muchas funciones que puedan fallar.
 
 Encuentro esa situación bastante problemática. Terminaremos con muchos casos no manejados apropiadamente y esos errores pueden permanecer ocultos hasta tiempo de ejecución, por supuesto, nadie quiere que errores inesperados aparezcan en producción.

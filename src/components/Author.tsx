@@ -12,7 +12,7 @@ export function Author({ postedString }: AuthorAvatarProps) {
           src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
           width="320"
           height="320"
-          alt="André Izarra Profile"
+          alt="André Izarra, software developer and blogger"
         />
         <AvatarFallback>AI</AvatarFallback>
       </Avatar>

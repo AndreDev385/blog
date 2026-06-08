@@ -8,7 +8,7 @@ tags:
   - markdown
 ---
 
-![Astro](https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp)
+![Astro framework logo - featured image for creating a blog with Astro and Markdown](https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp)
 
 I created this blog to share content about my personal experiences in programming.
 For the first post I was wondering what to write about, so I thought if I'm going to share my experiences why not to start with how I built this blog?.

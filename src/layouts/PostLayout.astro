@@ -16,7 +16,22 @@ const t = useTranslations(lang);
 const { post, headings } = Astro.props;
 ---
 
-<Layout>
+<Layout title={post.data.title} description={post.data.description}>
+  <!-- Structured Data: BlogPosting -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.date.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": "André Izarra"
+    },
+    "image": post.data.image,
+    "keywords": post.data.tags?.join(", ") || ""
+  })} />
+
   <div
     class="mx-auto mt-4 grid max-w-7xl grid-cols-1 gap-8 px-6 md:px-4 lg:grid-cols-4 lg:px-2"
   >

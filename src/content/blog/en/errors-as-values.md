@@ -7,7 +7,7 @@ tags:
   - typescript
 ---
 
-![Typescript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
+![TypeScript logo - featured image for errors as values in TypeScript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
 
 One of the most important problems I find in the JavaScript/Typescript ecosystem is the hidden flow of errors. When you're about to consume a function, there's no way to know if that function throws an error by looking just at the function signature. Looking at the function definition isn't a good solution at all. If your code base is big enough, you can have a lot of functions that can throw errors.
 

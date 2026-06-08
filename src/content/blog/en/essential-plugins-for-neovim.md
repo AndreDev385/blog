@@ -7,7 +7,7 @@ tags:
   - neovim
 ---
 
-![Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/neovim.webp)
+![Neovim text editor - featured image for essential Neovim plugins](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/neovim.webp)
 
 # My Experience
 
@@ -15,7 +15,7 @@ I have been using **Neovim** as my main editor for over 3 years, and although I 
 
 ## Telescope
 
-![Telescope](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/telescope.png)
+![Telescope fuzzy finder plugin for Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/telescope.png)
 [Telescope](https://github.com/nvim-telescope/telescope.nvim) is an extensible and easy-to-customize `fuzzy finder` that can drastically boost your productivity.
 
 Searching for a specific file in the file tree is not exactly productive and becomes a tedious task as our codebase grows.
@@ -35,7 +35,7 @@ A simple `shortcut` will open the finder, bringing you closer to what you're loo
 
 ## Yazi
 
-![Yazi](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/Yazi.png)
+![Yazi terminal file manager plugin for Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/Yazi.png)
 Sometimes, there's no choice but to navigate through our file tree. When these moments come, [Yazi](https://yazi-rs.github.io/) is my go-to tool.
 
 [Yazi](https://yazi-rs.github.io/) is a terminal file manager written in `Rust`. To use it in `Neovim`, you need to install its [plugin](https://github.com/mikavilpas/yazi.nvim).
@@ -48,20 +48,20 @@ You can integrate it with other plugins, like `Telescope`, which we discussed ea
 
 ## Fugitive & Gitsigns
 
-![Fugitive](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/fugitive.png)
+![Fugitive Git plugin for Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/fugitive.png)
 These two plugins are absolutely essential in my setup. [Fugitive](https://github.com/tpope/vim-fugitive) is basically Git inside Neovim, giving you access to all the commands you would use in Git, which you can execute through customizable keyboard shortcuts.
 
 You can view your project's status by opening a window that interactively shows the changes made since the last commit, allowing you to execute any Git command you want.
 
 Resolving conflicts can be a difficult task. With Fugitive, you can resolve them interactively by viewing three windows: the current commit, the conflicts, and the commit to be integrated. You can then choose which version to keep with a simple `shortcut`.
 
-![Gitsigns](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/gitsigns.png)
+![Gitsigns plugin showing Git signs in Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/gitsigns.png)
 
 On the other hand, [Gitsigns](https://github.com/lewis6991/gitsigns.nvim) visually marks in your file which lines of code have been added, deleted, or updated using standard Git signs. You can navigate between hunks, preview comparisons between the current state and the previous one, stage specific changes, or reset them to their last committed state.
 
 ## Harpoon
 
-![Harpoon](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/harpoon.png)
+![Harpoon file navigation plugin for Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/harpoon.png)
 The creator of this plugin, [ThePrimeagen](https://www.youtube.com/c/theprimeagen), is one of the people who most influenced my decision to use `Neovim` as my editor. I still remember the first time I saw one of his videos—he wrote code incredibly fast, jumped between files seamlessly, and navigated back and forth in the blink of an eye. Seeing how productive he was, I knew I wanted a setup that allowed me to do the same.
 
 When implementing a solution, we often spend a lot of time editing a select group of files, switching between them repeatedly, which can become tedious.
@@ -70,7 +70,7 @@ When implementing a solution, we often spend a lot of time editing a select grou
 
 ## Obsidian
 
-![Obsidian](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/obsidian.png)
+![Obsidian notes plugin for Neovim](https://andre385.sirv.com/Portfolio%20%26%20Blog/Plugins%20impresindibles%20neovim/obsidian.png)
 Taking notes is something I do constantly. There’s a lot to remember when programming—commands you don't use often, specific concepts you're trying to learn, or even the names of certain tools.
 
 For me, accessing these notes easily was always a challenge. Many times, I found myself searching on Google repeatedly for information because I couldn't recall it properly or didn’t have my notes on hand. Well, at least that was the case until I discovered [Obsidian](https://obsidian.md/), an app for taking personal notes.

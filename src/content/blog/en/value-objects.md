@@ -8,7 +8,7 @@ tags:
   - ddd
 ---
 
-![Value Object](https://andre385.sirv.com/Portfolio%20%26%20Blog/value-objects.png?w=1280)
+![Value Objects in Domain-Driven Design - conceptual illustration](https://andre385.sirv.com/Portfolio%20%26%20Blog/value-objects.png?w=1280)
 
 # Value Objects
 
