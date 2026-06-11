@@ -87,6 +87,48 @@
   }
 }
 
+/* ─── Mode section reordering ─── */
+.mode-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.mode-section {
+  display: block;
+}
+
+/* Freelance mode: hide employee-only sections */
+html[data-active-mode="freelance"] .mode-section[data-mode="employee"] {
+  display: none;
+}
+
+/* Employee mode: hide freelance-only sections */
+html[data-active-mode="employee"] .mode-section[data-mode="freelance"] {
+  display: none;
+}
+
+/* Employee mode reorder: Projects → Experience → Testimonials */
+html[data-active-mode="employee"] .mode-section[data-section="projects"] {
+  order: 1;
+}
+html[data-active-mode="employee"] .mode-section[data-section="experience"] {
+  order: 2;
+}
+html[data-active-mode="employee"] .mode-section[data-section="testimonials"] {
+  order: 3;
+}
+
+/* Show only the CTA matching the active mode */
+html[data-active-mode="freelance"] .cta-employee,
+html[data-active-mode="employee"] .cta-freelance {
+  display: none;
+}
+
+/* Smooth section transitions when mode changes */
+.mode-section {
+  transition: opacity 0.3s ease;
+}
+
 /* Scroll reveal animations */
 [data-reveal] {
   opacity: 0;

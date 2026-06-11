@@ -1,0 +1,166 @@
+---
+import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col items-center gap-3" data-mode-toggle>
+  <!-- Label -->
+  <p
+    class="text-[11px] font-medium tracking-[0.12em] uppercase text-gray-400/60"
+  >
+    {t("mode.label")}
+  </p>
+
+  <!-- Two option cards -->
+  <div class="flex gap-3">
+    <button
+      class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold cursor-pointer border-none transition-all duration-200 select-none"
+      data-mode="freelance"
+      aria-checked="true"
+    >
+      <Icon name="mdi:briefcase-outline" />
+      <span>{t("mode.freelance")}</span>
+    </button>
+
+    <button
+      class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold cursor-pointer border-none transition-all duration-200 select-none"
+      data-mode="employee"
+      aria-checked="false"
+    >
+      <Icon name="mdi:account-tie-outline" />
+      <span>{t("mode.employee")}</span>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var container = document.querySelector("[data-mode-toggle]");
+    if (!container) return;
+    var cards = container.querySelectorAll("[data-mode]");
+    var html = document.documentElement;
+    var KEY = "portfolio-mode";
+
+    var COLORS = {
+      freelance: {
+        bgActive: "linear-gradient(135deg, #3b82f6, #a855f7)",
+        textActive: "#fff",
+        shadowActive: "0 4px 14px -4px rgba(59,130,246,0.4)",
+      },
+      employee: {
+        bgActive: "linear-gradient(135deg, #10b981, #14b8a6)",
+        textActive: "#fff",
+        shadowActive: "0 4px 14px -4px rgba(16,185,129,0.4)",
+      },
+      inactiveBg: "rgba(255,255,255,0.7)",
+      inactiveBgHover: "rgba(255,255,255,0.92)",
+      inactiveText: "#6b7280",
+      inactiveShadow:
+        "0 1px 3px -1px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05)",
+      inactiveShadowHover:
+        "0 4px 6px -2px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05)",
+      blur: "blur(8px)",
+    };
+
+    function setCardStyle(card, bg, text, shadow) {
+      card.style.background = bg;
+      card.style.color = text;
+      card.style.boxShadow = shadow;
+    }
+
+    function setCardHover(card) {
+      var m = card.getAttribute("data-mode");
+      var cur = card.getAttribute("aria-checked") === "true";
+      if (!cur) {
+        card.style.background = COLORS.inactiveBgHover;
+        card.style.boxShadow = COLORS.inactiveShadowHover;
+      }
+    }
+
+    function setCardLeave(card) {
+      var m = card.getAttribute("data-mode");
+      var cur = card.getAttribute("aria-checked") === "true";
+      if (cur) {
+        setCardStyle(
+          card,
+          COLORS[m].bgActive,
+          COLORS[m].textActive,
+          COLORS[m].shadowActive,
+        );
+      } else {
+        setCardStyle(
+          card,
+          COLORS.inactiveBg,
+          COLORS.inactiveText,
+          COLORS.inactiveShadow,
+        );
+      }
+    }
+
+    function activate(mode) {
+      cards.forEach(function (c) {
+        var m = c.getAttribute("data-mode");
+        var on = m === mode;
+        c.setAttribute("aria-checked", on ? "true" : "false");
+        if (on) {
+          setCardStyle(
+            c,
+            COLORS[m].bgActive,
+            COLORS[m].textActive,
+            COLORS[m].shadowActive,
+          );
+        } else {
+          setCardStyle(
+            c,
+            COLORS.inactiveBg,
+            COLORS.inactiveText,
+            COLORS.inactiveShadow,
+          );
+        }
+      });
+
+      if (mode) {
+        html.setAttribute("data-active-mode", mode);
+        try {
+          localStorage.setItem(KEY, mode);
+        } catch (e) {}
+      } else {
+        html.removeAttribute("data-active-mode");
+        try {
+          localStorage.removeItem(KEY);
+        } catch (e) {}
+      }
+    }
+
+    // Init
+    var saved;
+    try {
+      saved = localStorage.getItem(KEY);
+    } catch (e) {}
+    activate(
+      saved === "freelance" || saved === "employee" ? saved : "freelance",
+    );
+
+    // Hover
+    cards.forEach(function (c) {
+      c.addEventListener("mouseenter", function () {
+        setCardHover(c);
+      });
+      c.addEventListener("mouseleave", function () {
+        setCardLeave(c);
+      });
+    });
+
+    // Clicks
+    cards.forEach(function (c) {
+      c.addEventListener("click", function () {
+        var mode = c.getAttribute("data-mode");
+        var cur = html.getAttribute("data-active-mode");
+        activate(cur === mode ? null : mode);
+      });
+    });
+  })();
+</script>

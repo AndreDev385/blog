@@ -4,7 +4,10 @@ import ScrollReveal from "@/components/ScrollReveal.astro";
 
 import Hero from "@/modules/portfolio/components/Hero.astro";
 // import AboutMe from "@/modules/portfolio/components/AboutMe.astro";
-import ProjectsSection from "@/modules/projects/components/ProjectsSection.astro";
+import ProjectsSection from "@/modules/portfolio/components/ProjectsSection.astro";
+import TestimonialsSection from "@/modules/portfolio/components/TestimonialsSection.astro";
+import ServicesSection from "@/modules/portfolio/components/ServicesSection.astro";
+import FaqSection from "@/modules/portfolio/components/FaqSection.astro";
 import ExperienceSection from "@/modules/portfolio/components/ExpirienceSection.astro";
 ---
 
@@ -14,6 +17,26 @@ import ExperienceSection from "@/modules/portfolio/components/ExpirienceSection.
   <Hero />
   <ScrollReveal />
   {/* <AboutMe /> */}
-  <ProjectsSection />
-  <ExperienceSection />
+
+  <div class="mode-container">
+    <div data-mode="freelance" class="mode-section" data-section="services">
+      <ServicesSection />
+    </div>
+
+    <div data-mode="both" class="mode-section" data-section="projects">
+      <ProjectsSection />
+    </div>
+
+    <div data-mode="both" class="mode-section" data-section="testimonials">
+      <TestimonialsSection />
+    </div>
+
+    <div data-mode="freelance" class="mode-section" data-section="faq">
+      <FaqSection />
+    </div>
+
+    <div data-mode="employee" class="mode-section" data-section="experience">
+      <ExperienceSection />
+    </div>
+  </div>
 </Layout>

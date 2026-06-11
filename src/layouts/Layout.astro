@@ -27,6 +27,10 @@ const pageDescription = description || DEFAULT_DESCRIPTION[lang as keyof typeof 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <!-- Set portfolio mode from localStorage before paint to prevent flash -->
+    <script is:inline>
+      (function(){var m=localStorage.getItem("portfolio-mode");if(m==="freelance"||m==="employee"){document.documentElement.setAttribute("data-active-mode",m)}else{document.documentElement.setAttribute("data-active-mode","freelance")}})();
+    </script>
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <meta property="og:title" content={pageTitle} />
