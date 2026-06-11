@@ -1,0 +1,124 @@
+---
+title: "Bruschi Rentals"
+description: "A Miami rental management platform that centralizes the entire client lifecycle — from lead capture and WhatsApp/SMS communication to application tracking and lease signing — replacing scattered calls, chats, and Google Drive files with a unified, real-time system."
+logo: "../../../assets/bruschi_rentals.svg"
+link: "https://bruschirentals.com/"
+order: 1
+images:
+  - "../../../assets/br_dashboard3.png"
+  - "../../../assets/br_dashboard1.png"
+  - "../../../assets/br_dashboard2.png"
+problem: "Bruschi Rentals, a Miami real estate company specializing in rentals, operated entirely manually: phone calls, WhatsApp spread across multiple phones, and files in Google Drive. As demand grew, client information became scattered, team coordination turned chaotic, and serving each client could take 20 minutes to an hour of back-and-forth to find the right property."
+role: "Full-stack developer and system architect. I designed and built the entire platform from scratch — the client-facing website, the admin dashboard, and the backend API — working closely with the business owner to understand every operational pain point and translate it into automated workflows."
+techStack:
+  - "Astro"
+  - "React"
+  - "TypeScript"
+  - "Go"
+  - "Echo Framework"
+  - "PostgreSQL"
+  - "Auth0"
+  - "Twilio"
+  - "Cloudinary"
+  - "Docker"
+archAreas:
+  - id: "landing-portal"
+    title: "Landing + Client Portal"
+    description: "Public website built with Astro SSR and React islands where prospects discover the service, fill out a smart preference form, and clients access their personalized portal with curated property options."
+    features:
+      - "Multi-step lead capture form (neighborhood → property type → budget → move-in date → contact info)"
+      - "Dynamic price suggestions based on neighborhood and property type"
+      - "Authenticated client portal with media gallery, favorites, and feedback"
+      - "Tour requests placed directly from the platform"
+    tech:
+      - "Astro 5"
+      - "React 19"
+      - "Tailwind CSS"
+      - "Auth0"
+      - "Cloudflare Turnstile"
+
+  - id: "dashboard"
+    title: "Admin Dashboard"
+    description: "React 19 SPA where the Bruschi Rentals team manages the entire client pipeline, properties, and operations in real time with integrated messaging."
+    features:
+      - "Real-time KPI dashboard (leads, conversions, revenue, commissions)"
+      - "Client pipeline with 9 transitionable stages (New → OptionsSent → Qualified → TourScheduled → TourCompleted → ApplicationProcess → LeaseSigned)"
+      - "Unified inbox with WhatsApp/SMS messaging via Twilio and real-time WebSockets"
+      - "PDF invoice generation with payment and commission tracking"
+    tech:
+      - "React 19"
+      - "React Router 7"
+      - "TypeScript"
+      - "Vite"
+      - "Auth0 SDK"
+
+  - id: "backend"
+    title: "API & Business Logic"
+    description: "Robust REST API in Go with Echo Framework managing the entire client lifecycle, messaging, notifications, and external integrations for the rental platform."
+    features:
+      - "RESTful API with Echo v4 and automatic Swagger documentation"
+      - "Complete client lifecycle management with state machine (9 stages)"
+      - "Twilio Conversations API integration for WhatsApp + SMS messaging"
+      - "WebSocket hub for real-time updates"
+    tech:
+      - "Go 1.26"
+      - "Echo v4"
+      - "PostgreSQL"
+      - "Auth0 Management API"
+      - "Twilio Conversations API"
+
+benefits:
+  - title: "Digitalized Lifecycle"
+    description: "Every lead flows through a structured 9-stage pipeline with controlled transitions, change logging, and full audit trail. Nothing gets lost."
+    icon: "mdi:timeline"
+
+  - title: "Personalized Client Portal"
+    description: "Each client gets their own portal with hand-picked property options. They can save favorites, give feedback, and request tours without phone calls or emails."
+    icon: "mdi:view-dashboard"
+
+  - title: "Unified Communication"
+    description: "All client communication (WhatsApp + SMS) centralized in the dashboard with real-time WebSockets and message templates."
+    icon: "mdi:chat"
+
+  - title: "Built-in Business Intelligence"
+    description: "Real-time KPIs: conversion rates, commission revenue, most popular properties, preferred neighborhoods. Data-driven decisions, not gut feelings."
+    icon: "mdi:chart-bar"
+
+beforeAfter:
+  - aspect: "Lead Capture"
+    before: "Scattered conversations, no structured follow-up for incoming leads."
+    after: "Smart multi-step form with anti-bot protection, local persistence, and automatic database registration."
+    improvement: "Leads arrive directly in the system with full preferences. 2x conversion rate."
+
+  - aspect: "Client Tracking"
+    before: "No visibility into each client's status. Spreadsheets, emails, and personal WhatsApp."
+    after: "Visual pipeline dashboard with 9 stages, audited changes with reason and author. Advanced filters and search."
+    improvement: "100% of the pipeline digitalized — from lead to signed lease."
+
+  - aspect: "Client Communication"
+    before: "Phone calls and WhatsApp on multiple devices. No centralized conversation records."
+    after: "Unified inbox with WebSockets, Twilio messaging, templates, and delivery tracking."
+    improvement: "Team responds in minutes, not hours. Every message is recorded."
+
+  - aspect: "Process Automation"
+    before: "Manual notifications, no follow-up reminders, Excel-based invoicing."
+    after: "80% of processes automated: email verification, scheduled notifications, reminders, and invoicing."
+    improvement: "The system works while the team sleeps."
+
+  - aspect: "Lead Conversion"
+    before: "Leads were lost due to slow response times and registration friction."
+    after: "Frictionless registration, structured follow-up, immediate responses."
+    improvement: "Lead-to-client conversion rate doubled."
+
+testimonials:
+  - quote: "André developed Bruschi Rentals' CRM and we couldn't be happier with the result. He not only delivered exactly what we were looking for, but exceeded our expectations.
+
+Throughout the entire process he was very professional, communicative, and proactive — bringing ideas and improvements based on his experience that added tremendous value to the project. He truly understands how to turn a vision into a functional and efficient tool.
+
+I would absolutely recommend him to anyone looking for a talented, reliable developer committed to delivering high-quality results."
+    author: "Paulina Cedeno"
+    role: "Founder & CEO"
+    company: "Bruschi Rentals"
+    photo: "../../../assets/paulina.jpeg"
+    linkedin: "https://www.linkedin.com/in/bruschi-rentals/"
+---

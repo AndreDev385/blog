@@ -1,0 +1,127 @@
+---
+import { Icon } from "astro-icon/components";
+
+/* ─────────────────────────────────────────────
+   Intent: Render a single testimonial quote with
+   attribution. Used inside ProjectLayout (per-
+   project) and TestimonialsSection (homepage).
+
+   Design: Spotlight — bold, authoritative card
+   with a thick left gradient border, inline
+   colored quote marks, and a clean author
+   attribution section. The card lifts on hover
+   with layered shadow.
+
+   If photo is omitted, a monogram fallback
+   (initials) is shown instead.
+
+   The "compact" variant reduces padding for
+   grid contexts (homepage).
+   ───────────────────────────────────────────── */
+
+type Props = {
+  quote: string;
+  author: string;
+  role: string;
+  company?: string;
+  photo?: string;
+  linkedin?: string;
+  /** Slightly tighter padding for homepage grid context */
+  variant?: "default" | "compact";
+};
+
+const { quote, author, role, company, photo, linkedin, variant = "default" } =
+  Astro.props as Props;
+
+const isCompact = variant === "compact";
+
+// Initials fallback
+const initials = author
+  .split(" ")
+  .map((n) => n[0])
+  .join("")
+  .toUpperCase()
+  .slice(0, 2);
+---
+
+<div
+  class={`group relative rounded-xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:shadow-xl ${
+    isCompact ? "p-6" : "p-6 md:p-8"
+  }`}
+>
+  {/* Thick left gradient border */}
+  <div
+    class="absolute bottom-4 left-0 top-4 w-[5px] rounded-r-full bg-gradient-to-b from-emerald-500 to-teal-400"
+  />
+
+  {/* Quote with inline marks */}
+  <div class="ml-2">
+    <blockquote
+      class={`relative font-medium leading-relaxed text-gray-800 ${
+        isCompact ? "text-sm" : "text-[15px] md:text-[17px] md:leading-8"
+      }`}
+    >
+      <span class="absolute -left-4 -top-1 select-none text-2xl leading-none text-emerald-400" aria-hidden="true">&ldquo;</span>
+      {quote}
+      <span class="select-none text-2xl leading-none text-emerald-400 align-bottom" aria-hidden="true">&rdquo;</span>
+    </blockquote>
+  </div>
+
+  {/* Divider with dot */}
+  <div class={`relative ml-2 flex items-center gap-3 ${isCompact ? "mt-5" : "mt-6"}`}>
+    <div class="h-px flex-1 bg-gradient-to-r from-emerald-200/60 to-transparent" />
+    <div class="size-1.5 rounded-full bg-emerald-400" />
+    <div class="h-px flex-1 bg-gradient-to-l from-teal-200/60 to-transparent" />
+  </div>
+
+  {/* Author attribution */}
+  <div class={`ml-2 flex items-center gap-4 ${isCompact ? "mt-4" : "mt-5"}`}>
+    {/* Photo or initials monogram */}
+    {photo ? (
+      <img
+        src={photo}
+        alt={author}
+        class={`shrink-0 rounded-full object-cover shadow-sm ring-2 ring-white ${
+          isCompact ? "size-11" : "size-12 md:size-14"
+        }`}
+        loading="lazy"
+      />
+    ) : (
+      <div
+        class={`flex shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 font-bold text-emerald-700 shadow-sm ring-2 ring-white ${
+          isCompact ? "size-11 text-xs" : "size-12 text-sm md:size-14"
+        }`}
+      >
+        {initials}
+      </div>
+    )}
+
+    <div class="min-w-0 flex-1">
+      <div class="flex items-center gap-2">
+        <span class={`font-bold text-gray-900 ${isCompact ? "text-sm" : "text-sm md:text-base"}`}>
+          {author}
+        </span>
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex size-6 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors hover:bg-blue-100"
+            title={`${author} on LinkedIn`}
+          >
+            <Icon name="mdi:linkedin" class="size-3.5" />
+          </a>
+        )}
+      </div>
+      <p class={`leading-tight text-gray-500 ${isCompact ? "text-xs" : "text-xs md:text-sm"}`}>
+        {role}
+        {company && (
+          <>
+            <span class="mx-1.5 text-gray-300">&middot;</span>
+            <span class="font-semibold text-emerald-700">{company}</span>
+          </>
+        )}
+      </p>
+    </div>
+  </div>
+</div>

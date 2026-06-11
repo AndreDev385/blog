@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import ProjectCard from "./ProjectCard.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Get projects for the current language, sorted by order
+const allProjects = (await getCollection("projects"))
+  .filter((p) => p.slug.startsWith(`${lang}/`))
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+---
+
+<section
+  class="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-100 p-6"
+>
+  <div class="min-h-screen">
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-12 text-center" data-reveal>
+        <h1 class="mb-4 text-4xl font-bold text-gray-900">
+          {t("projects.title")}
+        </h1>
+        <p class="text-lg text-gray-600">
+          {t("projects.subtitle")}
+        </p>
+      </div>
+      <div class="space-y-8">
+        {
+          allProjects.map((project, index) => (
+            <div data-reveal style={`transition-delay: ${index * 100}ms`}>
+              <ProjectCard project={project} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

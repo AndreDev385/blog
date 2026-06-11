@@ -1,0 +1,200 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import BruschiRentalsLogo from "@/assets/bruschi_rentals.svg";
+import BrDashboard1 from "@/assets/br_dashboard1.png";
+import BrDashboard2 from "@/assets/br_dashboard2.png";
+import BrDashboard3 from "@/assets/br_dashboard3.png";
+
+/* ─────────────────────────────────────────────
+   Intent: A project case study card for the
+   portfolio index page. It needs to hook a
+   visitor into clicking through to the full case
+   study. The card is the transition from "what
+   they built" → "the full story".
+
+   On mobile it should be compact — small
+   padding, truncated description — and still
+   communicate impact. On desktop it breathes.
+
+   Palette matches ProjectLayout: emerald for
+   success/results, amber for problem/tension,
+   white canvas, rich gradient accents.
+   ───────────────────────────────────────────── */
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type Project = CollectionEntry<"projects">;
+
+const { project } = Astro.props as { project: Project };
+
+const logoMap: Record<string, ImageMetadata> = {
+  "bruschi_rentals.svg": BruschiRentalsLogo,
+};
+
+const projectLogo = project.data.logo
+  ? logoMap[project.data.logo.split("/").pop() || ""]
+  : undefined;
+
+// ── Image lookup for screenshot preview ──
+const imageLookup: Record<string, ImageMetadata> = {
+  "br_dashboard1.png": BrDashboard1,
+  "br_dashboard2.png": BrDashboard2,
+  "br_dashboard3.png": BrDashboard3,
+};
+
+function resolveProjectImage(imgPath: string): ImageMetadata | undefined {
+  const filename = imgPath.split("/").pop() || "";
+  return imageLookup[filename];
+}
+
+const previewScreenshot = project.data.images?.[0] ? resolveProjectImage(project.data.images[0]) : undefined;
+
+const detailUrl = `/${lang}/projects/${project.slug.split("/").pop()}`;
+---
+
+<div
+  class="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+>
+  {/* Decorative gradient glow — more visible on hover */}
+  <div
+    class="pointer-events-none absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+  >
+  </div>
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-teal-500/0 to-emerald-500/0 opacity-0 transition-opacity duration-500 group-hover:from-emerald-500/[0.03] group-hover:via-teal-500/[0.03] group-hover:to-emerald-500/[0.03] group-hover:opacity-100"
+  >
+  </div>
+
+  {/* Decorative circles — animate on hover */}
+  <div
+    class="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-emerald-400/10 to-teal-400/10 transition-all duration-700 group-hover:scale-150 group-hover:from-emerald-400/20 group-hover:to-teal-400/20"
+  >
+  </div>
+  <div
+    class="absolute -bottom-8 -left-8 h-20 w-20 rounded-full bg-gradient-to-tr from-cyan-400/10 to-emerald-400/10 transition-all duration-700 group-hover:scale-150 group-hover:from-cyan-400/20 group-hover:to-emerald-400/20"
+  >
+  </div>
+
+  <div class="relative flex flex-col gap-4 p-5 md:gap-6 md:p-8">
+    {/* ─── Header: Logo + Badge + External Link ─── */}
+    <div class="flex items-start gap-3 md:gap-4">
+      {/* Logo */}
+      {
+        projectLogo ? (
+          <Image
+            src={projectLogo}
+            width={48}
+            height={48}
+            alt={`${project.data.title} logo`}
+            class="size-10 flex-shrink-0 rounded-xl object-contain ring-1 ring-gray-100 md:size-14"
+          />
+        ) : (
+          <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 md:size-14">
+            <Icon
+              name="mdi:package"
+              class="size-6 text-emerald-600 md:size-8"
+            />
+          </div>
+        )
+      }
+
+      <div class="min-w-0 flex-1">
+        <span
+          class="inline-block rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm md:text-xs"
+        >
+          {lang === "es" ? "Caso de Estudio" : "Case Study"}
+        </span>
+        <h2
+          class="mt-2 text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-emerald-700 md:text-2xl"
+        >
+          {project.data.title}
+        </h2>
+      </div>
+
+      {/* External link */}
+      {
+        project.data.link && (
+          <a
+            href={project.data.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex flex-shrink-0 items-center rounded-lg p-1.5 text-emerald-600 transition-all duration-300 hover:bg-emerald-50 hover:text-emerald-800 md:p-2"
+            title={`Visit ${project.data.title}`}
+            aria-label="Visit web site"
+          >
+            <Icon name="mdi:open-in-new" class="size-4 md:size-5" />
+          </a>
+        )
+      }
+    </div>
+
+    {/* ─── Description — condensed on mobile ─── */}
+    <p
+      class="text-sm leading-relaxed text-gray-600 line-clamp-3 md:text-base md:line-clamp-none"
+    >
+      {project.data.description}
+    </p>
+
+    {/* ─── Problem Teaser ─── */}
+    {
+      project.data.problem && (
+        <div class="rounded-xl border border-amber-100 bg-gradient-to-br from-amber-50 to-orange-50/50 p-3 md:p-4">
+          <div class="mb-1 flex items-center gap-2">
+            <div class="flex size-5 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-500 md:size-6">
+              <Icon
+                name="mdi:alert-circle-outline"
+                class="size-3 text-white md:size-3.5"
+              />
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-amber-600 md:text-xs">
+              {lang === "es" ? "El Problema" : "The Problem"}
+            </span>
+          </div>
+          <p class="text-xs leading-relaxed text-gray-700 line-clamp-2 md:text-sm">
+            {project.data.problem}
+          </p>
+        </div>
+      )
+    }
+
+    {/* ─── Screenshot Preview Strip ─── */}
+    {
+      previewScreenshot && (
+        <div class="overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
+          <Image
+            src={previewScreenshot}
+            width={800}
+            height={450}
+            alt={`${project.data.title} dashboard overview`}
+            class="w-full object-cover"
+          />
+        </div>
+      )
+    }
+
+    {/* ─── CTA ─── */}
+    <div class="flex">
+      <a
+        href={detailUrl}
+        class="group/btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg md:w-auto md:px-8 md:py-3 md:text-base"
+      >
+        <span>{t("projects.cta")}</span>
+        <Icon
+          name="mdi:arrow-right"
+          class="size-4 transition-transform duration-300 group-hover/btn:translate-x-1 md:size-5"
+        />
+      </a>
+    </div>
+  </div>
+
+  {/* Bottom accent line */}
+  <div
+    class="absolute bottom-0 left-0 right-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 transition-transform duration-500 group-hover:scale-x-100"
+  >
+  </div>
+</div>

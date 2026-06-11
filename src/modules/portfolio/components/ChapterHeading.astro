@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+
+export type Chapter = {
+  key: string;
+  icon: string;
+  gradient: string;
+  borderColor: string;
+  title: string;
+};
+
+const { chapter, size = "md" } = Astro.props as {
+  chapter: Chapter;
+  size?: "md" | "lg";
+};
+
+const isLg = size === "lg";
+---
+
+<div
+  class={`${isLg ? "border-l-[6px] pl-6 md:pl-8" : "border-l-4 pl-5"} ${chapter.borderColor}`}
+>
+  <div class="flex items-center gap-4 md:gap-5">
+    <div
+      class={`flex items-center justify-center rounded-xl bg-gradient-to-br ${chapter.gradient} shadow-sm ${isLg ? "size-14" : "size-10"}`}
+    >
+      <Icon
+        name={chapter.icon}
+        class={`text-white ${isLg ? "size-7" : "size-5"}`}
+      />
+    </div>
+    <h2
+      class={`font-bold text-gray-900 ${isLg ? "text-3xl tracking-tight md:text-4xl" : "text-xl md:text-2xl"}`}
+    >
+      {chapter.title}
+    </h2>
+  </div>
+</div>

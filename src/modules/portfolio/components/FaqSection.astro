@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import ChapterHeading from "./ChapterHeading.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+type FaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+const faqs: FaqItem[] = [
+  { id: "q1", question: t("faq.q1.q"), answer: t("faq.q1.a") },
+  { id: "q2", question: t("faq.q2.q"), answer: t("faq.q2.a") },
+  { id: "q3", question: t("faq.q3.q"), answer: t("faq.q3.a") },
+  { id: "q4", question: t("faq.q4.q"), answer: t("faq.q4.a") },
+  { id: "q5", question: t("faq.q5.q"), answer: t("faq.q5.a") },
+  { id: "q6", question: t("faq.q6.q"), answer: t("faq.q6.a") },
+];
+
+const chapter = {
+  key: "faq",
+  icon: "mdi:chat-question-outline",
+  gradient: "from-blue-400 to-indigo-500",
+  borderColor: "border-blue-400",
+  title: t("faq.title"),
+};
+---
+
+<section class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 px-6 py-20 md:px-4 md:py-28">
+  <div class="mx-auto max-w-3xl">
+    {/* ─── Section Header ─── */}
+    <div class="mb-4" data-reveal>
+      <ChapterHeading chapter={chapter} />
+    </div>
+
+    {/* ─── Friendly Header + CTA ─── */}
+    <div class="mb-14" data-reveal>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-lg text-gray-500">{t("faq.header1")}</p>
+          <p class="text-xl font-semibold text-gray-800">
+            {t("faq.header2")}
+          </p>
+        </div>
+        <a
+          href="mailto:andre@izarra.dev"
+          class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg"
+        >
+          {t("faq.cta")}
+          <Icon name="mdi:arrow-right" class="size-4" />
+        </a>
+      </div>
+    </div>
+
+    {/* ─── FAQ Accordion ─── */}
+    <div class="divide-y divide-gray-200/80" data-reveal>
+      {
+        faqs.map((item, index) => (
+          <details
+            class="group py-5 transition-all duration-200"
+            style={`transition-delay: ${index * 80}ms`}
+          >
+            <summary
+              class="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-gray-800 transition-colors duration-200 hover:text-blue-700 [&::-webkit-details-marker]:hidden"
+            >
+              <span class="text-base leading-snug md:text-lg">
+                {item.question}
+              </span>
+              <Icon
+                name="mdi:chevron-down"
+                class="size-5 shrink-0 text-gray-400 transition-transform duration-300 group-open:rotate-180 group-open:text-blue-600"
+              />
+            </summary>
+
+            <div
+              class="pt-4 leading-relaxed text-gray-600 transition-all duration-300"
+            >
+              {item.answer}
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
