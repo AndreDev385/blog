@@ -1,0 +1,74 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import ServiceCard, { type Service } from "./ServiceCard.astro";
+import ChapterHeading from "./ChapterHeading.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const walkawayLabel = t("services.walkaway.label");
+
+const services: Service[] = [
+  {
+    icon: "mdi:magnify",
+    title: t("services.step1.title"),
+    description: t("services.step1.description"),
+    gradient: "from-blue-500 to-purple-500",
+    walkaway: t("services.step1.walkaway"),
+  },
+  {
+    icon: "mdi:lightbulb-outline",
+    title: t("services.step2.title"),
+    description: t("services.step2.description"),
+    gradient: "from-emerald-500 to-teal-500",
+    walkaway: t("services.step2.walkaway"),
+  },
+  {
+    icon: "mdi:rocket-launch",
+    title: t("services.step3.title"),
+    description: t("services.step3.description"),
+    gradient: "from-indigo-500 to-blue-600",
+    walkaway: t("services.step3.walkaway"),
+  },
+];
+
+const chapter = {
+  key: "services",
+  icon: "mdi:lightning-bolt-outline",
+  gradient: "from-amber-400 to-orange-500",
+  borderColor: "border-amber-400",
+  title: t("services.title"),
+};
+---
+
+<section
+  id="services"
+  class="bg-gradient-to-br from-slate-50 via-violet-50 to-indigo-100 px-6 py-20 md:px-4 md:py-28"
+>
+  <div class="mx-auto max-w-6xl">
+    {/* ─── Section Header ─── */}
+    <div class="mb-6" data-reveal>
+      <ChapterHeading chapter={chapter} size="lg" />
+    </div>
+
+    {/* Decorative spacer */}
+    <div class="mb-6 ml-[6px] h-px w-16 bg-gradient-to-r from-amber-400/40 to-transparent" />
+
+    <div class="mb-16 md:mb-20" data-reveal>
+      <p class="max-w-2xl text-lg leading-relaxed text-gray-500 md:text-xl">
+        {t("services.subtitle")}
+      </p>
+    </div>
+
+    {/* ─── Services Rows ─── */}
+    <div class="space-y-28 md:space-y-36" data-reveal>
+      {
+        services.map((service, index) => (
+          <div style={`transition-delay: ${index * 150}ms`}>
+            <ServiceCard service={service} walkawayLabel={walkawayLabel} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

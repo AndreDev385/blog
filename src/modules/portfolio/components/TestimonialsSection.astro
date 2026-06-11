@@ -1,0 +1,67 @@
+---
+import { getCollection } from "astro:content";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import TestimonialCard from "./TestimonialCard.astro";
+import { resolvePhoto } from "../../../lib/resolvePhoto";
+
+/* ─────────────────────────────────────────────
+   Intent: Show all testimonials across all
+   projects on the homepage. Acts as social
+   proof — "people I've worked with say this
+   about the results I delivered."
+
+   Collects every project's testimonials for
+   the current language and renders them in a
+   responsive grid. Only renders the section
+   if at least one project has testimonials.
+   ───────────────────────────────────────────── */
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allProjects = (await getCollection("projects")).filter((p) =>
+  p.slug.startsWith(`${lang}/`),
+);
+
+// Collect all testimonials from all projects
+const allTestimonials = allProjects
+  .flatMap((p) => (p.data.testimonials ?? []))
+  .filter(Boolean);
+---
+
+{
+  allTestimonials.length > 0 && (
+    <section class="bg-gradient-to-br from-emerald-50/40 via-white to-teal-50/40 px-6 py-20 md:px-4 md:py-28">
+      <div class="mx-auto max-w-6xl">
+        {/* ─── Section Header ─── */}
+        <div class="mb-12 text-center" data-reveal>
+          <h2 class="text-4xl font-bold text-gray-900">
+            {t("testimonials.title")}
+          </h2>
+          <p class="mx-auto mt-3 max-w-2xl text-lg text-gray-500">
+            {t("testimonials.subtitle")}
+          </p>
+          <div class="mx-auto mt-6 h-0.5 w-16 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400" />
+        </div>
+
+        {/* ─── Testimonial Grid ─── */}
+        <div
+          class="mx-auto grid max-w-4xl gap-6 md:grid-cols-2"
+          data-reveal
+        >
+          {allTestimonials.map((t) => (
+            <TestimonialCard
+              quote={t.quote}
+              author={t.author}
+              role={t.role}
+              company={t.company}
+              photo={resolvePhoto(t.photo)}
+              linkedin={t.linkedin}
+              variant="compact"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

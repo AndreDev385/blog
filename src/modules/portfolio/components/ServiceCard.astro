@@ -1,0 +1,99 @@
+---
+import { Icon } from "astro-icon/components";
+
+export type Service = {
+  icon: string;
+  title: string;
+  description: string;
+  /** Tailwind gradient classes for the icon circle, e.g. "from-blue-500 to-purple-500" */
+  gradient: string;
+  walkaway: readonly string[];
+};
+
+const { service, walkawayLabel } = Astro.props as {
+  service: Service;
+  walkawayLabel: string;
+};
+---
+
+<div class="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+  {/* ─── Left: Content ─── */}
+  <div class="space-y-6">
+    {/* Icon + Title */}
+    <div class="flex items-center gap-4">
+      <div
+        class={`flex size-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} shadow-md`}
+      >
+        <Icon name={service.icon} class="size-7 text-white" />
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+        {service.title}
+      </h3>
+    </div>
+
+    {/* Description */}
+    <p class="text-base leading-relaxed text-gray-600 sm:text-lg">
+      {service.description}
+    </p>
+
+    {/* Walkaway Benefits */}
+    <div>
+      <h4
+        class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400"
+      >
+        {walkawayLabel}
+      </h4>
+      <ul class="space-y-3">
+        {
+          service.walkaway.map((item) => (
+            <li class="flex items-start gap-3">
+              <Icon
+                name="mdi:check-circle"
+                class="mt-0.5 size-5 shrink-0 text-emerald-500"
+              />
+              <span class="text-base leading-relaxed text-gray-700">
+                {item}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  {/* ─── Right: Abstract Visual ─── */}
+  <div class="relative overflow-hidden rounded-2xl">
+    {/* Subtle gradient base */}
+    <div
+      class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5`}
+    />
+
+    {/* Decorative blurred blobs */}
+    <div class="absolute -inset-20">
+      <div
+        class={`absolute right-0 top-0 h-72 w-72 rounded-full bg-gradient-to-br ${service.gradient} opacity-15 blur-3xl`}
+      />
+      <div
+        class={`absolute bottom-0 left-0 h-56 w-56 rounded-full bg-gradient-to-tr ${service.gradient} opacity-10 blur-3xl`}
+      />
+    </div>
+
+    {/* Grid dots pattern */}
+    <div
+      class="absolute inset-0 opacity-[0.03]"
+      style={{
+        backgroundImage:
+          "radial-gradient(circle, currentColor 1px, transparent 1px)",
+        backgroundSize: "24px 24px",
+      }}
+    />
+
+    {/* Centered service icon */}
+    <div class="relative flex aspect-[5/4] items-center justify-center sm:aspect-[4/3]">
+      <Icon
+        name={service.icon}
+        class="h-28 w-28 text-gray-900/[0.07] sm:h-36 sm:w-36"
+      />
+    </div>
+  </div>
+</div>

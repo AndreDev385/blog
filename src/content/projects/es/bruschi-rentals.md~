@@ -1,0 +1,124 @@
+---
+title: "Bruschi Rentals"
+description: "Plataforma digital de gestión de rentas en Miami que centraliza todo el ciclo de atención al cliente — desde la captación de leads y comunicación por WhatsApp/SMS hasta el seguimiento de aplicaciones y firmas de contratos — reemplazando el caos de llamadas, chats dispersos y archivos en Google Drive por un sistema unificado y en tiempo real."
+logo: "../../../assets/bruschi_rentals.svg"
+link: "https://bruschirentals.com/"
+order: 1
+images:
+  - "../../../assets/br_dashboard3.png"
+  - "../../../assets/br_dashboard1.png"
+  - "../../../assets/br_dashboard2.png"
+problem: "Bruschi Rentals, una empresa de real estate en Miami especializada en rentas, operaba de forma completamente manual y descentralizada: llamadas, WhatsApp disperso en varios teléfonos y archivos en Google Drive. A medida que crecía la demanda, la información de los clientes quedaba repartida sin orden, la coordinación entre empleados se volvía un caos y atender a cada cliente podía tomar entre 20 minutos y una hora en un agotador bucle de ida y vuelta para encontrar la opción correcta."
+role: "Trabajando estrechamente con el dueño del negocio para entender cada punto de dolor operativo y traducirlo en casos de uso plausibles. Diseñé y construí toda la plataforma desde cero — el sitio web para clientes, el panel administrativo y la API backend"
+techStack:
+  - "Astro"
+  - "React"
+  - "TypeScript"
+  - "Go"
+  - "Echo Framework"
+  - "PostgreSQL"
+  - "Auth0"
+  - "Twilio"
+  - "Cloudinary"
+  - "Docker"
+archAreas:
+  - id: "landing-portal"
+    title: "Landing + Portal del Cliente"
+    description: "Sitio web público donde los prospectos descubren el servicio, completan un formulario inteligente de preferencias y los clientes acceden a su portal personalizado con opciones de propiedades ajustadas a sus preferencias."
+    features:
+      - "Formulario multi-paso de captura de leads con sus preferencias de mudanza"
+      - "Sugerencia de precio dinámica según vecindario y tipo de propiedad"
+      - "Portal del cliente autenticado con galería multimedia de sus mejores coincidencias, favoritos y feedback"
+      - "Solicitud de tours directamente desde la plataforma"
+    tech:
+      - "Astro"
+      - "React"
+      - "Tailwindcss"
+      - "Auth0"
+      - "Cloudflare"
+
+  - id: "dashboard"
+    title: "Panel de Administración"
+    description: "Aplicación donde el equipo de Bruschi Rentals gestiona todo el pipeline de clientes, propiedades y operaciones en tiempo real con mensajería integrada."
+    features:
+      - "Panel principal con KPIs en tiempo real (leads, conversiones, ingresos, comisiones)"
+      - "Pipeline de clientes con 9 fases transicionables (ciclo de vida del cliente)"
+      - "Bandeja de entrada unificada con mensajería WhatsApp/SMS vía Twilio y WebSockets en tiempo real"
+      - "Generación de facturas en PDF con tracking de pagos y comisiones"
+    tech:
+      - "React"
+      - "React Router"
+      - "TypeScript"
+      - "Vite"
+      - "Auth0"
+
+  - id: "backend"
+    title: "API y Lógica de Negocio"
+    description: "API REST robusta en Go con Echo Framework que gestiona todo el ciclo de vida del cliente, mensajería, notificaciones e integraciones externas para la plataforma de rentas."
+    features:
+      - "API RESTful con Echo v4 y documentación Swagger automática"
+      - "Gestión completa del ciclo de vida del cliente con máquina de estados (9 fases)"
+      - "Integración Twilio Conversations API para mensajería WhatsApp + SMS"
+      - "Hub WebSocket para actualizaciones en tiempo real"
+    tech:
+      - "Go"
+      - "Echo"
+      - "PostgreSQL"
+      - "Auth0 Management API"
+      - "Twilio Conversations API"
+
+beforeAfter:
+  - aspect: "Captura de Leads"
+    before: "Conversaciones dispersas, leads se perdían sin seguimiento estructurado."
+    after: "Formulario multi-paso inteligente con protección anti-bot, persistencia local y registro automático en base de datos."
+    improvement: "Leads llegan directamente al sistema con todas sus preferencias. Tasa de conversión 2x."
+
+  - aspect: "Seguimiento de Clientes"
+    before: "Sin visibilidad del estado actual de cada cliente. Hojas de cálculo, correos y WhatsApp personal."
+    after: "Pipeline visual en dashboard con 9 fases, cambios auditados con motivo y responsable. Filtros avanzados y búsqueda."
+    improvement: "100% del pipeline digitalizado — del lead al lease firmado."
+
+  - aspect: "Comunicación con Clientes"
+    before: "Llamadas telefónicas y WhatsApp en múltiples teléfonos. Sin registro centralizado de conversaciones."
+    after: "Bandeja de entrada unificada con WebSockets, mensajería Twilio, plantillas y seguimiento de entrega."
+    improvement: "Equipo responde en minutos, no horas. Todo mensaje queda registrado."
+
+  - aspect: "Automatización de Procesos"
+    before: "Notificaciones manuales, seguimiento sin recordatorios, facturación en Excel."
+    after: "80% del proceso automatizado: verificación de email, notificaciones programadas, recordatorios y facturación."
+    improvement: "El sistema trabaja mientras el equipo duerme."
+
+  - aspect: "Conversión de Leads"
+    before: "Leads se perdían por demora en respuesta y fricción en el registro."
+    after: "Registro sin fricción, seguimiento estructurado, respuestas inmediatas."
+    improvement: "Tasa de conversión lead-to-client se duplicó."
+
+benefits:
+  - title: "Ciclo de Vida Digitalizado"
+    description: "Cada lead pasa por un pipeline estructurado de 9 fases con transiciones controladas, registro de cambios y auditoría completa. Nada se pierde."
+    icon: "mdi:timeline"
+
+  - title: "Portal del Cliente Personalizado"
+    description: "Cada cliente recibe su propio portal con opciones seleccionadas específicamente para él. Puede guardar favoritos, dar feedback y solicitar tours sin llamadas ni correos."
+    icon: "mdi:view-dashboard"
+
+  - title: "Comunicación Unificada"
+    description: "Toda la comunicación con clientes (WhatsApp + SMS) centralizada en el dashboard con WebSockets en tiempo real y plantillas de mensajes."
+    icon: "mdi:chat"
+
+  - title: "Business Intelligence Integrado"
+    description: "KPIs en tiempo real: tasas de conversión, ingresos por comisiones, propiedades más populares, barrios preferidos. Decisiones basadas en datos, no en corazonadas."
+    icon: "mdi:chart-bar"
+    
+testimonials:
+  - quote: "Andrés desarrolló el CRM de Bruschi Rentals y no podríamos estar más felices con el resultado. No solo cumplió exactamente con lo que estábamos buscando, sino que superó nuestras expectativas.
+
+Durante todo el proceso fue muy profesional, comunicativo y proactivo, aportando ideas y mejoras basadas en su experiencia que agregaron muchísimo valor al proyecto. Se nota que realmente entiende cómo convertir una visión en una herramienta funcional y eficiente.
+
+Sin duda lo recomiendo a cualquiera que esté buscando un desarrollador talentoso, confiable y comprometido con entregar resultados de alta calidad."
+    author: "Paulina Cedeno"
+    role: "Founder & CEO"
+    company: "Bruschi Rentals"
+    photo: "../../../assets/paulina.jpeg"
+    linkedin: "https://www.linkedin.com/in/bruschi-rentals/"
+---
