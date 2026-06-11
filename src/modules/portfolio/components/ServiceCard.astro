@@ -8,6 +8,8 @@ export type Service = {
   /** Tailwind gradient classes for the icon circle, e.g. "from-blue-500 to-purple-500" */
   gradient: string;
   walkaway: readonly string[];
+  /** Path to an SVG illustration for the visual panel */
+  image?: string;
 };
 
 const { service, walkawayLabel } = Astro.props as {
@@ -61,7 +63,7 @@ const { service, walkawayLabel } = Astro.props as {
     </div>
   </div>
 
-  {/* ─── Right: Abstract Visual ─── */}
+  {/* ─── Right: Illustration ─── */}
   <div class="relative overflow-hidden rounded-2xl">
     {/* Subtle gradient base */}
     <div
@@ -88,12 +90,25 @@ const { service, walkawayLabel } = Astro.props as {
       }}
     />
 
-    {/* Centered service icon */}
-    <div class="relative flex aspect-[5/4] items-center justify-center sm:aspect-[4/3]">
-      <Icon
-        name={service.icon}
-        class="h-28 w-28 text-gray-900/[0.07] sm:h-36 sm:w-36"
-      />
-    </div>
+    {/* Centered SVG illustration */}
+    {
+      service.image ? (
+        <div class="relative flex aspect-[5/4] items-center justify-center p-8 sm:aspect-[4/3] sm:p-12">
+          <img
+            src={service.image}
+            alt={`${service.title} illustration`}
+            class="h-full w-full object-contain"
+            loading="lazy"
+          />
+        </div>
+      ) : (
+        <div class="relative flex aspect-[5/4] items-center justify-center sm:aspect-[4/3]">
+          <Icon
+            name={service.icon}
+            class="h-28 w-28 text-gray-900/[0.07] sm:h-36 sm:w-36"
+          />
+        </div>
+      )
+    }
   </div>
 </div>
