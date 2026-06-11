@@ -1,9 +1,14 @@
 ---
 import "@/styles/global.css";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/geist/wght-italic.css";
+import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/geist-mono/wght-italic.css";
 import Header from "@/components/layout/header.astro";
+import SocialIcons from "@/modules/portfolio/components/SocialIcons.astro";
 interface Props {
-	title?: string;
-	description?: string;
+  title?: string;
+  description?: string;
 }
 import { getLangFromUrl } from "../i18n/utils";
 
@@ -11,6 +16,29 @@ const lang = getLangFromUrl(Astro.url);
 
 const SITE_URL = "https://andre-izarra.netlify.app";
 const SITE_NAME = "André Izarra";
+
+const socialLinks = [
+  {
+    icon: "devicon:linkedin",
+    ariaLabel: "LinkedIn",
+    href: "https://www.linkedin.com/in/andr%C3%A9-izarra/",
+  },
+  {
+    icon: "devicon:github",
+    ariaLabel: "GitHub",
+    href: "https://github.com/AndreDev385",
+  },
+  {
+    icon: "logos:google-gmail",
+    ariaLabel: "Gmail",
+    href: "mailto:andre.izarra@gmail.com",
+  },
+  {
+    icon: "logos:whatsapp-icon",
+    ariaLabel: "Whatsapp",
+    href: "https://wa.me/584241756082",
+  },
+];
 const DEFAULT_DESCRIPTION = {
   en: "Full-stack software developer specializing in reliable, performant web applications, APIs, and cloud solutions. Hire André Izarra for your next project.",
   es: "Desarrollador de software full-stack especializado en aplicaciones web confiables, APIs y soluciones en la nube. Contrata a André Izarra para tu próximo proyecto.",
@@ -19,7 +47,10 @@ const DEFAULT_DESCRIPTION = {
 const { title, description } = Astro.props;
 
 const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
-const pageDescription = description || DEFAULT_DESCRIPTION[lang as keyof typeof DEFAULT_DESCRIPTION] || DEFAULT_DESCRIPTION.en;
+const pageDescription =
+  description ||
+  DEFAULT_DESCRIPTION[lang as keyof typeof DEFAULT_DESCRIPTION] ||
+  DEFAULT_DESCRIPTION.en;
 ---
 
 <!doctype html>
@@ -29,7 +60,17 @@ const pageDescription = description || DEFAULT_DESCRIPTION[lang as keyof typeof 
     <meta name="viewport" content="width=device-width" />
     <!-- Set portfolio mode from localStorage before paint to prevent flash -->
     <script is:inline>
-      (function(){var m=localStorage.getItem("portfolio-mode");if(m==="freelance"||m==="employee"){document.documentElement.setAttribute("data-active-mode",m)}else{document.documentElement.setAttribute("data-active-mode","freelance")}})();
+      (function () {
+        var m = localStorage.getItem("portfolio-mode");
+        if (m === "freelance" || m === "employee") {
+          document.documentElement.setAttribute("data-active-mode", m);
+        } else {
+          document.documentElement.setAttribute(
+            "data-active-mode",
+            "freelance",
+          );
+        }
+      })();
     </script>
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
@@ -44,50 +85,75 @@ const pageDescription = description || DEFAULT_DESCRIPTION[lang as keyof typeof 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content="https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp" />
+    <meta
+      name="twitter:image"
+      content="https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp"
+    />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={SITE_URL + Astro.url.pathname} />
 
     <!-- Structured Data: Person & WebSite -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "André Izarra",
-      "url": SITE_URL,
-      "jobTitle": lang === "es" ? "Desarrollador de Software" : "Software Developer",
-      "sameAs": [
-        "https://github.com/AndreDev385",
-        "https://www.linkedin.com/in/andr%C3%A9-izarra/"
-      ],
-      "knowsAbout": ["Software Development", "Web Development", "TypeScript", "Domain-Driven Design", "API Design"]
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "André Izarra",
+        url: SITE_URL,
+        jobTitle:
+          lang === "es" ? "Desarrollador de Software" : "Software Developer",
+        sameAs: [
+          "https://github.com/AndreDev385",
+          "https://www.linkedin.com/in/andr%C3%A9-izarra/",
+        ],
+        knowsAbout: [
+          "Software Development",
+          "Web Development",
+          "TypeScript",
+          "Domain-Driven Design",
+          "API Design",
+        ],
+      })}
+    />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": SITE_URL,
-      "name": SITE_NAME,
-      "description": pageDescription,
-      "inLanguage": lang,
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": `${SITE_URL}/{lang}/search?q={search_term_string}`
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        url: SITE_URL,
+        name: SITE_NAME,
+        description: pageDescription,
+        inLanguage: lang,
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${SITE_URL}/{lang}/search?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
         },
-        "query-input": "required name=search_term_string"
-      }
-    })} />
+      })}
+    />
   </head>
   <body class="flex h-full flex-col">
     <Header />
     <main class="flex-grow">
       <slot />
     </main>
-    <footer class="mt-4 bg-white shadow">
-      <div class="container mx-auto px-4 py-6 text-center text-gray-600">
-        Made with dedication by André Izarra.
+    <footer
+      class="border-t bg-white shadow dark:border-gray-700 dark:bg-gray-900"
+    >
+      <div
+        class="container mx-auto flex flex-col items-center gap-4 px-4 py-8 md:flex-row md:justify-between"
+      >
+        <p
+          class="text-center text-sm text-gray-500 dark:text-gray-400 md:text-left"
+        >
+          &copy; {new Date().getFullYear()} Made with dedication by André Izarra.
+        </p>
+        <SocialIcons socials={socialLinks} variant="footer" />
       </div>
     </footer>
   </body>
