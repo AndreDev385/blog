@@ -33,4 +33,7 @@ export const skillIconMap = {
 	neovim: { name: "Neovim", icon: "devicon:neovim" },
 	//
 	ddd: { name: "DDD", icon: "mdi:layers" },
+	// Infrastructure
+	docker: { name: "Docker", icon: "devicon:docker" },
+	aws: { name: "AWS", icon: "devicon:amazonwebservices-wordmark" },
 } as const;
