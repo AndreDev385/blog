@@ -142,16 +142,41 @@ const navItems = [
     <ul class="flex flex-col gap-2">
       {
         navItems.map((item) => (
-          <li class="rounded px-4 py-2 hover:bg-gray-100">
+          <li>
             <a
               href={item.href}
-              class="text-lg font-semibold text-gray-600 transition-colors hover:text-gray-700"
+              class="block rounded px-4 py-2 text-lg font-semibold text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-700"
             >
               {item.text}
             </a>
           </li>
         ))
       }
+      <li class="border-t border-gray-200 pt-2">
+        <span class="block px-4 pb-1 text-xs font-medium uppercase tracking-wider text-gray-400">
+          {isSpanish ? "Idioma" : "Language"}
+        </span>
+        <a
+          href="/en"
+          class={`block rounded px-4 py-2 text-lg font-semibold transition-colors hover:bg-gray-100 ${
+            !isSpanish
+              ? "bg-blue-50 font-bold text-blue-700"
+              : "text-gray-600 hover:text-gray-700"
+          }`}
+        >
+          English
+        </a>
+        <a
+          href="/es"
+          class={`block rounded px-4 py-2 text-lg font-semibold transition-colors hover:bg-gray-100 ${
+            isSpanish
+              ? "bg-blue-50 font-bold text-blue-700"
+              : "text-gray-600 hover:text-gray-700"
+          }`}
+        >
+          Español
+        </a>
+      </li>
     </ul>
   </div>
 </div>

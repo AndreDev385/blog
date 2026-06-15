@@ -10,48 +10,51 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { post } = Astro.props;
+const url = `/${post.id.split("/")[0]}/blog/${post.id.split("/")[1]}`
 ---
 
-<Card
-  id={post.data.title}
-  className="card group grid grid-cols-1 gap-4 rounded-2xl border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10 md:grid-cols-2"
+<a
+  href={url}
+  class="block group"
 >
-  <a href={`/${post.slug.split("/")[0]}/blog/${post.slug.split("/")[1]}`}>
-    <div class="grid gap-4">
-      <CardHeader>
-        <h2 class="text-3xl font-bold leading-tight">{post.data.title}</h2>
-      </CardHeader>
-      <CardContent className="grid grid-cols-5 gap-4">
-        <div class="col-span-5 space-y-4">
-          <time datetime={post.data.date.toISOString()}
-            >{t("posted.on")}
-            {formatDate(post.data.date, lang)}</time
-          >
-          <p class="text-sm">
-            {post.data.description}
-          </p>
-          <div class="flex items-center space-x-4 overflow-hidden">
-            {
-              post.data.tags.map((tag: string) => (
-                <SkillBadge
-                  skill={skillIconMap[tag as keyof typeof skillIconMap]}
-                />
-              ))
-            }
-          </div>
-        </div>
-      </CardContent>
-    </div>
-  </a>
-  <a
-    class="relative hidden h-full overflow-hidden rounded-lg md:block"
-    href={`/${post.slug.split("/")[0]}/blog/${post.slug.split("/")[1]}`}
+  <Card
+    id={post.data.title}
+    className="card grid grid-cols-1 gap-4 p-4 rounded-2xl border border-black/10 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] dark:border-white/10 md:grid-cols-3"
   >
-    <img
-      src={post.data.image}
-      alt={`Featured image for "${post.data.title}"`}
-      class="object-cover transition-all duration-300 group-hover:scale-125"
-      style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
-    />
-  </a>
-</Card>
+    <div class="md:col-span-2">
+      <div class="grid gap-4">
+        <CardHeader>
+          <h2 class="text-3xl font-bold leading-tight">{post.data.title}</h2>
+        </CardHeader>
+        <CardContent className="grid grid-cols-5 gap-4">
+          <div class="col-span-5 space-y-4">
+            <time datetime={post.data.date.toISOString()}
+              >{t("posted.on")}
+              {formatDate(post.data.date, lang)}</time
+            >
+            <p class="text-sm">
+              {post.data.description}
+            </p>
+            <div class="flex items-center space-x-4 overflow-hidden">
+              {
+                post.data.tags.map((tag: string) => (
+                  <SkillBadge
+                    skill={skillIconMap[tag as keyof typeof skillIconMap]}
+                  />
+                ))
+              }
+            </div>
+          </div>
+        </CardContent>
+      </div>
+    </div>
+    <div class="relative hidden h-full overflow-hidden rounded-lg md:col-span-1 md:block">
+      <img
+        src={post.data.image}
+        alt={`Featured image for "${post.data.title}"`}
+        class="object-cover transition-all duration-300 group-hover:scale-125"
+        style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+      />
+    </div>
+  </Card>
+</a>

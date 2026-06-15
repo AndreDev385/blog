@@ -3,6 +3,8 @@ import BioonixLogo from "@/assets/bioonix_logo.png";
 import NediITLogo from "@/assets/nedi_icon.png";
 import GameMindLogo from "@/assets/gamemind_icon.png";
 import OnTheCourtLogo from "@/assets/on_the_court.png";
+import BruschiRentalsLogo from "@/assets/bruschi_rentals.svg";
+import AdcendiaLogo from "@/assets/adcendia_logo2.jpeg";
 import { skillIconMap, type Skill } from "@/lib/skillIconMap";
 
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
@@ -12,6 +14,39 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const experiences: ExperienceCardProps[] = [
+  {
+    title: t("experiences.bruschi-rentals-landing.title"),
+    company: t("experiences.bruschi-rentals-landing.company"),
+    location: t("experiences.bruschi-rentals-landing.location"),
+    startDate: t("experiences.bruschi-rentals-landing.startDate"),
+    endDate: t("experiences.bruschi-rentals-landing.endDate"),
+    description: t("experiences.bruschi-rentals-landing.description"),
+    logo: BruschiRentalsLogo,
+    link: "https://bruschirentals.com/",
+    skills: [
+      skillIconMap.go,
+      skillIconMap.typescript,
+      skillIconMap.react,
+      skillIconMap.astro,
+      skillIconMap.postgresql,
+      skillIconMap.docker,
+    ],
+  },
+  {
+    title: t("experiences.adcendia.title"),
+    company: t("experiences.adcendia.company"),
+    location: t("experiences.adcendia.location"),
+    startDate: t("experiences.adcendia.startDate"),
+    endDate: t("experiences.adcendia.endDate"),
+    description: t("experiences.adcendia.description"),
+    logo: AdcendiaLogo,
+    link: "https://adcendia.com/",
+    skills: [
+      skillIconMap.astro,
+      skillIconMap.tailwindcss,
+      skillIconMap.typescript,
+    ],
+  },
   {
     title: t("experiences.time-tracker.title"),
     company: t("experiences.time-tracker.company"),

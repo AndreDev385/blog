@@ -8,6 +8,8 @@ import BruschiRentalsLogo from "@/assets/bruschi_rentals.svg";
 import BrDashboard1 from "@/assets/br_dashboard1.png";
 import BrDashboard2 from "@/assets/br_dashboard2.png";
 import BrDashboard3 from "@/assets/br_dashboard3.png";
+import AdcendiaLogo from "@/assets/adcendia_logo2.jpeg";
+import GamemindIcon from "@/assets/gamemind_icon.png";
 
 /* ─────────────────────────────────────────────
    Intent: A project case study card for the
@@ -34,6 +36,8 @@ const { project } = Astro.props as { project: Project };
 
 const logoMap: Record<string, ImageMetadata> = {
   "bruschi_rentals.svg": BruschiRentalsLogo,
+  "adcendia_logo2.jpeg": AdcendiaLogo,
+  "gamemind_icon.png": GamemindIcon,
 };
 
 const projectLogo = project.data.logo
@@ -54,7 +58,7 @@ function resolveProjectImage(imgPath: string): ImageMetadata | undefined {
 
 const previewScreenshot = project.data.images?.[0] ? resolveProjectImage(project.data.images[0]) : undefined;
 
-const detailUrl = `/${lang}/projects/${project.slug.split("/").pop()}`;
+const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
 ---
 
 <div

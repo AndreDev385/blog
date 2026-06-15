@@ -1,5 +1,6 @@
 /* ── Typography for markdown content (Geist Sans) ── */
 /* Uses @tailwindcss/typography prose classes as base + refinements */
+@reference "tailwindcss";
 
 .prose {
   @apply break-words;
@@ -8,13 +9,7 @@
   color: #1f2937; /* gray-800 */
 }
 
-/* Comfortable reading measure */
-.prose > p,
-.prose > ul,
-.prose > ol,
-.prose > blockquote {
-  max-width: 68ch;
-}
+/* Comfortable reading measure — handled by parent wrapper */
 
 /* ── Paragraphs ── */
 .prose p {

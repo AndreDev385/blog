@@ -84,6 +84,17 @@ export const ui = {
 			"Developed an admin dashboard with React Router v7 for client management, KPIs, and real-time notifications",
 			"Created a client landing page with multi-step registration, Auth0 auth, and Turnstile security",
 		],
+		// adcendia
+		"experiences.adcendia.title": "Web Designer & Developer",
+		"experiences.adcendia.company": "Adcendia",
+		"experiences.adcendia.location": "Miami, USA | Remote",
+		"experiences.adcendia.startDate": "March 2025",
+		"experiences.adcendia.endDate": "April 2025",
+		"experiences.adcendia.description": [
+			"Designed and built a high-conversion landing page with the company's emerald brand identity and a modern, polished design aesthetic",
+			"Implemented conversion-optimized section flow: video sales letter, methodology timeline, testimonials, and FAQ driving Calendly bookings",
+			"Delivered a static Astro site with sub-second load times, mobile-first responsive design, and SEO foundations for the US Hispanic real estate market",
+		],
 		// time tracker
 		"experiences.time-tracker.title": "Full Stack Developer",
 		"experiences.time-tracker.company": "Time Tracker",
@@ -283,6 +294,17 @@ export const ui = {
 			"Construí una API REST en Go con mensajería Twilio, WebSockets y gestión de ciclo de vida de clientes",
 			"Desarrollé un panel administrativo en React Router v7 con gestión de clientes, KPIs y notificaciones en tiempo real",
 			"Creé una landing page con registro multi-paso, autenticación Auth0 y seguridad Turnstile",
+		],
+		// adcendia
+		"experiences.adcendia.title": "Diseñador y Desarrollador Web",
+		"experiences.adcendia.company": "Adcendia",
+		"experiences.adcendia.location": "Miami, USA | Remoto",
+		"experiences.adcendia.startDate": "Marzo 2025",
+		"experiences.adcendia.endDate": "Abril 2025",
+		"experiences.adcendia.description": [
+			"Diseñé y construí un landing page de alta conversión con la identidad de marca esmeralda de la empresa y una estética visual moderna y pulida",
+			"Implementé un flujo de secciones optimizado para conversión: video sales letter, línea de tiempo metodológica, testimonios y FAQ para generar reservas en Calendly",
+			"Entregué un sitio estático en Astro con carga inferior a un segundo, diseño responsive mobile-first y fundamentos de SEO para el mercado hispano de bienes raíces",
 		],
 		// time tracker
 		"experiences.time-tracker.title": "Desarrollador Full Stack",

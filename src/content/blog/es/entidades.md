@@ -2,13 +2,13 @@
 title: Entidades
 description: Aprende sobre las Entidades en DDD, cómo se diferencian de los Value Objects y cómo implementarlas correctamente en TypeScript.
 date: 2025-08-12
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/entities.png
+image: https://andre385.sirv.com/Portfolio%20%26%20Blog/ddd.png
 tags:
   - typescript
   - ddd
 ---
 
-![Entidades en Domain-Driven Design - ilustración conceptual](https://andre385.sirv.com/Portfolio%20%26%20Blog/entities.png?w=1280)
+![Entidades en Domain-Driven Design - ilustración conceptual](https://andre385.sirv.com/Portfolio%20%26%20Blog/ddd.png)
 
 # Entidades
 En mi último post hablé sobre los [Value Objects]() y como nos ayudan a modelar nuestro dominio, evitar el code smell primitive obsession y validar que nuestros data structures siempre tengan un valor válido. En esta ocasión hablaremos sobre las `Entidades`, como se diferencian de los `Value Objects` y que aportan a nuestro código.

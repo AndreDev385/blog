@@ -18,7 +18,7 @@ const { post, headings } = Astro.props;
 
 <Layout title={post.data.title} description={post.data.description}>
   <!-- Structured Data: BlogPosting -->
-  <script type="application/ld+json" set:html={JSON.stringify({
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.data.title,
@@ -33,35 +33,37 @@ const { post, headings } = Astro.props;
   })} />
 
   <div
-    class="mx-auto mt-4 grid max-w-7xl grid-cols-1 gap-8 px-6 md:px-4 lg:grid-cols-4 lg:px-2"
+    class="mx-auto mt-4 flex max-w-6xl flex-col gap-8 px-6 md:px-4 lg:flex-row lg:justify-center lg:px-2"
   >
-    <article class="lg:col-span-3">
-      <header class="relative mb-8">
-        <h1 class="mb-2 text-4xl font-bold text-foreground lg:text-5xl">
-          {post.data.title}
-        </h1>
-        <Author
-          postedString={`${t("posted.on")} ${formatDate(post.data.date, lang)}`}
-        />
-        {
-          post.data.tags && (
-            <div class="mt-2">
-              {post.data.tags.map((tag: string) => (
-                <a href={`/${lang}/tags/${tag.toLowerCase()}`}>
-                  <SkillBadge
-                    skill={skillIconMap[tag as keyof typeof skillIconMap]}
-                  />
-                </a>
-              ))}
-            </div>
-          )
-        }
-      </header>
-      <div class="prose prose-lg relative">
-        <slot />
-      </div>
-    </article>
-    <aside class="hidden flex-shrink-0 lg:col-span-1 lg:block">
+    <div class="min-w-0 max-w-[68ch] flex-1">
+      <article>
+        <header class="relative mb-8">
+          <h1 class="mb-2 text-4xl font-bold text-foreground lg:text-5xl">
+            {post.data.title}
+          </h1>
+          <Author
+            postedString={`${t("posted.on")} ${formatDate(post.data.date, lang)}`}
+          />
+          {
+            post.data.tags && (
+              <div class="mt-2">
+                {post.data.tags.map((tag: string) => (
+                  <a href={`/${lang}/tags/${tag.toLowerCase()}`}>
+                    <SkillBadge
+                      skill={skillIconMap[tag as keyof typeof skillIconMap]}
+                    />
+                  </a>
+                ))}
+              </div>
+            )
+          }
+        </header>
+        <div class="prose prose-lg relative max-w-none">
+          <slot />
+        </div>
+      </article>
+    </div>
+    <aside class="hidden w-64 flex-shrink-0 lg:block">
       <div class="sticky top-8">
         <TableOfContent headings={headings} />
       </div>
