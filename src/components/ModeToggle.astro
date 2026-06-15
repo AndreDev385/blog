@@ -72,7 +72,6 @@ const t = useTranslations(lang);
     }
 
     function setCardHover(card) {
-      var m = card.getAttribute("data-mode");
       var cur = card.getAttribute("aria-checked") === "true";
       if (!cur) {
         card.style.background = COLORS.inactiveBgHover;

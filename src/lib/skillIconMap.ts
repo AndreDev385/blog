@@ -4,6 +4,7 @@ export type Skill = {
 };
 
 export const skillIconMap = {
+    linux: { name: "Linux", icon:"devicon:linux"},
 	// Languages
 	markdown: { name: "Markdown", icon: "devicon:markdown" },
 	javascript: { name: "JavaScript", icon: "devicon:javascript" },
@@ -29,11 +30,18 @@ export const skillIconMap = {
 	git: { name: "Git", icon: "devicon:git" },
 	postgresql: { name: "Postgresql", icon: "devicon:postgresql" },
 	apollo: { name: "Apollo-graphql", icon: "devicon:apollographql-wordmark" },
+  effect: { name: "Effect", icon: "simple-icons:effect"},
 	//
 	neovim: { name: "Neovim", icon: "devicon:neovim" },
 	//
 	ddd: { name: "DDD", icon: "mdi:layers" },
+  security: { name: "Security", icon: "mdi:security"},
 	// Infrastructure
 	docker: { name: "Docker", icon: "devicon:docker" },
 	aws: { name: "AWS", icon: "devicon:amazonwebservices-wordmark" },
+	// Additional
+	firebase: { name: "Firebase", icon: "devicon:firebase" },
+	express: { name: "Express", icon: "devicon:express" },
+	sequelize: { name: "Sequelize", icon: "devicon:sequelize" },
+	heroku: { name: "Heroku", icon: "devicon:heroku" },
 } as const;

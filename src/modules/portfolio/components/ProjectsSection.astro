@@ -8,7 +8,7 @@ const t = useTranslations(lang);
 
 // Get projects for the current language, sorted by order
 const allProjects = (await getCollection("projects"))
-  .filter((p) => p.slug.startsWith(`${lang}/`))
+  .filter((p) => p.id.startsWith(`${lang}/`))
   .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 ---
 

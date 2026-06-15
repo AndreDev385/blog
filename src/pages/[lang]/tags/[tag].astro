@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
   for (const post of blogPosts) {
     collectTags(tags, post.data.tags);
-    const lang = post.slug.split("/")[0];
+    const lang = post.id.split("/")[0];
     if (!langs.includes(lang as Lang)) {
       langs.push(lang as Lang);
     }
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
       return tags.map((tag) => {
         const posts = blogPosts.filter(
           (post) =>
-            post.data.tags.includes(tag) && post.slug.split("/")[0] === lang,
+            post.data.tags.includes(tag) && post.id.split("/")[0] === lang,
         );
 
         return {
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
       });
     }),
     ...langs.map((lang) => {
-      const posts = blogPosts.filter((p) => p.slug.split("/")[0] === lang);
+      const posts = blogPosts.filter((p) => p.id.split("/")[0] === lang);
       return {
         params: { tag: lang === "es" ? "todos" : "all", lang },
         props: { posts },

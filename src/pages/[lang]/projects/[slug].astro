@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import ProjectLayout from "@/modules/portfolio/components/ProjectLayout.astro";
 
 export const prerender = true;
@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   const projects = await getCollection("projects");
 
   return projects.map((project) => {
-    const [lang, ...slug] = project.slug.split("/");
+    const [lang, ...slug] = project.id.split("/");
 
     return {
       params: { lang, slug: slug.join("/") },
@@ -19,9 +19,9 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 
-const { Content, headings } = await project.render();
+const { Content } = await render(project);
 ---
 
-<ProjectLayout project={project} headings={headings}>
+<ProjectLayout project={project}>
   <Content />
 </ProjectLayout>

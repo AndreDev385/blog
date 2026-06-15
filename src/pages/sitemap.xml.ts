@@ -36,7 +36,7 @@ export const GET: APIRoute = async () => {
   blogPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   for (const post of blogPosts) {
-    const [lang, ...slugParts] = post.slug.split("/");
+    const [lang, ...slugParts] = post.id.split("/");
     const slug = slugParts.join("/");
     entries.push(`
   <url>
@@ -80,7 +80,7 @@ export const GET: APIRoute = async () => {
   // Project pages
   const projects = await getCollection("projects");
   for (const project of projects) {
-    const [lang, ...slugParts] = project.slug.split("/");
+    const [lang, ...slugParts] = project.id.split("/");
     const slug = slugParts.join("/");
     entries.push(`
   <url>

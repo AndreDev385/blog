@@ -6,16 +6,16 @@ Personal portfolio + blog for André Izarra. A service-selling site (software de
 
 ## Tech Stack
 
-| Concern | Choice |
-|---------|--------|
-| Framework | Astro 4 (`.astro`, some `.tsx` React islands) |
-| Styling | Tailwind CSS 3 via `@astrojs/tailwind` |
-| UI Library | Radix UI primitives (avatar, button, card, badge, tag) |
-| Icons | astro-icon (Iconify sets: devicon, logos, mdi, tabler) |
-| Content | Astro Content Collections (`blog`, `projects`) |
-| i18n | Custom: `src/i18n/ui.ts` (key-value maps) + `src/i18n/utils.ts` |
-| Deployment | Netlify SSR (`@astrojs/netlify`, `output: "server"`) |
-| Images | sirv.com CDN (external), `passthroughImageService` |
+| Concern    | Choice                                                          |
+|------------|-----------------------------------------------------------------|
+| Framework  | Astro 4 (`.astro`, some `.tsx` React islands)                   |
+| Styling    | Tailwind CSS 3 via `@astrojs/tailwind`                          |
+| UI Library | Radix UI primitives (avatar, button, card, badge, tag)          |
+| Icons      | astro-icon (Iconify sets: devicon, logos, mdi, tabler)          |
+| Content    | Astro Content Collections (`blog`, `projects`)                  |
+| i18n       | Custom: `src/i18n/ui.ts` (key-value maps) + `src/i18n/utils.ts` |
+| Deployment | Netlify SSR (`@astrojs/netlify`, `output: "server"`)            |
+| Images     | sirv.com CDN (external), `passthroughImageService`              |
 
 ## Project Map
 
