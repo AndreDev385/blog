@@ -100,7 +100,7 @@ export const ui = {
 		"experiences.time-tracker.company": "Time Tracker",
 		"experiences.time-tracker.location": "Caracas, Venezuela | Remote",
 		"experiences.time-tracker.startDate": "March 2025",
-		"experiences.time-tracker.endDate": "Present",
+		"experiences.time-tracker.endDate": "December 2025",
 		"experiences.time-tracker.description": [
 			"Time tracking desktop app with electron to track session and tasks time",
 			"I implemented a cron job to stop inactive sessions",
@@ -311,7 +311,7 @@ export const ui = {
 		"experiences.time-tracker.company": "Time Tracker",
 		"experiences.time-tracker.location": "Caracas, Venezuela | Remoto",
 		"experiences.time-tracker.startDate": "Marzo 2025",
-		"experiences.time-tracker.endDate": "Presente",
+		"experiences.time-tracker.endDate": "Diciembre 2025",
 		"experiences.time-tracker.description": [
 			"Desarrollé una desktop app en Electron para traquear el tiempo de la sesión de trabajo y las tareas del usuario",
 			"Implementé un cron job para pausar las sesiones que esten inactivas",
