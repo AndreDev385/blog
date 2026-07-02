@@ -17,7 +17,7 @@ export function Author({ postedString }: AuthorAvatarProps) {
         <AvatarFallback>AI</AvatarFallback>
       </Avatar>
       <div>
-        <p className="text-lg font-bold leading-none">André Izarra</p>
+        <p className="text-lg leading-none font-bold">André Izarra</p>
         <time className="text-muted-foreground">{postedString}</time>
       </div>
     </div>

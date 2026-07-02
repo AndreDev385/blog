@@ -7,7 +7,7 @@ Personal portfolio + blog for André Izarra. A service-selling site (software de
 ## Tech Stack
 
 | Concern    | Choice                                                          |
-|------------|-----------------------------------------------------------------|
+| ---------- | --------------------------------------------------------------- |
 | Framework  | Astro 4 (`.astro`, some `.tsx` React islands)                   |
 | Styling    | Tailwind CSS 3 via `@astrojs/tailwind`                          |
 | UI Library | Radix UI primitives (avatar, button, card, badge, tag)          |
@@ -52,24 +52,28 @@ src/
 ## Key Conventions
 
 ### i18n Routing
+
 - URL pattern: `/{lang}/...` where `lang` is `en` or `es`
 - `getLangFromUrl(Astro.url)` extracts the language from pathname
 - All UI strings live in `src/i18n/ui.ts` — two objects (`en`, `es`) with matching keys
 - Blog/project content lives in `src/content/{collection}/{lang}/` — slug prefix determines language
 
 ### Content Collections
+
 - **blog**: title, description (max 200 chars), date, tags (lowercase), image
 - **projects**: title, description, logo, link, order, benefits[], results[], beforeAfter[], techStack[]
 - Schemas in `src/content/config.ts` — validate at build time
 - Tags are lowercased automatically via `.toLowerCase()` in schema
 
 ### Styling
+
 - Tailwind CSS utility classes throughout
 - No styled-components or CSS modules
 - Custom markdown prose styles in `src/styles/markdown.css`
 - Animation: `ScrollReveal` component + `animate.css` classes
 
 ### Images
+
 - External CDN: `https://andre385.sirv.com/...`
 - Astro `<Image>` component for local assets (in `src/assets/`)
 - Regular `<img>` for external URLs
@@ -78,6 +82,7 @@ src/
 ## SEO Architecture
 
 ### Meta Tags — `src/layouts/Layout.astro`
+
 - `title`, `description`, `og:*`, `twitter:*`, `canonical` all dynamic
 - Props: `title?: string`, `description?: string`
 - Falls back to bilingual defaults (service-oriented) when not provided
@@ -85,22 +90,24 @@ src/
 
 ### JSON-LD Structured Data
 
-| Schema | File | Trigger |
-|--------|------|---------|
-| Person | `Layout.astro` | Every page (sameAs: GitHub, LinkedIn) |
-| WebSite | `Layout.astro` | Every page (includes SearchAction) |
-| BlogPosting | `PostLayout.astro` | Blog detail pages |
-| Product | `ProjectLayout.astro` | Project detail pages |
+| Schema      | File                  | Trigger                               |
+| ----------- | --------------------- | ------------------------------------- |
+| Person      | `Layout.astro`        | Every page (sameAs: GitHub, LinkedIn) |
+| WebSite     | `Layout.astro`        | Every page (includes SearchAction)    |
+| BlogPosting | `PostLayout.astro`    | Blog detail pages                     |
+| Product     | `ProjectLayout.astro` | Project detail pages                  |
 
 To add a new schema type, edit the respective layout file and extend the `<script type="application/ld+json">` block.
 
 ### Image Alt Text
+
 - **PostCard**: `alt={"Featured image for \"${post.data.title}\""}`
 - **Author avatar**: `"André Izarra, software developer and blogger"`
 - **AboutMe photo**: `"André Izarra, full-stack software developer with 4+ years of experience"`
 - **Blog markdown**: Every `![...]()` should have descriptive text (not just the tool name)
 
 ### Sitemap
+
 - **Dynamic endpoint**: `src/pages/sitemap.xml.ts`
 - Generates URLs for: home pages, all blog posts, all tag pages, all projects
 - Includes `lastmod`, `changefreq`, `priority`

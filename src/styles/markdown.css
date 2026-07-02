@@ -18,24 +18,24 @@
 
 /* ── Headings ── */
 .prose h1 {
-  @apply mb-4 mt-10 text-4xl font-bold;
+  @apply mt-10 mb-4 text-4xl font-bold;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 .prose h2 {
-  @apply mb-3 mt-8 text-3xl font-semibold;
+  @apply mt-8 mb-3 text-3xl font-semibold;
   line-height: 1.2;
   letter-spacing: -0.015em;
 }
 
 .prose h3 {
-  @apply mb-3 mt-6 text-2xl font-semibold;
+  @apply mt-6 mb-3 text-2xl font-semibold;
   line-height: 1.25;
 }
 
 .prose h4 {
-  @apply mb-2 mt-6 text-xl font-semibold;
+  @apply mt-6 mb-2 text-xl font-semibold;
   line-height: 1.3;
 }
 

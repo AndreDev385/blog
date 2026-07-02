@@ -4,13 +4,14 @@ description: "A DDoS attack took Bruschi Rentals offline for days: $520 in Twili
 date: 2026-06-12
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg
 tags:
-    - go
-    - security
+  - go
+  - security
 ---
 
 ![Cyber Security](https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg)
 
 # What I learned after suffering a DDoS
+
 A few months ago, while working on [Bruschi Rentals](https://bruschirentals.com/),
 the web portal suffered a `DDoS` attack that caused about $500 in
 Twilio charges, left the site offline for a few days, and made us lose customers.
@@ -55,8 +56,8 @@ was a big mistake not to give it the importance it deserved.
 On April 23 at 12:10 I received a message from a Bruschi Rentals
 staff member:
 
-— *"Something weird is happening on the dashboard. There are clients with fake
-or nonsense data. And there seem to be a lot of them."*
+— _"Something weird is happening on the dashboard. There are clients with fake
+or nonsense data. And there seem to be a lot of them."_
 
 I dropped what I was doing and logged into [Railway](https://railway.com/) to see what was going on. The number of errors
 was shocking: over **20,000 error logs** accumulated in a matter of
@@ -109,7 +110,7 @@ Before, upon registration, a user was automatically created in Auth0 with
 SMS connection, which allowed the attacker to request OTPs with no
 filtering. Now, registration only saves the client in the database and
 sends a verification email. Only after the client verifies
-their email —*proving they have a real email*— is the user created in
+their email —_proving they have a real email_— is the user created in
 Auth0. This way, an attacker would need a verifiable email for each fake
 account.
 

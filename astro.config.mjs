@@ -16,10 +16,7 @@ export default defineConfig({
     service: passthroughImageService(),
     domains: ["https://andre385.sirv.com"],
   },
-  integrations: [
-    react(),
-    icon(),
-  ],
+  integrations: [react(), icon()],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -12,7 +12,7 @@ import type { ImageMetadata } from "astro";
  * Add new imports here when adding testimonial photos.
  */
 const assetMap: Record<string, ImageMetadata> = {
-	"paulina.jpeg": paulina,
+  "paulina.jpeg": paulina,
 };
 
 /**
@@ -21,8 +21,8 @@ const assetMap: Record<string, ImageMetadata> = {
  * Falls back to the original path if no matching asset is found.
  */
 export function resolvePhoto(rawPath?: string): string | undefined {
-	if (!rawPath) return undefined;
-	const filename = rawPath.split("/").pop() || "";
-	const asset = assetMap[filename];
-	return asset?.src ?? rawPath;
+  if (!rawPath) return undefined;
+  const filename = rawPath.split("/").pop() || "";
+  const asset = assetMap[filename];
+  return asset?.src ?? rawPath;
 }

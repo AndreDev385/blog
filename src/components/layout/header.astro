@@ -32,7 +32,7 @@ const navItems = [
             <li>
               <a
                 href={item.href}
-                class="rounded px-4 py-2 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary"
+                class="hover:text-primary rounded px-4 py-2 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-100"
               >
                 {item.text}
               </a>
@@ -43,7 +43,7 @@ const navItems = [
           <div class="relative inline-block text-left">
             <details class="group [&_svg]:transition-transform">
               <summary
-                class="flex cursor-pointer items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                class="flex cursor-pointer items-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               >
                 {isSpanish ? "Español" : "English"}
                 <svg
@@ -61,7 +61,7 @@ const navItems = [
               </summary>
 
               <div
-                class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+                class="ring-opacity-5 absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black"
               >
                 <div class="py-1">
                   <a
@@ -153,7 +153,9 @@ const navItems = [
         ))
       }
       <li class="border-t border-gray-200 pt-2">
-        <span class="block px-4 pb-1 text-xs font-medium uppercase tracking-wider text-gray-400">
+        <span
+          class="block px-4 pb-1 text-xs font-medium tracking-wider text-gray-400 uppercase"
+        >
           {isSpanish ? "Idioma" : "Language"}
         </span>
         <a

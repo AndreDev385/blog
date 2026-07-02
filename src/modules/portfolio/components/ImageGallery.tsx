@@ -100,7 +100,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
           <button
             key={i}
             onClick={() => open(i)}
-            className="group relative overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            className="group relative overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-md focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:outline-none"
           >
             {/* Image */}
             <div className="aspect-video overflow-hidden bg-gray-50">
@@ -135,7 +135,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
       {isOpen && (
         <div
           ref={backdropRef}
-          className="fixed inset-0 z-50 flex animate-in fade-in duration-200 items-center justify-center bg-black/90 backdrop-blur-sm"
+          className="animate-in fade-in fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm duration-200"
           onClick={(e) => {
             if (e.target === backdropRef.current) close();
           }}
@@ -146,14 +146,14 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
           {/* ── Close button ── */}
           <button
             onClick={close}
-            className="absolute right-4 top-4 z-10 flex size-10 items-center justify-center rounded-full bg-white/10 text-white/60 transition-colors duration-200 hover:bg-white/20 hover:text-white"
+            className="absolute top-4 right-4 z-10 flex size-10 items-center justify-center rounded-full bg-white/10 text-white/60 transition-colors duration-200 hover:bg-white/20 hover:text-white"
             aria-label="Close gallery"
           >
             <X className="size-5" />
           </button>
 
           {/* ── Counter ── */}
-          <div className="absolute left-4 top-4 z-10 select-none rounded-full bg-white/10 px-3 py-1 text-xs text-white/60">
+          <div className="absolute top-4 left-4 z-10 rounded-full bg-white/10 px-3 py-1 text-xs text-white/60 select-none">
             {currentIndex + 1} / {images.length}
           </div>
 
@@ -161,7 +161,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
           {currentIndex > 0 && (
             <button
               onClick={goPrev}
-              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white/60 transition-all duration-200 hover:bg-white/20 hover:text-white md:left-4"
+              className="absolute top-1/2 left-2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white/60 transition-all duration-200 hover:bg-white/20 hover:text-white md:left-4"
               aria-label="Previous image"
             >
               <ChevronLeft className="size-6" />
@@ -172,7 +172,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
           {currentIndex < images.length - 1 && (
             <button
               onClick={goNext}
-              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white/60 transition-all duration-200 hover:bg-white/20 hover:text-white md:right-4"
+              className="absolute top-1/2 right-2 z-10 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white/60 transition-all duration-200 hover:bg-white/20 hover:text-white md:right-4"
               aria-label="Next image"
             >
               <ChevronRight className="size-6" />
@@ -185,11 +185,11 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
               key={currentIndex}
               src={images[currentIndex].src}
               alt={images[currentIndex].alt}
-              className="max-h-[80vh] w-auto max-w-full animate-in fade-in zoom-in-95 duration-300 rounded-lg object-contain shadow-2xl"
+              className="animate-in fade-in zoom-in-95 max-h-[80vh] w-auto max-w-full rounded-lg object-contain shadow-2xl duration-300"
             />
 
             {images[currentIndex].caption && (
-              <span className="mt-4 animate-in fade-in slide-in-from-bottom-2 duration-300 text-sm text-white/60">
+              <span className="animate-in fade-in slide-in-from-bottom-2 mt-4 text-sm text-white/60 duration-300">
                 {images[currentIndex].caption}
               </span>
             )}
