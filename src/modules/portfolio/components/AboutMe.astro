@@ -54,7 +54,7 @@ const interests = [
   {/* Background Decorative Elements */}
   <div class="absolute inset-0 overflow-hidden">
     <div
-      class="absolute right-1/4 top-1/4 h-72 w-72 rounded-full bg-gradient-to-r from-blue-400/10 to-purple-400/10 blur-3xl"
+      class="absolute top-1/4 right-1/4 h-72 w-72 rounded-full bg-gradient-to-r from-blue-400/10 to-purple-400/10 blur-3xl"
     >
     </div>
     <div
@@ -178,7 +178,11 @@ const interests = [
       <div class="grid grid-cols-2 gap-6 md:grid-cols-3">
         {
           interests.map((interest, index) => (
-            <div data-reveal style={`transition-delay: ${index * 100}ms`} class="group relative transform overflow-hidden rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+            <div
+              data-reveal
+              style={`transition-delay: ${index * 100}ms`}
+              class="group relative transform overflow-hidden rounded-xl bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+            >
               <div
                 class={`absolute inset-0 bg-gradient-to-r ${interest.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
               />

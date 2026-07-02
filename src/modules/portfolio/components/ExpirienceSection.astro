@@ -178,11 +178,13 @@ type ExperienceCardProps = {
         </p>
       </div>
       <div class="space-y-8">
-        {experiences.map((experience, index) => (
-          <div data-reveal style={`transition-delay: ${index * 100}ms`}>
-            <ExperienceCard {...experience} />
-          </div>
-        ))}
+        {
+          experiences.map((experience, index) => (
+            <div data-reveal style={`transition-delay: ${index * 100}ms`}>
+              <ExperienceCard {...experience} />
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>

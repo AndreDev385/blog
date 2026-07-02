@@ -104,7 +104,7 @@ const navItems = [{ href: "/", text: "Inicio" }];
         navItems.map((item) => (
           <a
             href={item.href}
-            class="rounded px-2 py-1 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-200 hover:text-primary"
+            class="hover:text-primary rounded px-2 py-1 text-lg font-bold text-gray-700 transition-colors hover:bg-gray-200"
           >
             {item.text}
           </a>
@@ -340,7 +340,7 @@ Crearemos una plantilla para cada post con sus estilos y estructura propios
 
 ```css
 .prose {
-  @apply break-words leading-normal text-gray-900;
+  @apply leading-normal break-words text-gray-900;
 }
 
 .prose p {
@@ -348,19 +348,19 @@ Crearemos una plantilla para cada post con sus estilos y estructura propios
 }
 
 .prose h1 {
-  @apply mb-4 mt-6 text-4xl font-bold;
+  @apply mt-6 mb-4 text-4xl font-bold;
 }
 
 .prose h2 {
-  @apply mb-4 mt-6 text-3xl font-bold;
+  @apply mt-6 mb-4 text-3xl font-bold;
 }
 
 .prose h3 {
-  @apply mb-4 mt-6 text-2xl font-bold;
+  @apply mt-6 mb-4 text-2xl font-bold;
 }
 
 .prose h4 {
-  @apply mb-4 mt-6 text-xl font-bold;
+  @apply mt-6 mb-4 text-xl font-bold;
 }
 
 .prose ul,
@@ -418,7 +418,7 @@ const { post } = Astro.props;
     <div class="my-16 lg:flex lg:gap-8">
       <article class="mx-auto w-full lg:mx-0">
         <header class="relative mb-8">
-          <h1 class="mb-2 text-4xl font-bold text-foreground lg:text-5xl">
+          <h1 class="text-foreground mb-2 text-4xl font-bold lg:text-5xl">
             {post.data.title}
           </h1>
         </header>

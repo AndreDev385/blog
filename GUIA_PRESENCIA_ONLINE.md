@@ -26,9 +26,10 @@
 Ya tienes **4+ años de experiencia**, un **stack tecnológico sólido** (Go, React, TypeScript, Node, Postgres, Astro…), y **resultados reales en proyectos** (mejora de rendimiento del 54%, apps publicadas en tiendas, integraciones de pagos). El problema no son tus habilidades — es la **visibilidad**.
 
 **La matemática de la presencia online:**
+
 > Tu portafolio × Tu visibilidad = Tus oportunidades
 
-Incluso un portafolio perfecto no sirve de nada si nadie lo ve. Y unas habilidades increíbles no se venden si nadie entiende el *valor* que aportas.
+Incluso un portafolio perfecto no sirve de nada si nadie lo ve. Y unas habilidades increíbles no se venden si nadie entiende el _valor_ que aportas.
 
 Esta guía está organizada por niveles: empieza por arriba y avanza con tus 3-5 hrs/semana.
 
@@ -40,11 +41,11 @@ Esta guía está organizada por niveles: empieza por arriba y avanza con tus 3-5
 
 Con 3-5 hrs/semana, **enfócate solo en 2 plataformas**. Más te dispersa.
 
-| Plataforma | Prioridad | Por qué |
-|------------|-----------|---------|
-| **LinkedIn** | ⭐ #1 | Donde los reclutadores y clientes buscan desarrolladores. Tu cuartel general profesional. |
-| **GitHub** | ⭐ #2 | Tu código habla por ti. El perfil = currículum vivo. |
-| X/Twitter | Opcional | Buena para hacer networking pero consume tiempo. Agrégala en el mes 2 si te sobra tiempo. |
+| Plataforma   | Prioridad | Por qué                                                                                   |
+| ------------ | --------- | ----------------------------------------------------------------------------------------- |
+| **LinkedIn** | ⭐ #1     | Donde los reclutadores y clientes buscan desarrolladores. Tu cuartel general profesional. |
+| **GitHub**   | ⭐ #2     | Tu código habla por ti. El perfil = currículum vivo.                                      |
+| X/Twitter    | Opcional  | Buena para hacer networking pero consume tiempo. Agrégala en el mes 2 si te sobra tiempo. |
 
 ### 2.2 LinkedIn — Tu Centro Profesional
 
@@ -52,8 +53,8 @@ Con 3-5 hrs/semana, **enfócate solo en 2 plataformas**. Más te dispersa.
 
 **Título** — No pongas solo "Desarrollador de Software". Deja claro a quién ayudas:
 
-> ❌ *Desarrollador de Software*
-> ✅ *Desarrollador Full Stack | React, TypeScript, Go, Node.js | Construyo apps web rápidas y confiables que resuelven problemas reales*
+> ❌ _Desarrollador de Software_
+> ✅ _Desarrollador Full Stack | React, TypeScript, Go, Node.js | Construyo apps web rápidas y confiables que resuelven problemas reales_
 
 **Sección "Acerca de"** — Estructúrala como un mini discurso de venta:
 
@@ -72,11 +73,13 @@ Con 3-5 hrs/semana, **enfócate solo en 2 plataformas**. Más te dispersa.
 ```
 
 **Sección Destacada** — Ancla estos 3 elementos:
+
 1. Tu sitio de portafolio
 2. Tu mejor artículo del blog
 3. Un proyecto notable (Bruschi Rentals o el caso de rendimiento de OnTheCourt)
 
 **Sección de Experiencia** — Para cada rol:
+
 - Escribe **logros**, no responsabilidades
 - Usa los resultados que ya tienes en tus archivos de i18n (¡ya están orientados a resultados!)
 - Agrega medios: capturas de pantalla, enlaces a proyectos en vivo
@@ -85,21 +88,22 @@ Con 3-5 hrs/semana, **enfócate solo en 2 plataformas**. Más te dispersa.
 
 No necesitas publicar a diario. Calidad > cantidad.
 
-| Semana | Publicaciones | Tiempo |
-|--------|---------------|--------|
-| Semana 1 | Configurar perfil | 2 hrs |
-| Semana 2+ | **1 post/semana** + 15 min de comentarios | 1 hr |
-| Mes 2+ | **2 posts/semana** + 15 min comentarios + 1 DM | 1.5 hrs |
+| Semana    | Publicaciones                                  | Tiempo  |
+| --------- | ---------------------------------------------- | ------- |
+| Semana 1  | Configurar perfil                              | 2 hrs   |
+| Semana 2+ | **1 post/semana** + 15 min de comentarios      | 1 hr    |
+| Mes 2+    | **2 posts/semana** + 15 min comentarios + 1 DM | 1.5 hrs |
 
 **Qué publicar** (rota estos temas):
 
 1. **Logros de proyectos** — "Acabo de lanzar la funcionalidad X que mejoró Y en un Z%" (captura o video Loom)
 2. **Cross-post del blog** — Resume tu último artículo con un enlace
-3. **Algo que aprendiste** — "Hoy descubrí cómo hacer ___ en Go/React/..." (corto, valioso)
+3. **Algo que aprendiste** — "Hoy descubrí cómo hacer \_\_\_ en Go/React/..." (corto, valioso)
 4. **Opinión técnica** — Tu perspectiva sobre una tendencia tecnológica (genera engagement)
 5. **Detrás del código** — Historia de debugging, decisión de arquitectura, antes/después de un refactor
 
 **Formato de post que funciona:**
+
 ```
 [Gancho — 1 línea que atrapa la atención]
 
@@ -109,11 +113,13 @@ No necesitas publicar a diario. Calidad > cantidad.
 ```
 
 **Ejemplo:**
+
 > Reduje el tiempo de carga de mi página en un 54% — así lo hice 👇
 >
 > Heredé un SPA en React que puntuaba 35 en Lighthouse móvil. Los usuarios abandonaban.
 >
 > Lo que hice:
+>
 > 1. Migré de SPA a MPA (arquitectura multi-página)
 > 2. Cargué rutas y componentes de forma diferida (lazy loading)
 > 3. Convertí imágenes a WebP con límites de tamaño
@@ -140,6 +146,7 @@ No necesitas publicar a diario. Calidad > cantidad.
 ```
 
 **Fija tus mejores repos** (top 6):
+
 1. **Tu portafolio** (este repo del blog)
 2. OnTheCourt (si es público)
 3. GameMind (si es público)
@@ -168,6 +175,7 @@ Tu sitio ya es **hermoso y funcional**. Aquí te digo cómo hacer que te venda m
 #### ✅ A. Página "Contrátame / Contacto"
 
 Crea una página dedicada con:
+
 - Un **llamado a la acción claro** (qué tipo de proyectos tomas)
 - Un **formulario de contacto** o email/WhatsApp visibles
 - **Qué pasa después** ("Respondo en máximo 24 horas")
@@ -197,6 +205,7 @@ Lo Que Puedo Hacer Por Ti
 Pide a clientes o empleadores anteriores 2-3 frases de recomendación. Incluso 2-3 testimonios aumentan la confianza enormemente.
 
 **Plantilla para pedirlos:**
+
 > "Hola [Nombre], estoy actualizando mi portafolio. ¿Te importaría escribir 2 o 3 frases sobre cómo fue trabajar conmigo? Incluso un comentario rápido sobre los resultados del proyecto significaría mucho."
 
 #### ✅ D. Sección de Proyectos Personales / Open Source
@@ -205,30 +214,38 @@ Muestra tus proyectos por pasión y contribuciones open source. Esto te diferenc
 
 ### 3.2 Mejoras de SEO (Bajo Esfuerzo, Alto Impacto)
 
-| Tarea | Esfuerzo | Impacto |
-|-------|----------|---------|
-| Agregar meta descripciones a cada página | 30 min | Alto |
-| Agregar datos estructurados JSON-LD (Person + BlogPosting) | 1 hr | Alto |
-| Crear una página /es/proyectos con casos de estudio | 2 hrs | Alto |
-| Optimizar textos alternativos de imágenes | 20 min | Medio |
-| Enviar sitemap a Google Search Console | 15 min | Alto |
+| Tarea                                                      | Esfuerzo | Impacto |
+| ---------------------------------------------------------- | -------- | ------- |
+| Agregar meta descripciones a cada página                   | 30 min   | Alto    |
+| Agregar datos estructurados JSON-LD (Person + BlogPosting) | 1 hr     | Alto    |
+| Crear una página /es/proyectos con casos de estudio        | 2 hrs    | Alto    |
+| Optimizar textos alternativos de imágenes                  | 20 min   | Medio   |
+| Enviar sitemap a Google Search Console                     | 15 min   | Alto    |
 
 **Ganancia rápida de SEO — Agrega esto al `<head>`:**
 
 ```html
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "André Izarra",
-  "url": "https://tudominio.com",
-  "jobTitle": "Desarrollador Full Stack",
-  "knowsAbout": ["React", "TypeScript", "Go", "Node.js", "PostgreSQL", "Angular", "Astro"],
-  "sameAs": [
-    "https://www.linkedin.com/in/andr%C3%A9-izarra/",
-    "https://github.com/AndreDev385"
-  ]
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "André Izarra",
+    "url": "https://tudominio.com",
+    "jobTitle": "Desarrollador Full Stack",
+    "knowsAbout": [
+      "React",
+      "TypeScript",
+      "Go",
+      "Node.js",
+      "PostgreSQL",
+      "Angular",
+      "Astro"
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/andr%C3%A9-izarra/",
+      "https://github.com/AndreDev385"
+    ]
+  }
 </script>
 ```
 
@@ -247,6 +264,7 @@ Muestra tus proyectos por pasión y contribuciones open source. Esto te diferenc
 En lugar de solo listar proyectos, convierte tus mejores 2-3 proyectos en **casos de estudio**:
 
 **Estructura para cada uno:**
+
 ```
 ## Proyecto: [Nombre]
 
@@ -259,6 +277,7 @@ En lugar de solo listar proyectos, convierte tus mejores 2-3 proyectos en **caso
 ```
 
 Ya tienes material excelente para:
+
 - **OnTheCourt**: mejora de rendimiento del 54%
 - **Bruschi Rentals**: Go + WebSockets + sistema en tiempo real
 - **Eurocambios**: integraciones Stripe/PayPal + KYC
@@ -271,11 +290,11 @@ Ya tienes material excelente para:
 
 Tu blog debe rotar entre estos 3 ejes:
 
-| Pilar | Ejemplos | Por qué |
-|-------|----------|---------|
-| **🛠️ Inmersiones técnicas** | "Cómo reduje la carga de página un 54%", "Construyendo sistemas WebSocket en Go", "DDD en TypeScript" | Muestra expertise |
-| **🧠 Aprendizajes y reflexiones** | "Lo que 4 años de trabajo remoto me enseñaron", "Cómo estructuro proyectos en React" | Muestra madurez |
-| **⚡ Productividad dev** | "Mi setup de Neovim para desarrollo full stack", "Plugins esenciales que me ahorran horas" | Genera conexión y se comparte |
+| Pilar                             | Ejemplos                                                                                              | Por qué                       |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------- |
+| **🛠️ Inmersiones técnicas**       | "Cómo reduje la carga de página un 54%", "Construyendo sistemas WebSocket en Go", "DDD en TypeScript" | Muestra expertise             |
+| **🧠 Aprendizajes y reflexiones** | "Lo que 4 años de trabajo remoto me enseñaron", "Cómo estructuro proyectos en React"                  | Muestra madurez               |
+| **⚡ Productividad dev**          | "Mi setup de Neovim para desarrollo full stack", "Plugins esenciales que me ahorran horas"            | Genera conexión y se comparte |
 
 ### 4.2 Frecuencia de Publicación
 
@@ -283,14 +302,14 @@ Tu blog debe rotar entre estos 3 ejes:
 
 **Recomendado:** 1 artículo por semana
 
-| Actividad | Tiempo |
-|-----------|--------|
-| Elegir tema | 15 min |
-| Escribir 500-1000 palabras | 1-1.5 hrs |
-| Agregar fragmentos de código + imágenes | 30 min |
-| Revisar y publicar | 15 min |
-| Cross-post en LinkedIn | 10 min |
-| **Total** | ~2.5 hrs |
+| Actividad                               | Tiempo    |
+| --------------------------------------- | --------- |
+| Elegir tema                             | 15 min    |
+| Escribir 500-1000 palabras              | 1-1.5 hrs |
+| Agregar fragmentos de código + imágenes | 30 min    |
+| Revisar y publicar                      | 15 min    |
+| Cross-post en LinkedIn                  | 10 min    |
+| **Total**                               | ~2.5 hrs  |
 
 ### 4.3 Flujo de Cross-Posting
 
@@ -322,25 +341,26 @@ Un artículo del blog = múltiples piezas de contenido:
 
 ### 5.1 Rutina Semanal de Outreach (30 min/semana)
 
-| Actividad | Cómo | Tiempo |
-|-----------|------|--------|
-| **Interactúa con 3 posts al día** | Comenta con valor en posts de LinkedIn de tu red | 5 min/día |
-| **Envía 1 DM por semana** | Mensaje genuino a un reclutador, fundador o colega dev | 10 min |
-| **Postula a 1-2 trabajos** | Usa "Postulación rápida" de LinkedIn o portales | 15 min |
+| Actividad                         | Cómo                                                   | Tiempo    |
+| --------------------------------- | ------------------------------------------------------ | --------- |
+| **Interactúa con 3 posts al día** | Comenta con valor en posts de LinkedIn de tu red       | 5 min/día |
+| **Envía 1 DM por semana**         | Mensaje genuino a un reclutador, fundador o colega dev | 10 min    |
+| **Postula a 1-2 trabajos**        | Usa "Postulación rápida" de LinkedIn o portales        | 15 min    |
 
 **Plantilla para DM:**
+
 > "Hola [Nombre], me gustó mucho tu publicación sobre [tema]. He estado trabajando con [tecnología relacionada] y quería conectar — siempre es bueno hacer networking con gente de este rubro."
 
 ### 5.2 Dónde Encontrar Clientes y Trabajos
 
-| Plataforma | Tipo | Estrategia |
-|------------|------|------------|
-| **LinkedIn** | Ambos | Optimiza perfil + publica + interactúa |
-| **Upwork / Toptal** | Freelance | Crea perfil, postula a 5 proyectos/semana |
-| **We Work Remotely** | Trabajo remoto | Postula a roles relevantes |
-| **Hacker News "Who's Hiring"** | Ambos | Hilo mensual, responde con tu propuesta |
-| **Indie Hackers** | Freelance | Ayuda a founders, ofrece tus servicios |
-| **dev.to / Hashnode** | Visibilidad | Cross-post de tu blog, construye audiencia |
+| Plataforma                     | Tipo           | Estrategia                                 |
+| ------------------------------ | -------------- | ------------------------------------------ |
+| **LinkedIn**                   | Ambos          | Optimiza perfil + publica + interactúa     |
+| **Upwork / Toptal**            | Freelance      | Crea perfil, postula a 5 proyectos/semana  |
+| **We Work Remotely**           | Trabajo remoto | Postula a roles relevantes                 |
+| **Hacker News "Who's Hiring"** | Ambos          | Hilo mensual, responde con tu propuesta    |
+| **Indie Hackers**              | Freelance      | Ayuda a founders, ofrece tus servicios     |
+| **dev.to / Hashnode**          | Visibilidad    | Cross-post de tu blog, construye audiencia |
 
 ### 5.3 Cómo Crear tu "Imán de Oportunidades"
 
@@ -361,23 +381,23 @@ Así es como distribuyes tus 3-5 horas semanales para máximo impacto:
 
 ### Semana A (Semana de Artículo) — ~5 hrs
 
-| Día | Actividad | Tiempo |
-|-----|-----------|--------|
-| Lunes | Escribir artículo (borrador) | 1.5 hrs |
-| Miércoles | Editar + agregar código/imágenes + publicar | 1 hr |
-| Jueves | Crear post de LinkedIn a partir del artículo | 30 min |
-| Viernes | Interactuar en LinkedIn + 1 DM | 30 min |
-| Finde | Commit rápido en GitHub + ajuste de perfil | 30 min |
-| **Flex** | Postular a 1 trabajo / responder mensajes | 30 min |
+| Día       | Actividad                                    | Tiempo  |
+| --------- | -------------------------------------------- | ------- |
+| Lunes     | Escribir artículo (borrador)                 | 1.5 hrs |
+| Miércoles | Editar + agregar código/imágenes + publicar  | 1 hr    |
+| Jueves    | Crear post de LinkedIn a partir del artículo | 30 min  |
+| Viernes   | Interactuar en LinkedIn + 1 DM               | 30 min  |
+| Finde     | Commit rápido en GitHub + ajuste de perfil   | 30 min  |
+| **Flex**  | Postular a 1 trabajo / responder mensajes    | 30 min  |
 
 ### Semana B (Semana de Networking) — ~3 hrs
 
-| Día | Actividad | Tiempo |
-|-----|-----------|--------|
-| Lunes | Compartir un insight en LinkedIn | 30 min |
-| Miércoles | Interactuar en LinkedIn + comentar posts | 30 min |
-| Jueves | Mejorar el portafolio (una tarea pequeña) | 1 hr |
-| Viernes | Postular a trabajos + DM outreach | 1 hr |
+| Día       | Actividad                                 | Tiempo |
+| --------- | ----------------------------------------- | ------ |
+| Lunes     | Compartir un insight en LinkedIn          | 30 min |
+| Miércoles | Interactuar en LinkedIn + comentar posts  | 30 min |
+| Jueves    | Mejorar el portafolio (una tarea pequeña) | 1 hr   |
+| Viernes   | Postular a trabajos + DM outreach         | 1 hr   |
 
 ### Ciclo Mensual
 
@@ -436,28 +456,29 @@ Semana 4: Networking + mejora del portafolio
 
 ### Gratis (o de bajo costo)
 
-| Herramienta | Propósito |
-|-------------|-----------|
-| **Canva** | Crear banners para LinkedIn, imágenes para posts |
-| **Netlify Forms** | Formulario de contacto (sin backend necesario) |
-| **Google Search Console** | Monitoreo de SEO |
-| **Plausible / Fathom** | Analíticas respetuosas con la privacidad |
-| **Buttondown / Mailchimp** | Newsletter (plan gratuito) |
-| **Loom** | Grabar walkthroughs de código para LinkedIn |
-| **Carbon.sh** | Capturas hermosas de código para redes sociales |
-| **Snappify** | Presentaciones de código para LinkedIn |
+| Herramienta                | Propósito                                        |
+| -------------------------- | ------------------------------------------------ |
+| **Canva**                  | Crear banners para LinkedIn, imágenes para posts |
+| **Netlify Forms**          | Formulario de contacto (sin backend necesario)   |
+| **Google Search Console**  | Monitoreo de SEO                                 |
+| **Plausible / Fathom**     | Analíticas respetuosas con la privacidad         |
+| **Buttondown / Mailchimp** | Newsletter (plan gratuito)                       |
+| **Loom**                   | Grabar walkthroughs de código para LinkedIn      |
+| **Carbon.sh**              | Capturas hermosas de código para redes sociales  |
+| **Snappify**               | Presentaciones de código para LinkedIn           |
 
 ### Automatización
 
-| Herramienta | Propósito |
-|-------------|-----------|
-| **Buffer / Hootsuite** | Programar posts de LinkedIn (plan gratuito) |
-| **Zapier** | Auto-cross-post blog → LinkedIn |
-| **GitHub Actions** | Deploy automático al hacer push, ejecutar checks |
+| Herramienta            | Propósito                                        |
+| ---------------------- | ------------------------------------------------ |
+| **Buffer / Hootsuite** | Programar posts de LinkedIn (plan gratuito)      |
+| **Zapier**             | Auto-cross-post blog → LinkedIn                  |
+| **GitHub Actions**     | Deploy automático al hacer push, ejecutar checks |
 
 ### Banco de Ideas de Contenido
 
 Cuando te quedes sin ideas, elige de aquí:
+
 - [ ] "Cómo construí un sistema de notificaciones en tiempo real con Go + WebSockets"
 - [ ] "De SPA a MPA: cómo mejoré la velocidad de página en un 54%"
 - [ ] "Mi configuración de Neovim para desarrollo full stack en 2026"
@@ -476,6 +497,7 @@ Cuando te quedes sin ideas, elige de aquí:
 Ya tienes las **habilidades** y la **experiencia** — has entregado productos reales con resultados reales. Lo único que falta es **visibilidad sistemática**.
 
 Con 3-5 horas por semana, puedes:
+
 - ✅ Construir una presencia profesional en LinkedIn en 1 mes
 - ✅ Hacer crecer una audiencia para tu blog en 3 meses
 - ✅ Empezar a recibir oportunidades entrantes en 3-6 meses
@@ -486,4 +508,4 @@ Mucho éxito, André. ¡Tú puedes! 🚀
 
 ---
 
-*Generado como parte de tu proyecto de blog en `/home/andre/Documents/blog/GUIA_PRESENCIA_ONLINE.md`*
+_Generado como parte de tu proyecto de blog en `/home/andre/Documents/blog/GUIA_PRESENCIA_ONLINE.md`_

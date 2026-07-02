@@ -41,7 +41,7 @@ const { service, walkawayLabel } = Astro.props as {
     {/* Walkaway Benefits */}
     <div>
       <h4
-        class="mb-4 text-xs font-semibold uppercase tracking-widest text-gray-400"
+        class="mb-4 text-xs font-semibold tracking-widest text-gray-400 uppercase"
       >
         {walkawayLabel}
       </h4>
@@ -68,16 +68,19 @@ const { service, walkawayLabel } = Astro.props as {
     {/* Subtle gradient base */}
     <div
       class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5`}
-    />
+    >
+    </div>
 
     {/* Decorative blurred blobs */}
     <div class="absolute -inset-20">
       <div
         class={`absolute right-0 top-0 h-72 w-72 rounded-full bg-gradient-to-br ${service.gradient} opacity-15 blur-3xl`}
-      />
+      >
+      </div>
       <div
         class={`absolute bottom-0 left-0 h-56 w-56 rounded-full bg-gradient-to-tr ${service.gradient} opacity-10 blur-3xl`}
-      />
+      >
+      </div>
     </div>
 
     {/* Grid dots pattern */}
@@ -88,7 +91,8 @@ const { service, walkawayLabel } = Astro.props as {
           "radial-gradient(circle, currentColor 1px, transparent 1px)",
         backgroundSize: "24px 24px",
       }}
-    />
+    >
+    </div>
 
     {/* Centered SVG illustration */}
     {

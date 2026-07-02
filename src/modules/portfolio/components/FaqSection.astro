@@ -31,7 +31,9 @@ const chapter = {
 };
 ---
 
-<section class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 px-6 py-20 md:px-4 md:py-28">
+<section
+  class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 px-6 py-20 md:px-4 md:py-28"
+>
   <div class="mx-auto max-w-3xl">
     {/* ─── Section Header ─── */}
     <div class="mb-4" data-reveal>
@@ -40,7 +42,9 @@ const chapter = {
 
     {/* ─── Friendly Header + CTA ─── */}
     <div class="mb-14" data-reveal>
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div
+        class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+      >
         <div>
           <p class="text-lg text-gray-500">{t("faq.header1")}</p>
           <p class="text-xl font-semibold text-gray-800">
@@ -65,9 +69,7 @@ const chapter = {
             class="group py-5 transition-all duration-200"
             style={`transition-delay: ${index * 80}ms`}
           >
-            <summary
-              class="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-gray-800 transition-colors duration-200 hover:text-blue-700 [&::-webkit-details-marker]:hidden"
-            >
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-gray-800 transition-colors duration-200 hover:text-blue-700 [&::-webkit-details-marker]:hidden">
               <span class="text-base leading-snug md:text-lg">
                 {item.question}
               </span>
@@ -77,9 +79,7 @@ const chapter = {
               />
             </summary>
 
-            <div
-              class="pt-4 leading-relaxed text-gray-600 transition-all duration-300"
-            >
+            <div class="pt-4 leading-relaxed text-gray-600 transition-all duration-300">
               {item.answer}
             </div>
           </details>

@@ -9,7 +9,7 @@ const t = useTranslations(lang);
 <div class="flex flex-col items-center gap-3" data-mode-toggle>
   <!-- Label -->
   <p
-    class="text-[11px] font-medium tracking-[0.12em] uppercase text-gray-400/60"
+    class="text-[11px] font-medium tracking-[0.12em] text-gray-400/60 uppercase"
   >
     {t("mode.label")}
   </p>
@@ -17,7 +17,7 @@ const t = useTranslations(lang);
   <!-- Two option cards -->
   <div class="flex gap-3">
     <button
-      class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold cursor-pointer border-none transition-all duration-200 select-none"
+      class="inline-flex cursor-pointer items-center gap-2 rounded-xl border-none px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
       data-mode="freelance"
       aria-checked="true"
     >
@@ -26,7 +26,7 @@ const t = useTranslations(lang);
     </button>
 
     <button
-      class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold cursor-pointer border-none transition-all duration-200 select-none"
+      class="inline-flex cursor-pointer items-center gap-2 rounded-xl border-none px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
       data-mode="employee"
       aria-checked="false"
     >

@@ -18,27 +18,31 @@ const { post, headings } = Astro.props;
 
 <Layout title={post.data.title} description={post.data.description}>
   <!-- Structured Data: BlogPosting -->
-  <script type="application/ld+json" is:inline set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": post.data.title,
-    "description": post.data.description,
-    "datePublished": post.data.date.toISOString(),
-    "author": {
-      "@type": "Person",
-      "name": "André Izarra"
-    },
-    "image": post.data.image,
-    "keywords": post.data.tags?.join(", ") || ""
-  })} />
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.data.title,
+      description: post.data.description,
+      datePublished: post.data.date.toISOString(),
+      author: {
+        "@type": "Person",
+        name: "André Izarra",
+      },
+      image: post.data.image,
+      keywords: post.data.tags?.join(", ") || "",
+    })}
+  />
 
   <div
     class="mx-auto mt-4 flex max-w-6xl flex-col gap-8 px-6 md:px-4 lg:flex-row lg:justify-center lg:px-2"
   >
-    <div class="min-w-0 max-w-[68ch] flex-1">
+    <div class="max-w-[68ch] min-w-0 flex-1">
       <article>
         <header class="relative mb-8">
-          <h1 class="mb-2 text-4xl font-bold text-foreground lg:text-5xl">
+          <h1 class="text-foreground mb-2 text-4xl font-bold lg:text-5xl">
             {post.data.title}
           </h1>
           <Author

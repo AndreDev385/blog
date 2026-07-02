@@ -3,14 +3,15 @@ title: Leccion de seguridad tras sufrir un DDoS
 description: "Un ataque DDoS dejó Bruschi Rentals inoperativo por días: 520$ en Twilio, 900 usuarios falsos y una tarjeta bloqueada. Así fue como lo viví, lo resolví y lo que aprendí en el proceso."
 date: 2026-06-12
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg
-tags: 
-    - go
-    - security
+tags:
+  - go
+  - security
 ---
 
 ![Cyber Security](https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg)
 
 # Lo que aprendí tras sufrir un DDoS
+
 Hace unos meses, mientras trabajaba en [Bruschi Rentals](https://bruschirentals.com/)
 el portal web recibió un ataque `DDoS` que causó unas pérdidas de ~500$ en
 twilio, dejó el sitio in operativo por algunos días y nos hizo perder clientes.
@@ -55,11 +56,11 @@ una gran equivocación no darle la importancia que merecía.
 El 23 de abril a las 12:10 recibí un mensaje de un miembro del staff
 de Bruschi Rentals:
 
-— *\"Algo raro está pasando en el dashboard. Hay clientes con datos
-falsos o sin sentido. Y parecen ser muchos.\"*
+— _\"Algo raro está pasando en el dashboard. Hay clientes con datos
+falsos o sin sentido. Y parecen ser muchos.\"_
 
 Dejé lo que estaba haciendo y entré a [Railway](https://railway.com/) a ver qué sucedía. La cantidad de errores
- era impactante: más de **20.000 logs** de error acumulados en cuestión de
+era impactante: más de **20.000 logs** de error acumulados en cuestión de
 minutos. Recuerdo que me asusté. En ese momento se me vino a la mente:
 nos tienen que haber atacado. Eran demasiadas requests en muy poco tiempo
 para un sitio con tan pocos usuarios.
@@ -109,7 +110,7 @@ Antes, al registrarse, se creaba automáticamente un usuario en Auth0 con
 conexión SMS, lo que permitía al atacante solicitar OTPs sin ningún
 filtro. Ahora, el registro solo guarda al cliente en la base de datos y
 envía un correo de verificación. Solo después de que el cliente verifica
-su correo —*demostrando que tiene un correo real*— se crea el usuario en
+su correo —_demostrando que tiene un correo real_— se crea el usuario en
 Auth0. Así, un atacante necesitaría un correo verificable para cada cuenta
 falsa.
 
@@ -128,7 +129,7 @@ registro ni sobrecargar el servidor.
 
 ### Detección de bots
 
-Además de [Turnstile](https://www.cloudflare.com/products/turnstile/) de 
+Además de [Turnstile](https://www.cloudflare.com/products/turnstile/) de
 Cloudflare, agregué un campo `honeypot` oculto en el formulario de registro.
 Los bots suelen llenar todos los campos que ven, así que si ese campo tiene
 contenido, el backend rechaza la solicitud automáticamente. Turnstile
