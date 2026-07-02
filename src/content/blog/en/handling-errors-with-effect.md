@@ -1,7 +1,7 @@
 ---
 title: Handling errors with Effect
 description: "Effect is, in my opinion, the best way to make your TypeScript codebase have robust and reliable error handling."
-date: 2026-06-15
+date: 2026-07-02
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/effect.jpg
 tags:
   - typescript
