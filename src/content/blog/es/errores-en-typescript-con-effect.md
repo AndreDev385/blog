@@ -1,7 +1,7 @@
 ---
 title: Manejando errores con Effect
 description: "Effect es, en mi opinión, la mejor forma de lograr que tu codebase en TypeScript tenga un manejo de errores robusto y confiable."
-date: 2026-06-15
+date: 2026-07-02
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/effect.jpg
 tags:
   - typescript
