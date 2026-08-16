@@ -12,13 +12,13 @@ tags:
 
 # Entidades
 
-En mi último post hablé sobre los [Value Objects]() y como nos ayudan a modelar nuestro dominio, evitar el code smell primitive obsession y validar que nuestros data structures siempre tengan un valor válido. En esta ocasión hablaremos sobre las `Entidades`, como se diferencian de los `Value Objects` y que aportan a nuestro código.
+En mi último post hablé sobre los [Value Objects](/es/blog/value-objects) y cómo nos ayudan a modelar nuestro dominio, evitar el code smell primitive obsession y validar que nuestras estructuras de datos siempre tengan un valor válido. En esta ocasión hablaremos sobre las `Entidades`, cómo se diferencian de los `Value Objects` y qué aportan a nuestro código.
 
-## Qué son las Entidades?
+## ¿Qué son las Entidades?
 
-En DDD las entidades son introducidas de la siguiente manera "Muchos objetos no se definen fundamentalmente por sus atributos, sino mas bien por un hilo de continuidad e identidad". Las entidades se identifican a través de un valor único que no cambiará durante todo su ciclo de vida, incluso si sus atributos cambian se da por entendido que sigue siendo la misma entidad.
+En DDD las entidades son introducidas de la siguiente manera "Muchos objetos no se definen fundamentalmente por sus atributos, sino más bien por un hilo de continuidad e identidad". Las entidades se identifican a través de un valor único que no cambiará durante todo su ciclo de vida, incluso si sus atributos cambian se da por entendido que sigue siendo la misma entidad.
 
-Algunos de ejemplos de entidades pueden ser
+Algunos ejemplos de entidades pueden ser:
 
 - Una **persona** identificada a través de su DNI o pasaporte
 - Una **factura** identificada a través de un ID
@@ -38,7 +38,7 @@ La comparación entre entidades se hace a través de sus **identificadores** mie
 
 Las entidades son **mutables** en cambio los VO son **inmutables**, diferentes valores en sus atributos representan algo totalmente diferente, mientras que dos entidades con diferentes atributos pero el mismo identificador, representan lo mismo pero con un estado diferente el cual puede ir cambiando dependiendo del valor de dichos atributos.
 
-Debido a que una misma entidad puede tener diferentes atributos estas cuentan con un **ciclo de vida** que representan todos los estados posibles por los que puede pasar un dicha entidad en los casos de uso de nuestro código.
+Debido a que una misma entidad puede tener diferentes atributos estas cuentan con un **ciclo de vida** que representa todos los estados posibles por los que puede pasar dicha entidad en los casos de uso de nuestro código.
 
 ## Cómo implementar una Entidad
 
@@ -120,14 +120,14 @@ class Order {
 
   public send(): void {
     if (this.status !== OrderStatus.PAID) {
-      throw new Error("Solo se pueden enviar ordenes pagadas");
+      throw new Error("Solo se pueden enviar órdenes pagadas");
     }
     this.status = OrderStatus.SHIPPED;
   }
 
-  public envoy(): void {
+  public deliver(): void {
     if (this.status !== OrderStatus.SHIPPED) {
-      throw new Error("Solo se pueden entregar ordenes enviadas");
+      throw new Error("Solo se pueden entregar órdenes enviadas");
     }
     this.status = OrderStatus.DELIVERED;
   }
@@ -169,7 +169,7 @@ El constructor es privado y utilizamos un método estático `create()` para inst
 
 ### Encapsulamiento de Estado
 
-Todos los atributos son privados y solo se pueden modificar a través de métodos específicos que representan acciones del dominio como `marcarComoPagada()`, `enviar()`, `cancelar()`, etc.
+Todos los atributos son privados y solo se pueden modificar a través de métodos específicos que representan acciones del dominio como `pay()`, `send()`, `deliver()`, `cancel()`.
 
 ### Validación de Transiciones de Estado
 
@@ -181,7 +181,7 @@ La comparación entre órdenes se hace exclusivamente a través del `OrderId`, n
 
 ## Usando Entidades en Casos de Uso
 
-Veamos como nuestra entidad `Order` se integra en un caso de uso real:
+Veamos cómo nuestra entidad `Order` se integra en un caso de uso real:
 
 ```ts
 class ProcessPaymentUseCase {

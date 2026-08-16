@@ -1,6 +1,6 @@
 ---
 title: Errores como valores en Typescript
-description: Aprende a como utilizar el sistema de tipado para mejorar la forma en que manejas los errores en tu código de Typescript
+description: Aprende a cómo utilizar el sistema de tipado para mejorar la forma en que manejas los errores en tu código de TypeScript
 date: 2024-10-23
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png
 tags:
@@ -8,7 +8,7 @@ tags:
 ---
 
 ![Logo de TypeScript - imagen destacada para errores como valores en TypeScript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
-Uno de los problemas más importantes con el que me encuentro en el ecosistema de JavaScript/TypeScript es el flujo oculto de los errores. Cuanto vas a invocar una función no hay forma de saber si esta function puede fallar y enviar un error mirando la firma de la función. Ir hasta la definición de la función no es exactamente la mejor idea. Si tu base de código es lo suficientemente grande, puedes tener muchas funciones que puedan fallar.
+Uno de los problemas más importantes con el que me encuentro en el ecosistema de JavaScript/TypeScript es el flujo oculto de los errores. Cuándo vas a invocar una función no hay forma de saber si esta función puede fallar y enviar un error mirando la firma de la función. Ir hasta la definición de la función no es exactamente la mejor idea. Si tu base de código es lo suficientemente grande, puedes tener muchas funciones que puedan fallar.
 
 Encuentro esa situación bastante problemática. Terminaremos con muchos casos no manejados apropiadamente y esos errores pueden permanecer ocultos hasta tiempo de ejecución, por supuesto, nadie quiere que errores inesperados aparezcan en producción.
 
@@ -23,37 +23,37 @@ async function getUser(id: number): Promise<User> {
 }
 ```
 
-En `frontend`, el `fetching` the datos is una tarea muy común donde pueden ocurrir muchos errores aunque no estés consiente de ello.
+En el `frontend`, el `fetching` de datos es una tarea muy común donde pueden ocurrir muchos errores aunque no estés consciente de ello.
 
-En este ejemplo, la función `fetch` puede puede resultar en un error por multiples razones, una de ellas es que el `string` no sea una URL válida.
+En este ejemplo, la función `fetch` puede resultar en un error por múltiples razones, una de ellas es que el `string` no sea una URL válida.
 
 `JSON.parse()` es usado en el método `.json()` y puede fallar si el argumento no es un objeto `JSON` válido.
 
-A su vez, el resultado de la función fetch es siempre desconocido, puede responde con un código `HTTP` 400 o 500, en tal caso el objeto que devuelve nuestra función no seria un objeto `User`
+A su vez, el resultado de la función fetch es siempre desconocido, puede responder con un código `HTTP` 400 o 500, en tal caso el objeto que devuelve nuestra función no sería un objeto `User`.
 
 Así que tenemos varios casos que manejar.
 
 ## Lidiando con errores
 
-Alguna vez te has encontrado pensando:
+¿Alguna vez te has encontrado pensando?
 
-- Dónde debería enviar un error para ser consumido por un bloque `try/catch`?
-- Debería el `try/catch` estar en la función que puede dar error? O en el código que invoca dicha función?
-- Dónde debería ser manejado el error?
+- ¿Dónde debería enviar un error para ser consumido por un bloque `try/catch`?
+- ¿Debería el `try/catch` estar en la función que puede dar error, o en el código que invoca dicha función?
+- ¿Dónde debería ser manejado el error?
 
-Muchas preguntas pueden aparecer cuando lidiamos con errores
+Muchas preguntas pueden aparecer cuando lidiamos con errores.
 
-Yo solía batallar con estos problemas in mi código sobretodo con:
+Yo solía batallar con estos problemas en mi código, sobre todo con:
 
 - Validaciones
 - Fetching de datos
 - Consultas a la base de datos
 
-Constantemente terminaba agregando muchos `try/catch` en mi código, sin estar del todo seguro de como manejar el error al invocar una función. Cuando decidía manejar cada uno de los posibles errores que podría ocurrir, pasé muchos por alto o me decía a mi mismo "Luego manejare ese caso" y por supuesto, no lo hacia. Luego estos errores aparecían en tiempo de ejecución haciéndome sentir inseguro sobre si mi código estaba libre de bugs y de si estaba manejando lo casos de error correctamente.
+Constantemente terminaba agregando muchos `try/catch` en mi código, sin estar del todo seguro de cómo manejar el error al invocar una función. Cuando decidía manejar cada uno de los posibles errores que podrían ocurrir, pasé muchos por alto o me decía a mí mismo "Luego manejaré ese caso" y, por supuesto, no lo hacía. Luego estos errores aparecían en tiempo de ejecución haciéndome sentir inseguro sobre si mi código estaba libre de bugs y de si estaba manejando los casos de error correctamente.
 
-## Cómo manejan los errores otros lenguajes?
+## ¿Cómo manejan los errores otros lenguajes?
 
-Durant el año pasado, he estado muy interesado en [Rust](https://www.rust-lang.org/) y he aprendido un poco a cerca del lenguaje, pienso que un lenguaje interesante y con una manera muy diferente (al menos para mi) de lidiar con cosas como seguridad, rendimiento y manejo de memoria.
+Durante el año pasado, he estado muy interesado en [Rust](https://www.rust-lang.org/) y he aprendido un poco acerca del lenguaje. Pienso que es un lenguaje interesante, con una manera muy diferente (al menos para mí) de lidiar con cosas como seguridad, rendimiento y manejo de memoria.
 
 Descubrí que tiene un enfoque fascinante para lidiar con los errores. Hay un `Enum` llamado `Result` que contiene un valor `Ok` o un valor `Err`.
 
@@ -66,7 +66,7 @@ pub enum Result<T, E> {
 
 `Ok` Y `Err` a su vez son `Enums`, envolturas que tienen un valor de tipo `T` o `E` respectivamente.
 
-El compilador de Rust the obliga a manejar cada caso en el que puede ocurrir un error; cada función que puede falla devuelve un valor `Result` en vez de hacer un `throw` de algún error. El resultado de dicha función sera un `Ok(T)` o un `Err(E)` y el código que invoca a la función debe lidiar con ambos casos.
+El compilador de Rust te obliga a manejar cada caso en el que puede ocurrir un error; cada función que puede fallar devuelve un valor `Result` en vez de hacer un `throw` de algún error. El resultado de dicha función será un `Ok(T)` o un `Err(E)` y el código que invoca a la función debe lidiar con ambos casos.
 
 ```rust
 let number = match number_str.parse::<i32>() {
@@ -79,11 +79,11 @@ let number = match number_str.parse::<i32>() {
 
 Desde que aprendí algo de `Rust` decidí utilizar el mismo enfoque en mi código TypeScript. Creé una clase `Result` que puede ser usada para envolver un `Ok` o un `Error`, mejorando la seguridad y robustez de mi código.
 
-En este articulo de [Khalil Stemmler](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/handling-errors-result-class/) explica como puedes implementar esta clase `Result` en TypeScript.
+En este artículo de [Khalil Stemmler](https://khalilstemmler.com/articles/enterprise-typescript-nodejs/handling-errors-result-class/) se explica cómo puedes implementar esta clase `Result` en TypeScript.
 
 De esta manera los errores ahora son valores y son devueltos de la función en vez de ser arrojados al próximo `try/catch`.
 
-Mientras seguí aprendiendo sobre Rust, me di cuenta que tiene ciertas herramientas que te ayudan a lidiar con el manejo de errores de manera efectiva. El operador `?` puede ser usado para devolver de manera temprana un error de una función que sea compatible el tipo de error que puede devolver el código donde esta siendo usado el operador `?`. Este operador mejora enormemente la legibilidad, permitiéndote concentrarte más en la solución que quieres implementar y menos en lidiar con cada error aunque siguen siendo manejados, también disminuye la cantidad de repetición en el código
+Mientras seguí aprendiendo sobre Rust, me di cuenta de que tiene ciertas herramientas que te ayudan a lidiar con el manejo de errores de manera efectiva. El operador `?` puede ser usado para devolver de manera temprana un error de una función que sea compatible con el tipo de error que puede devolver el código donde está siendo usado el operador `?`. Este operador mejora enormemente la legibilidad, permitiéndote concentrarte más en la solución que quieres implementar y menos en lidiar con cada error —aunque siguen siendo manejados—. También disminuye la cantidad de repetición en el código.
 
 ```rust
 fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, ParseIntError> {
@@ -94,7 +94,7 @@ fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, Pars
 }
 ```
 
-En ésta función, usamos el operador `?` para devolver el error si el `string` no es una cadena que pueda ser convertida en un `integer` (número). Esto elimina lo repetitivo de manejar ambos casos y mejora la legibilidad
+En esta función, usamos el operador `?` para devolver el error si el `string` no es una cadena que pueda ser convertida en un `integer` (número). Esto elimina lo repetitivo de manejar ambos casos y mejora la legibilidad.
 
 Este resultado no es posible de conseguir utilizando la clase `Result` en TypeScript, haciendo que tengamos que manejar el error explícitamente con un `if` chequeando que el valor es un `Err`, como se hace en [Go](https://go.dev/)
 
@@ -125,9 +125,9 @@ func main() {
 
 ## Utilizando el sistema de tipado
 
-Ya que replicar el operador `?` no parece ser una buena opción en TypeScript. Utilizar el sistema de tipos a tu favor para manejar lo errores es mejor que utilizar un `wrapper` como `Result` o `Either` (de programación funcional). Este enfoque evita la necesidad de agregar este `wrapper` y lidiar de igual manera con los errores.
+Ya que replicar el operador `?` no parece ser una buena opción en TypeScript. Utilizar el sistema de tipos a tu favor para manejar los errores es mejor que utilizar un `wrapper` como `Result` o `Either` (de programación funcional). Este enfoque evita la necesidad de agregar este `wrapper` y lidiar de igual manera con los errores.
 
-TypeScript nos puede ayudar a crear un comportamiento similar al de `Result` solo creando un `union type` `Success | Error` en la firma de nuestra función
+TypeScript nos puede ayudar a crear un comportamiento similar al de `Result` solo creando un `union type` `Success | Error` en la firma de nuestra función.
 
 Ahora es posible para nosotros solo con mirar la firma de la función saber si esta puede fallar.
 
@@ -149,19 +149,19 @@ async function getUser(id: number): Promise<User | Error> {
 }
 ```
 
-Con esta nueva firma nuestra función devuelve el tipo `Promise<User | Error>` obligando a que el código que invoque la función maneje al caso de error.
+Con esta nueva firma nuestra función devuelve el tipo `Promise<User | Error>` obligando a que el código que invoque la función maneje el caso de error.
 
 En el `if` chequeamos que la respuesta sea un 200 OK, y si no, devolvemos un error.
 
-Con el `try/catch`, manejamos el caso de error que provenga de la función `fetch` o `.json()`. Si es importante diferenciar entre ambos errores siempre puedes agregar mas `try/catch` y devolver un error mas específico para cada caso.
+Con el `try/catch`, manejamos el caso de error que provenga de la función `fetch` o `.json()`. Si es importante diferenciar entre ambos errores siempre puedes agregar más `try/catch` y devolver un error más específico para cada caso.
 
-El código que llama a nuestra function se de la siguiente manera:
+El código que llama a nuestra función se ve de la siguiente manera:
 
 ```typescript
 const userOrError = await getUser(1);
 
 if (userOrError instanceof Error) {
-  // Se maneja el caso de error retornando el error un nivel mas arriba
+  // Se maneja el caso de error retornando el error un nivel más arriba
   return userOrError;
 }
 // Por debajo de este if `userOrError` es de tipo `User`
@@ -169,13 +169,13 @@ if (userOrError instanceof Error) {
 
 Cuando la promesa es resuelta obtenemos un valor de tipo `User | Error`, chequeamos si el valor es una instancia de `Error` con el operador `instanceof`
 
-Puedes devolver el error un nivel mas arriba o decidir manejarlo de otra manera, depende de ti y tu contexto específico.
+Puedes devolver el error un nivel más arriba o decidir manejarlo de otra manera, depende de ti y tu contexto específico.
 
 Después del `if` TypeScript se asegura de que la variable `userOrError` es de tipo `User`.
 
 ## Un caso personal
 
-En el siguiente ejemplo estoy definiendo una función que `mapea` un `string` en formato ISO `2024-10-23` a un objeto con año, mes y día llamado `DateValues`
+En el siguiente ejemplo estoy definiendo una función que `mapea` un `string` en formato ISO `2024-10-23` a un objeto con año, mes y día llamado `DateValues`.
 
 ```typescript
 export function mapISODateToDateValues(date: ISODate): DateValues {
@@ -184,17 +184,17 @@ export function mapISODateToDateValues(date: ISODate): DateValues {
 }
 ```
 
-`splitByDash` es una función que se explica así misma, divide nuestro `string` por los `-` en un `array` de `strings`, Luego hago un `map` sobre ese `array` transformando los `string` en `number` y accedo a las posiciones 0, 1 y 2 las cuales devuelvo en un objeto con el forma que quiero.
+`splitByDash` es una función que se explica por sí misma: divide nuestro `string` por los `-` en un `array` de `strings`. Luego hago un `map` sobre ese `array` transformando los `string` en `number`, y accedo a las posiciones 0, 1 y 2, las cuales devuelvo en un objeto con la forma que quiero.
 
 Aún cuando esta función es bastante simple, tiene varios casos y posibles errores que deben ser considerados.
 
-El `type alias` `ISODate` es al final un `string`, que puede llegar a ser diferente de lo que espero; si ese es el caso, las posiciones in el array pueden ser incorrectas, dejando nuestro objeto en un estado inválido.
+El `type alias` `ISODate` es al final un `string`, que puede llegar a ser diferente de lo que espero; si ese es el caso, las posiciones en el array pueden ser incorrectas, dejando nuestro objeto en un estado inválido.
 
-Luego de separar los valores del `string` en un `array` son transformados a números, pero podemos conseguirnos con el caso de que no puedas ser transformados correctamente, lo que nos dejaría con `NaN`.
+Luego de separar los valores del `string` en un `array` son transformados a números, pero podemos encontrarnos con el caso de que no puedan ser transformados correctamente, lo que nos dejaría con `NaN`.
 
-Esperamos que el `string` encaje con el formato `yyyy/MM/dd` pero incluso si lo hace los valores puedes ser incorrectos, que pasa si el mes tiene un valor de `13` o el día `32`. Debemos asegurarnos de que los valores sean válidos
+Esperamos que el `string` encaje con el formato `YYYY-MM-DD` pero incluso si lo hace los valores pueden ser incorrectos. ¿Qué pasa si el mes tiene un valor de `13` o el día `32`? Debemos asegurarnos de que los valores sean válidos.
 
-Así que debemos asegurarnos que nuestro objeto `DateValues` siempre tenga un estado valido. Para lograrlo, tenemos que agregar ciertas validaciones y cambiar la firma de nuestra función a `DateValues | Error`.
+Así que debemos asegurarnos que nuestro objeto `DateValues` siempre tenga un estado válido. Para lograrlo, tenemos que agregar ciertas validaciones y cambiar la firma de nuestra función a `DateValues | Error`.
 
 ```typescript
 export function mapISODateToDateValues(date: ISODate): Error | DateValues {
@@ -214,11 +214,11 @@ export function mapISODateToDateValues(date: ISODate): Error | DateValues {
 }
 ```
 
-La implementación de las validaciones esta fuera del tema de éste articulo, son simples funciones que devuelven si el argumento cumple con los criterios.
+La implementación de las validaciones está fuera del tema de este artículo: son simples funciones que devuelven si el argumento cumple con los criterios.
 
-En esta nueva version nuestra función se asegura de que los valores cumplen requisitos para nuestro propósito, si alguna falla, devolvemos un `Error` con un mensaje.
+En esta nueva versión, nuestra función se asegura de que los valores cumplen los requisitos para nuestro propósito. Si alguna falla, devolvemos un `Error` con un mensaje.
 
-Si todas las validaciones pasan devolvemos un objeto `DateValues`. Podemos esta seguro de que siempre estará en un estado válido.
+Si todas las validaciones pasan devolvemos un objeto `DateValues`. Podemos estar seguros de que siempre estará en un estado válido.
 
 El llamado a nuestra función se puede ver de esta manera:
 
@@ -232,12 +232,12 @@ if (dateValuesResult instanceof Error) return dateValuesResult; // Return one le
 
 Utilizar el sistema de tipos con estas implementaciones nos asegura:
 
-- Nuestros errores serán manejado en cada función que devuelva un union
-- Nuestro código es mas seguro, robusto y manejara mas casos extremos.
-- No tendremos flujos escondidos de errores
+- Nuestros errores serán manejados en cada función que devuelva una unión
+- Nuestro código es más seguro, robusto y manejará más casos extremos.
+- No tendremos flujos ocultos de errores.
 
 Debemos considerar casos como paquetes de terceros o funciones `built-in` que pueden fallar. Solucionar esto es cuestión de escribir un `wrapper` sobre dicha función.
 
-La seguridad de este enfoque se basa en que los principios sea respetados en todo el `codbase`, atrapar los errores en donde pueden ocurrir y asegurarnos de que la firma de nuestras funciones reflejen la posibilidad de que los errores ocurran.
+La seguridad de este enfoque se basa en que los principios sean respetados en todo el `codebase`: atrapar los errores en donde pueden ocurrir y asegurarnos de que la firma de nuestras funciones refleje la posibilidad de que los errores ocurran.
 
-Espero que este articulo haya sido de ayuda para ti, te agradezco si leíste hasta aquí y espero que este enfoque te ayude a mejorar tu código
+Espero que este artículo haya sido de ayuda para ti, te agradezco si leíste hasta aquí y espero que este enfoque te ayude a mejorar tu código.

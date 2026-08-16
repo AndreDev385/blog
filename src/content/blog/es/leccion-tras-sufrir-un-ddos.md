@@ -14,41 +14,41 @@ tags:
 
 Hace unos meses, mientras trabajaba en [Bruschi Rentals](https://bruschirentals.com/)
 el portal web recibió un ataque `DDoS` que causó unas pérdidas de ~500$ en
-twilio, dejó el sitio in operativo por algunos días y nos hizo perder clientes.
+Twilio, dejó el sitio inoperativo por algunos días y nos hizo perder clientes.
 Si no quieres que te pase lo que a mí, descubre conmigo qué sucedió y cómo puedes
 evitarlo.
 
 ## La vulnerabilidad
 
 El sitio web de [Bruschi Rentals](https://bruschirentals.com/) contaba con dos
-casos de uso para autentificación
+casos de uso para autenticación
 
 El registro solicita las preferencias del usuario para su mudanza, teléfono y
-correo (opcional). Solo se verificaba que el numero de teléfono fuese verdadero
-con un OTP a través de twilio.
+correo (opcional). Solo se verificaba que el número de teléfono fuese verdadero
+con un OTP a través de Twilio.
 
-Tras verificar el numero de teléfono el usuario puede hacer login a su portal
+Tras verificar el número de teléfono el usuario puede hacer login a su portal
 para consultar las opciones asignadas por su realtor de confianza según sus
 preferencias.
 
-Si eres conocedor de cyber-seguridad quizás ya tienes una idea de lo sucedido.
+Si eres conocedor de ciberseguridad quizás ya tienes una idea de lo sucedido.
 
 Y es que, básicamente, un ataque de este tipo funciona así: alguien automatiza
-peticiones falsas a tu servidor para explotar un endpoint concreto o sobre cargar
+peticiones falsas a tu servidor para explotar un endpoint concreto o sobrecargar
 tu servidor. En nuestro caso, cada solicitud de OTP le costaba dinero a mi
 cliente. Sin un rate limit adecuado, el atacante podía lanzar cientos de
 peticiones sin ningún control y el costo se disparaba solo.
 
 Debido a que el registro solo verificaba la autenticidad del cliente a través del
-OTP a su numero de teléfono el cual podía ser pedido hasta un máximo de 10 veces
-según el rate limit de Auth0 servicio que use para manejar la autentificación, un
+OTP a su número de teléfono, el cual podía ser pedido hasta un máximo de 10 veces
+según el rate limit de Auth0, servicio que usé para manejar la autenticación, un
 usuario malicioso podía crear una cuenta y solicitar hasta 10 OTP sin aportar
 ninguna información verídica.
 
 En su momento pensé que no era necesario agregar tantas verificaciones ya que era
 un producto nuevo y no se esperaba tener un gran flujo de usuarios al mes, aun
 así, esta vulnerabilidad fue explotada tras tan solo unos 2 - 3 meses en
-producción para un producto con tan solo de 30 - 60 usuarios activos al mes. Fue
+producción para un producto con tan solo 30 - 60 usuarios activos al mes. Fue
 una gran equivocación no darle la importancia que merecía.
 
 ## El día del ataque
@@ -100,7 +100,7 @@ Para cuando yo abrí Railway a las 12:10, el daño ya estaba hecho.
 ## Cómo lo solucioné
 
 Gracias a tener trazabilidad en los logs del backend pude identificar la causa
-rápidamente tras enterarme. Hablé con mi cliente, le expliqué la situación y prepare
+rápidamente tras enterarme. Hablé con mi cliente, le expliqué la situación y preparé
 un plan para evitar que volviera a pasar.
 
 ### Disminuir costos
@@ -138,8 +138,8 @@ procesar el registro.
 
 ### Métricas y alertas
 
-Aunque esta implementación no la lleve a cabo es importante para la
-parte de monitoreo y observabilidad de tu software, agregar un trigger
+Aunque esta implementación no la llevé a cabo, es importante para la
+parte de monitoreo y observabilidad de tu software: agregar un trigger
 que avise por correo cada vez que ocurra algo sospechoso te permite
 reaccionar antes de que el daño sea mayor. Si hubiera tenido esto
 activado, me habría enterado del ataque a los pocos minutos, no casi

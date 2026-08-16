@@ -51,13 +51,15 @@ const { post, headings } = Astro.props;
           {
             post.data.tags && (
               <div class="mt-2">
-                {post.data.tags.map((tag: string) => (
-                  <a href={`/${lang}/tags/${tag.toLowerCase()}`}>
-                    <SkillBadge
-                      skill={skillIconMap[tag as keyof typeof skillIconMap]}
-                    />
-                  </a>
-                ))}
+                {post.data.tags
+                  .filter((tag: string) => tag in skillIconMap)
+                  .map((tag: string) => (
+                    <a href={`/${lang}/tags/${tag.toLowerCase()}`}>
+                      <SkillBadge
+                        skill={skillIconMap[tag as keyof typeof skillIconMap]}
+                      />
+                    </a>
+                  ))}
               </div>
             )
           }

@@ -12,18 +12,18 @@ tags:
 
 # Value objects
 
-Hace ya mas de un año que en mi búsqueda por aprender como escribir código limpio y estructurar mejor mis proyectos leí por primera vez sobre `Clean Architecture` y `Domain Driven Design`. Temas completamente nuevos y con muchos conceptos que me costó entender y aplicar en mis propios proyectos y en los cuales hasta el día de hoy sigo profundizando e interiorizando conocimiento que me ha ayudado a mejorar como escribo código y estructuro mis proyectos siguiendo estas buenas practicas.
+Hace ya más de un año que en mi búsqueda por aprender cómo escribir código limpio y estructurar mejor mis proyectos leí por primera vez sobre `Clean Architecture` y `Domain Driven Design`. Temas completamente nuevos y con muchos conceptos que me costó entender y aplicar en mis propios proyectos y en los cuales hasta el día de hoy sigo profundizando e interiorizando conocimiento que me ha ayudado a mejorar cómo escribo código y estructuro mis proyectos siguiendo estas buenas prácticas.
 
-## Qué es un Value Object?
+## ¿Qué es un Value Object?
 
-Uno de los primeros conceptos que pude entender y empezar a usar en mi código es el concepto de `Value Objects`. El cual se refiere a una forma de representar cosas como un compuesto, que al agruparse se comporta como una única unidad coherente aportando así, semántica y cohesion.
+Uno de los primeros conceptos que pude entender y empezar a usar en mi código es el concepto de `Value Objects`. Este se refiere a una forma de representar conceptos del dominio como un compuesto, que al agruparse se comporta como una única unidad coherente, aportando así semántica y cohesión.
 
-Hay muchos ejemplos de cosas que podemos representar como `Value Objects`
+Hay muchos ejemplos de cosas que podemos representar como `Value Objects`:
 
-- Una **cantidad de dinero** esta compuesta por un número y un símbolo
-- Una **coordenada 2D** esta compuesta por un valor numérico en el eje X y otro en el eje Y
-- Una **dirección de correo electrónico** esta compuesta por una cadena de texto que debe contener un formato específico
-- Un **rango de fechas** esta compuesta por dos fechas una de inicio y una final
+- Una **cantidad de dinero** está compuesta por un número y un símbolo
+- Una **coordenada 2D** está compuesta por un valor numérico en el eje X y otro en el eje Y
+- Una **dirección de correo electrónico** está compuesta por una cadena de texto que debe contener un formato específico
+- Un **rango de fechas** está compuesto por dos fechas: una de inicio y una final
 
 ## Propiedades Clave de los Value Objects
 
@@ -44,7 +44,7 @@ class Point2D {
   constructor(public readonly x: number, public readonly y: number) {}
 
   equals(other: Point2D): boolean {
-    if (!(other instanceof 2DPoint)) {
+    if (!(other instanceof Point2D)) {
       return false
     }
 
@@ -60,11 +60,11 @@ first.equals(second) // true
 
 ### Validación
 
-Un Value Object solo debe aceptar valores que hagan sentido en su propio contexto. Esto significa que **no puedes crear un Value Object con un valor que no sea válido**. La validación ocurre en el momento de la construcción del objeto, garantizando que un Value Object siempre estará en un estado válido.
+Un Value Object solo debe aceptar valores que tengan sentido en su propio contexto. Esto significa que **no puedes crear un Value Object con un valor que no sea válido**. La validación ocurre en el momento de la construcción del objeto, garantizando que un Value Object siempre estará en un estado válido.
 
 ## Usando Value Objects
 
-Basta de teoría es hora de ver un ejemplo de como un value object puede aportar valor a nuestro código.
+Basta de teoría, es hora de ver un ejemplo de cómo un value object puede aportar valor a nuestro código.
 
 Se nos ha asignado manejar un caso de uso para crear un nuevo usuario, para completarlo, nuestro caso de uso debe:
 
@@ -83,7 +83,7 @@ class UserCreator {
       throw new InvalidEmail(data.email);
     }
 
-    if (!isValidPassword(data.email)) {
+    if (!isValidPassword(data.password)) {
       throw new InvalidPassword(data.password);
     }
 
@@ -96,7 +96,7 @@ function isValidEmail(value: string): boolean {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
   );
 
-  return emailRegex.test(email);
+  return emailRegex.test(value);
 }
 
 function isValidPassword(value: string): boolean {
@@ -106,9 +106,9 @@ function isValidPassword(value: string): boolean {
 }
 ```
 
-En este primer ejemplo las funciones que validan el correo y la contraseña pueden estar básicamente en cualquier lado de nuestro code base ya que pueden ser utilizadas por otros casos de uso, así que terminaran en una carpeta donde abran otras funciones para validar o peor aún la carpeta `/utils` que soporta cualquier código.
+En este primer ejemplo las funciones que validan el correo y la contraseña pueden estar básicamente en cualquier lado de nuestro codebase ya que pueden ser utilizadas por otros casos de uso, así que terminarán en una carpeta donde haya otras funciones de validación o, peor aún, en la carpeta `/utils` que soporta cualquier código.
 
-Nuestro primer paso es crear clases que representen nuestros value objects de `UserEmail` y `UserPassword`. Podríamos llamarlos directamente 'Email' o 'Password', debido a que estos nombres son mas genéricos puede haber en otras zonas de nuestro code base value objects que sean correos pero que no pertenezcan directamente a un usuario, de igual manera con las contraseñas, que tan específico es el nombre depende totalmente de tu contexto.
+Nuestro primer paso es crear clases que representen nuestros value objects de `UserEmail` y `UserPassword`. Podríamos llamarlos directamente 'Email' o 'Password', debido a que estos nombres son más genéricos puede haber en otras zonas de nuestro codebase value objects que sean correos pero que no pertenezcan directamente a un usuario, de igual manera con las contraseñas. Qué tan específico es el nombre depende totalmente de tu contexto.
 
 ```ts
 class UserEmail {
@@ -120,7 +120,7 @@ class UserPassword {
 }
 ```
 
-Al crear nuestras clases con una propiedad `readonly` directamente le estamos diciendo a nuestro yo futuro y a nuestros compañeros de equipo que el valor de esta propiedad no espera ser cambiado, de esta manera para cambiar el email de un usuario deberíamos crear una nueva instancia de `UserEmail`. Ahora agreguemos las validaciones
+Al crear nuestras clases con una propiedad `readonly` directamente le estamos diciendo a nuestro yo futuro y a nuestros compañeros de equipo que el valor de esta propiedad no espera ser cambiada, de esta manera para cambiar el email de un usuario deberíamos crear una nueva instancia de `UserEmail`. Ahora agreguemos las validaciones.
 
 ```ts
 class UserEmail {
@@ -135,7 +135,7 @@ class UserEmail {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     );
 
-    return emailRegex.test(email);
+    return emailRegex.test(value);
   }
 
   equals(other: UserEmail): boolean {
@@ -149,7 +149,7 @@ class UserEmail {
 class UserPassword {
   constructor(public readonly value: string) {
     if (!UserPassword.isValidPassword(value)) {
-      throw new InvalidEmail(value);
+      throw new InvalidPassword(value);
     }
   }
 
@@ -159,8 +159,8 @@ class UserPassword {
     return true;
   }
 
-  equals(other: UserEmail): boolean {
-    if (!(other instanceof UserEmail)) {
+  equals(other: UserPassword): boolean {
+    if (!(other instanceof UserPassword)) {
       return false;
     }
     return this.value === other.value;
@@ -187,9 +187,9 @@ class UserCreator {
 }
 ```
 
-Con este refactor nos aseguramos de aportar cohesión y semántica en nuestro proyecto al juntar toda la lógica referente a correo y contraseña de nuestros usuarios bajo sus respectivos value objects, de esta manera, la próxima vez que tengamos que agregar un caso de uso en donde debamos agregar funcionalidad que tenga que ver con nuestro correo o contraseña sabremos exactamente a donde ir.
+Con este refactor nos aseguramos de aportar cohesión y semántica en nuestro proyecto al juntar toda la lógica referente a correo y contraseña de nuestros usuarios bajo sus respectivos value objects, de esta manera, la próxima vez que tengamos que agregar un caso de uso en donde debamos agregar funcionalidad que tenga que ver con nuestro correo o contraseña sabremos exactamente adónde ir.
 
-Siguiendo con el ejemplo guardar nuestras contraseñas sin encriptar es una mala practica. Agreguemos esta funcionalidad a nuestro value object.
+Siguiendo con el ejemplo, guardar nuestras contraseñas sin encriptar es una mala práctica. Agreguemos esta funcionalidad a nuestro value object.
 
 ```ts
 import bcrypt from "bcryptjs";
@@ -197,9 +197,9 @@ import bcrypt from "bcryptjs";
 class UserPassword {
   //... Resto de la implementación
 
-  public static create(plainPassword: string): boolean {
+  public static create(plainPassword: string): UserPassword {
     if (!UserPassword.isValidPassword(plainPassword)) {
-      throw new InvalidPasswordError();
+      throw new InvalidPassword("Password does not meet minimum length requirements.");
     }
     return new UserPassword(bcrypt.hashSync(plainPassword, 10));
   }
@@ -210,16 +210,16 @@ class UserPassword {
 }
 ```
 
-La contraseña solo debe ser encriptada la primera vez que es creado este valor por ende agregando el método estático `create` nos aseguramos de que el hash sea usado solo la primera vez.
+La contraseña solo debe ser encriptada la primera vez que es creado este valor. Por ende, agregando el método estático `create` nos aseguramos de que el hash sea usado solo la primera vez.
 
 En otro caso de uso como cambiar contraseña o iniciar sesión es necesario comprobar que el valor ingresado por el usuario es igual a la contraseña original. Logramos esta comparación a través del método `verifyPassword`.
 
 ## Conclusión
 
-Usar value objects en nuestro código nos aporta semántica ya que no tendremos valores primitivos a lo largo de nuestro código sino que tendremos tipos mas específicos que nos dan más contexto sobre lo que representa cada valor en nuestro código, creando un código mas legible.
+Usar value objects en nuestro código nos aporta semántica ya que no tendremos valores primitivos a lo largo de nuestro código sino que tendremos tipos más específicos que nos dan más contexto sobre lo que representa cada valor en nuestro código, creando un código más legible.
 
-Nos aporta mas cohesión, como hemos visto con el ejemplo de correo y contraseña al crear un value object que represente estos valores creamos un punto en la organización de nuestro proyecto en donde tiene sentido por context seguir agregando toda la funcionalidad que este relacionada con dicho concepto.
+Nos aporta más cohesión, como hemos visto con el ejemplo de correo y contraseña al crear un value object que represente estos valores creamos un punto en la organización de nuestro proyecto en donde tiene sentido por contexto seguir agregando toda la funcionalidad que esté relacionada con dicho concepto.
 
 Nos aporta seguridad, al hacer las validaciones al momento de crear el value object, nos aseguramos de que un value object jamás tendrá un estado inválido.
 
-Si llegaste hasta este punto gracias por leer mi contenido, espero que haya sido de tu agrado.
+Si llegaste hasta este punto, gracias por leer mi contenido. Espero que haya sido de tu agrado.

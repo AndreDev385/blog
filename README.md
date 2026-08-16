@@ -1,54 +1,58 @@
-# Astro Starter Kit: Basics
+# André Izarra — Portfolio & Blog
+
+Personal portfolio and bilingual blog for **André Izarra**, software developer (Go, TypeScript, React, Astro). The site sells services: web development, solution design, and delivery — with an English and a Spanish version.
+
+**Live:** https://andre-izarra.netlify.app · **EN:** `/en/` · **ES:** `/es/`
+
+## Stack
+
+| Concern    | Choice |
+| ---------- | ------ |
+| Framework  | Astro 6 (`.astro` + React 19 islands) |
+| Styling    | Tailwind CSS 4 (via `@tailwindcss/vite`) |
+| UI         | Radix UI primitives + custom components |
+| Icons      | astro-icon (devicon, logos, mdi, tabler, simple-icons) |
+| Content    | Astro Content Collections (`blog`, `projects`) |
+| i18n       | Custom key-value maps in `src/i18n/ui.ts` |
+| Deploy     | Netlify (SSR via `@astrojs/netlify`) |
+| Images     | sirv.com CDN (external), `passthroughImageService` |
+
+## Commands
 
 ```sh
-npm create astro@latest -- --template basics
+pnpm install      # install dependencies
+pnpm dev          # local dev server
+pnpm build        # astro check + production build
+pnpm preview      # preview the production build
+pnpm format       # prettier over the repo
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Project structure
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+src/
+├── layouts/        # Global shell (Layout.astro) + post wrapper (PostLayout.astro)
+├── pages/          # / (redirect to /es/), /en/*, /es/*, sitemap.xml.ts
+├── content/
+│   ├── config.ts   # Collection schemas (blog, projects)
+│   ├── blog/{en,es}/    # Bilingual blog posts (markdown)
+│   └── projects/{en,es}/ # Project pages (markdown)
+├── modules/        # blog, portfolio, projects feature modules
+├── components/     # Shared components (Author, SkillBadge, ui/)
+├── i18n/           # Translation strings + helpers
+└── lib/            # Utilities, skill icon map
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Content conventions
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Bilingual parity** — every post should exist in `en/` and `es/` with matching slugs (`/en/blog/<slug>` and `/es/blog/<slug>`).
+- **Frontmatter** — `title`, `description` (max 200 chars), `date`, lowercase `tags`, `image` with descriptive SEO-friendly alt text.
+- **Internal links** always include the language prefix: `/${lang}/blog/...` — never hardcode `/blog/...`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Deploy
 
-## 🧞 Commands
+Push to `main` → Netlify builds and deploys automatically (SSR output). The dynamic sitemap lives at `src/pages/sitemap.xml.ts`.
 
-All commands are run from the root of the project, from a terminal:
+## License
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+© André Izarra. All rights reserved.

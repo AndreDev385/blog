@@ -11,7 +11,7 @@ tags:
 ![Logo de Astro framework - imagen destacada para crear un blog con Astro y Markdown](https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp)
 
 Creé este blog para compartir contenido sobre mis experiencias personales en programación.
-Para la primera publicación, me preguntaba sobre qué escribir, así que pensé: si voy a compartir mis experiencias, ¿por qué no empezar con cómo construí este blog?.
+Para la primera publicación, me preguntaba sobre qué escribir, así que pensé: si voy a compartir mis experiencias, ¿por qué no empezar con cómo construí este blog?
 
 # Astro
 
@@ -68,7 +68,7 @@ npx astro add tailwind
 Este comando añadirá Tailwindcss y creará el archivo `tailwind.config.cjs`.
 También actualizará `astro.config.mjs` para incluir el plugin de Tailwindcss.
 
-## Estructura del proyecto
+## Estructura del proyecto en detalle
 
 ### Páginas
 
@@ -224,10 +224,10 @@ const { title } = Astro.props;
 
 ### Contenido
 
-Con esta carpeta astro nos ayuda a crear y presentar contenido con gran facilidad para ser leído y usado
+Con esta carpeta, Astro nos ayuda a crear y presentar contenido con gran facilidad para ser leído y usado.
 Lo lograremos con:
 
-- aRchivos Markdown
+- Archivos Markdown
 - Archivos MDX
 - CMS
 
@@ -235,11 +235,11 @@ En nuestro caso usaremos archivos `Markdown` en la carpeta `src/content` donde c
 
 #### Colecciones
 
-Las [colecciones](https://docs.astro.build/en/guides/content-collections/) organizan y validan nuestro contenido. Podemos crear colecciones en nuestra carpeta `conent` y luego usarlas en nuestras páginas.
+Las [colecciones](https://docs.astro.build/en/guides/content-collections/) organizan y validan nuestro contenido. Podemos crear colecciones en nuestra carpeta `content` y luego usarlas en nuestras páginas.
 
 #### Post Collection
 
-En el archivo `src/content/config.{ts,js}` crearemos nuestro primer `schema` para nuestra colección de post.
+En el archivo `src/content/config.{ts,js}` crearemos nuestro primer `schema` para nuestra colección de posts.
 
 ```ts
 import { defineCollection, z } from "astro:content";
@@ -257,11 +257,11 @@ export const collections = {
 };
 ```
 
-Estamos definiendo nuestra colección llamada `block` con propiedades que queremos que estén en cada post.
+Estamos definiendo nuestra colección llamada `blog` con propiedades que queremos que estén en cada post.
 
 #### Agregando nuestro primer post
 
-En el archivo `src/content/blog/first.md` agregaremos nuestro primero post
+En el archivo `src/content/blog/first.md` agregaremos nuestro primer post.
 
 ```md
 ---
@@ -278,11 +278,11 @@ tags:
 Esta es mi primera publicación
 ```
 
-Con esto echo tenemos el contenido de nuestro primer post listo para ser mostrado en nuestra ruta inicial.
+Con esto hecho tenemos el contenido de nuestro primer post listo para ser mostrado en nuestra ruta inicial.
 
-## List de post
+## Lista de posts
 
-En el archivo `src/pages/index.astro` crearemos la pagina para listar nuestros posts.
+En el archivo `src/pages/index.astro` crearemos la página para listar nuestros posts.
 
 ```astro
 ---
@@ -321,22 +321,22 @@ const posts = await getCollection("blog");
 </Layout>
 ```
 
-Deberíamos ver una `card` en nuestra pagina mostrando los datos en el archivo `src/content/blog/first.md`.
+Deberíamos ver una `card` en nuestra página mostrando los datos en el archivo `src/content/blog/first.md`.
 
-Pero esto no es suficiente, tenemos que agregar una pagina para este y cada uno de los post que agreguemos en el futuro.
-Crearemos una pagina que funcione como una plantilla para cada post, the esta manera reutilizamos el código.
+Pero esto no es suficiente, tenemos que agregar una página para este y cada uno de los posts que agreguemos en el futuro.
+Crearemos una página que funcione como una plantilla para cada post, de esta manera reutilizamos el código.
 
 ## Routing Dinámico
 
-En un archivo de página de astro podemos especificar parámetros de ruta en el nombre del archivo para generar multiples páginas. Por ejemplo `src/pages/authors/[author].astro` generaría una pagina de biografía para cada uno de nuestros autores. `author` se convierte en un parámetro al cual podemos acceder dentro de la página y por ende a su información.
+En un archivo de página de astro podemos especificar parámetros de ruta en el nombre del archivo para generar múltiples páginas. Por ejemplo `src/pages/authors/[author].astro` generaría una página de biografía para cada uno de nuestros autores. `author` se convierte en un parámetro al cual podemos acceder dentro de la página y por ende a su información.
 
-Primero agreguemos lo que necesitamos para crear esta ruta dinámica
+Primero agreguemos lo que necesitamos para crear esta ruta dinámica.
 
 #### Markdown styles
 
-Crearemos una plantilla para cada post con sus estilos y estructura propios
+Crearemos una plantilla para cada post con sus estilos y estructura propios.
 
-`/src/styles/markdown.css` agreguemos algo de `ccs` para el markdown
+`/src/styles/markdown.css` agreguemos algo de `css` para el markdown.
 
 ```css
 .prose {
@@ -403,7 +403,7 @@ Crearemos una plantilla para cada post con sus estilos y estructura propios
 
 #### Post Layout
 
-`/src/layouts/PostLayout.astro` sera el `layout` para nuestros posts.
+`/src/layouts/PostLayout.astro` será el `layout` para nuestros posts.
 
 ```astro
 ---
@@ -433,7 +433,7 @@ const { post } = Astro.props;
 
 ### Static (SSG)
 
-Con la function [`getStaticPaths`](https://docs.astro.build/en/guides/routing/#static-ssg-mode) es que generamos una pagina estática para cada post dentro de `/src/content/blog` en `build time`.
+Con la función [`getStaticPaths`](https://docs.astro.build/en/guides/routing/#static-ssg-mode) generamos una página estática para cada post dentro de `/src/content/blog` en `build time`.
 
 #### Post
 
@@ -463,17 +463,17 @@ const { Content } = await post.render();
 ```
 
 Con esto hecho si visitamos la URL `/blog/first` veremos nuestro primer post.
-Si seguiste el post hasta aquí ahora tendrás un setup inicial para tu blog con:
+Si seguiste el post hasta aquí, ahora tendrás un setup inicial para tu blog con:
 
-- Una colección de post con un `schema`, podemos crear nuevos post tan solo agregando un archivo markdown con el contenido del post a la carpeta `src/content/blog`.
-- Una pagina que lista cada uno de nuestros posts.
-- Una pagina dinámica que muestra el contenido del post seleccionado
+- Una colección de posts con un `schema`. Podemos crear nuevos posts tan solo agregando un archivo markdown con el contenido del post a la carpeta `src/content/blog`.
+- Una página que lista cada uno de nuestros posts.
+- Una página dinámica que muestra el contenido del post seleccionado.
 
-Este es un setup bastante básico, pero puedes agregar mas funcionalidades como:
+Este es un setup bastante básico, pero puedes agregar más funcionalidades como:
 
-- Imágenes para los post
+- Imágenes para los posts
 - Tabla de contenido en la página del post
-- Filtros para los post por `tag`
+- Filtros para los posts por `tag`
 - Paginación
 
-Si leíste hasta aquí te lo agradezco y espero que haya sido de utilidad para ti.
+Si leíste hasta aquí, te lo agradezco y espero que haya sido de utilidad para ti.

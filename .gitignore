@@ -18,6 +18,13 @@ pnpm-debug.log*
 .env
 .env.production
 
+# Internal orchestration workspace (ICM) — private, NEVER commit
+_internal/
+
+# Private / personal documents (leak protection)
+cv.pdf
+GUIA_PRESENCIA_ONLINE.md
+
 # macOS-specific files
 .DS_Store
 

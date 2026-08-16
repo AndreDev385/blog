@@ -34,11 +34,13 @@ const url = `/${post.id.split("/")[0]}/blog/${post.id.split("/")[1]}`;
             </p>
             <div class="flex items-center space-x-4 overflow-hidden">
               {
-                post.data.tags.map((tag: string) => (
-                  <SkillBadge
-                    skill={skillIconMap[tag as keyof typeof skillIconMap]}
-                  />
-                ))
+                post.data.tags
+                  .filter((tag: string) => tag in skillIconMap)
+                  .map((tag: string) => (
+                    <SkillBadge
+                      skill={skillIconMap[tag as keyof typeof skillIconMap]}
+                    />
+                  ))
               }
             </div>
           </div>

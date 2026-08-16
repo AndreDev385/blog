@@ -12,7 +12,7 @@ tags:
 
 # Entities
 
-In my last post, I talked about [Value Objects]() and how they help us model our domain, avoid the primitive obsession code smell, and validate that our data structures always have a valid value. This time we'll discuss `Entities`, how they differ from `Value Objects`, and what they bring to our code.
+In my last post, I talked about [Value Objects](/en/blog/value-objects) and how they help us model our domain, avoid the primitive obsession code smell, and validate that our data structures always have a valid value. This time we'll discuss `Entities`, how they differ from `Value Objects`, and what they bring to our code.
 
 ## What are Entities?
 
