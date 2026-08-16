@@ -34,6 +34,9 @@ export const skillIconMap = {
   //
   neovim: { name: "Neovim", icon: "devicon:neovim" },
   //
+  omarchy: { name: "Omarchy", icon: "simple-icons:omarchy" },
+  hyprland: { name: "Hyprland", icon: "devicon:hyprland" },
+  //
   ddd: { name: "DDD", icon: "mdi:layers" },
   security: { name: "Security", icon: "mdi:security" },
   // Infrastructure
