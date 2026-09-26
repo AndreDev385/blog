@@ -1,7 +1,7 @@
 ---
 title: Usando Omarchy
 description: Comparto mi experiencia usando Omarchy y por qué creo que deberías usarlo si eres un usuario de Linux.
-date: 2025-08-12
+date: 2026-08-16
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/omarchy.png
 tags:
   - omarchy

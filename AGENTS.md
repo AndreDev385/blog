@@ -15,7 +15,7 @@ src/
 ├── layouts/        Layout.astro (shell + SEO/JSON-LD) · PostLayout.astro
 ├── pages/          / (redirect → /es/) · 404 · en/ · es/ · sitemap.xml.ts
 │   └── [lang]/     blog/[slug].astro · tags/[tag].astro · projects/[slug].astro
-├── content/        config.ts (schemas) · blog/{en,es}/ · projects/{en,es}/
+├── content/        content.config.ts (schemas) · blog/{en,es}/ · projects/{en,es}/
 ├── modules/        blog/ portfolio/ projects/
 ├── components/     shared (Author, SkillBadge, ui/)
 ├── i18n/           ui.ts (en+es maps) · utils.ts
@@ -35,7 +35,7 @@ src/
 ## Critical Rules (DO NOT BREAK)
 
 1. **Language-aware routing** — every internal link includes `{lang}`: `/${lang}/blog/...`. Never hardcode `/blog/...`.
-2. **Schema validity** — posts must match `src/content/config.ts`. Description ≤ 200 chars; tags lowercase.
+2. **Schema validity** — posts must match `src/content.config.ts`. Description ≤ 200 chars; tags lowercase.
 3. **Translation key parity** — new key in `en` ⇒ add it to `es` too.
 4. **SSR mode** — only pages with `export const prerender = true` + `getStaticPaths()` generate static HTML.
 5. **About Me section is commented out** in both home pages — do not re-enable without explicit request.

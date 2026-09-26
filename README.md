@@ -34,7 +34,7 @@ src/
 ├── layouts/        # Global shell (Layout.astro) + post wrapper (PostLayout.astro)
 ├── pages/          # / (redirect to /es/), /en/*, /es/*, sitemap.xml.ts
 ├── content/
-│   ├── config.ts   # Collection schemas (blog, projects)
+│   ├── content.config.ts  # Collection schemas (blog, projects)
 │   ├── blog/{en,es}/    # Bilingual blog posts (markdown)
 │   └── projects/{en,es}/ # Project pages (markdown)
 ├── modules/        # blog, portfolio, projects feature modules

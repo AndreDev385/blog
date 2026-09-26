@@ -1,7 +1,7 @@
 ---
 title: Using Omarchy
 description: Sharing my experience using Omarchy and why I think you should try it if you're a Linux user.
-date: 2025-08-12
+date: 2026-08-16
 image: https://andre385.sirv.com/Portfolio%20%26%20Blog/omarchy.png
 tags:
   - omarchy
