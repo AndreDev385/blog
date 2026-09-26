@@ -1,6 +1,6 @@
 ---
 title: "Adcendia"
-description: "Landing page de alta conversión para una empresa de generación de leads inmobiliarios en Miami — construida con una identidad de marca esmeralda, un flujo de secciones optimizado para conversión y fundamentos de SEO para captar y calificar clientes mediante embudos automatizados con IA."
+description: "Landing page de alta conversión para una empresa de generación de leads inmobiliarios en Miami — construida con una identidad de marca esmeralda, un flujo de secciones optimizado para conversión, fundamentos de SEO y una herramienta de auditoría gratuita y personalizada (quiz → PDF de diagnóstico a medida) que captura y califica leads automáticamente."
 logo: "../../../assets/adcendia_logo2.jpeg"
 link: "https://adcendia.com/"
 order: 2
@@ -23,6 +23,9 @@ benefits:
   - title: "Responsive Mobile-First"
     description: "Diseño completamente responsive con layouts adaptados para móvil — la sección de línea de tiempo alternada se convierte en tarjetas apiladas, garantizando una experiencia fluida en cualquier dispositivo."
     icon: "mdi:cellphone"
+  - title: "Auditoría Gratuita Personalizada"
+    description: "Una auditoría integrada construida sobre la metodología del propio cliente: un quiz por secciones genera un PDF de diagnóstico personalizado y determinista para cada visitante, y cada lead queda registrado automáticamente en una hoja de cálculo — $0/mes de costo de operación."
+    icon: "mdi:clipboard-check"
 beforeAfter:
   - aspect: "Captación de Leads"
     before: "Conversaciones dispersas entre llamadas, WhatsApp y correos sin seguimiento estructurado — los leads se perdían en el ruido."
@@ -40,6 +43,10 @@ beforeAfter:
     before: "Sitios web lentos y pesados pierden visitantes impacientes en segundos — especialmente en móvil."
     after: "Sitio estático Astro con tiempos de carga inferiores a un segundo y cero JavaScript innecesario."
     improvement: "Cero rebote por problemas de rendimiento."
+  - aspect: "Diagnóstico del Lead"
+    before: "Cada comentario recibía el mismo PDF genérico, enviado a mano — la misma medicina sin importar la situación del prospecto."
+    after: "Un quiz convierte las respuestas de cada visitante en un PDF de diagnóstico personalizado, armado con las reglas de puntuación del propio cliente, y cada lead queda registrado en una hoja de cálculo."
+    improvement: "Entrega personalizada a escala, automatizada de punta a punta."
 testimonials:
   - quote: "Trabajar con André en el diseño de nuestra página web fue una excelente experiencia. Entendió perfectamente la identidad de nuestra marca y las necesidades de nuestro negocio desde el primer día. El resultado es un sitio web rápido, efectivo y, sobre todo, muy profesional. Su atención al detalle y disposición para resolver dudas fueron impecables. ¡Lo recomendamos con total confianza!"
     author: "Christian Crespo"

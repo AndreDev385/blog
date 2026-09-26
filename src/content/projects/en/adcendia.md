@@ -1,6 +1,6 @@
 ---
 title: "Adcendia"
-description: "A high-conversion landing page for a Miami-based real estate lead generation company — built with a polished emerald brand identity, conversion-optimized section flow, and SEO foundations to capture and qualify leads through automated AI-powered funnels."
+description: "A high-conversion landing page for a Miami-based real estate lead generation company — built with a polished emerald brand identity, conversion-optimized section flow, SEO foundations, and a free personalized audit tool (quiz → custom diagnosis PDF) that captures and qualifies leads automatically."
 logo: "../../../assets/adcendia_logo2.jpeg"
 link: "https://adcendia.com/"
 order: 2
@@ -23,6 +23,9 @@ benefits:
   - title: "Mobile-First Responsive"
     description: "Fully responsive design with tailored mobile layouts — the alternating timeline section adapts to stacked cards, ensuring a seamless experience on any device."
     icon: "mdi:cellphone"
+  - title: "Personalized Free Audit"
+    description: "An embedded audit built from the client's own methodology: a sectioned quiz produces a deterministic, personalized diagnosis PDF for every visitor, and each lead is logged automatically to a spreadsheet — $0/month to run."
+    icon: "mdi:clipboard-check"
 beforeAfter:
   - aspect: "Lead Capture"
     before: "Scattered conversations across calls, WhatsApp, and email with no structured follow-up — leads were lost in the noise."
@@ -40,6 +43,10 @@ beforeAfter:
     before: "Slow, bloated websites lose impatient visitors within seconds — especially on mobile."
     after: "Astro static site with sub-second load times and zero unnecessary JavaScript."
     improvement: "Zero bounce from performance issues."
+  - aspect: "Lead Diagnosis"
+    before: "Every commenter got the same generic PDF, sent by hand — identical medicine regardless of the prospect's situation."
+    after: "A quiz turns each visitor's answers into a personalized diagnosis PDF, assembled from the client's own scoring rules, with every lead captured in a spreadsheet."
+    improvement: "Personalized delivery at scale, automated end to end."
 testimonials:
   - quote: "Trabajar con André en el diseño de nuestra página web fue una excelente experiencia. Entendió perfectamente la identidad de nuestra marca y las necesidades de nuestro negocio desde el primer día. El resultado es un sitio web rápido, efectivo y, sobre todo, muy profesional. Su atención al detalle y disposición para resolver dudas fueron impecables. ¡Lo recomendamos con total confianza!"
     author: "Christian Crespo"
