@@ -2,27 +2,9 @@
 
 ## Identity
 
-Personal portfolio + bilingual blog (EN/ES) for **André Izarra** (software development services). Built with **Astro 6** (SSR), deployed on **Netlify**.
+Personal portfolio + bilingual blog (EN/ES) for **André Izarra** (software development services). Independent silo: own repo, own stack, not part of the workspace loop. Stack and commands are public in `README.md`; this file is governance.
 
-## Stack (current)
-
-Astro 6 · React 19 islands · Tailwind CSS 4 · Radix UI · astro-icon · Astro Content Collections (`blog`, `projects`) · custom i18n (`src/i18n/ui.ts`) · Netlify SSR (`@astrojs/netlify`) · sirv.com CDN images.
-
-## Project Map
-
-```
-src/
-├── layouts/        Layout.astro (shell + SEO/JSON-LD) · PostLayout.astro
-├── pages/          / (redirect → /es/) · 404 · en/ · es/ · sitemap.xml.ts
-│   └── [lang]/     blog/[slug].astro · tags/[tag].astro · projects/[slug].astro
-├── content/        content.config.ts (schemas) · blog/{en,es}/ · projects/{en,es}/
-├── modules/        blog/ portfolio/ projects/
-├── components/     shared (Author, SkillBadge, ui/)
-├── i18n/           ui.ts (en+es maps) · utils.ts
-└── lib/            utils, skillIconMap, resolvePhoto
-```
-
-## Routing
+## Task routing
 
 | If you want to… | Go to |
 |---|---|
@@ -30,7 +12,8 @@ src/
 | Add/edit a project page | `src/content/projects/{en,es}/` |
 | Change UI strings | `src/i18n/ui.ts` (keep `en`/`es` key parity) |
 | Change page/SEO structure | `src/layouts/` + `src/pages/` |
-| Commands | `pnpm dev` · `pnpm build` (astro check + build) · `pnpm preview` · `pnpm format` |
+| Know the stack or the commands | `README.md` (the public home — never restated here) |
+| Know the content workflow + gates | `_internal/CONTEXT.md` |
 
 ## Critical Rules (DO NOT BREAK)
 
@@ -41,6 +24,8 @@ src/
 5. **About Me section is commented out** in both home pages — do not re-enable without explicit request.
 6. **Home meta descriptions** stay service-selling oriented; posts use their frontmatter description.
 7. **No absolute URLs without SITE_URL** — use the constant in `Layout.astro` for canonical/OG/JSON-LD.
+8. **Nothing deploys without André's explicit go** — pushing to `main` is the deploy, and it is a person check (`_internal/CONTEXT.md`).
+9. **Voice is one home** — `../content/_shared/voice.md`; the blog never keeps its own copy.
 
 ## Private workspace
 
