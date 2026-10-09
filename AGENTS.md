@@ -25,7 +25,7 @@ Personal portfolio + bilingual blog (EN/ES) for **André Izarra** (software deve
 6. **Home meta descriptions** stay service-selling oriented; posts use their frontmatter description.
 7. **No absolute URLs without SITE_URL** — use the constant in `Layout.astro` for canonical/OG/JSON-LD.
 8. **Nothing deploys without André's explicit go** — pushing to `main` is the deploy, and it is a person check (`_internal/CONTEXT.md`).
-9. **Voice is one home** — `../content/_shared/voice.md`; the blog never keeps its own copy.
+9. **Voice is one home** — `../content-writing/_shared/voice.md`; the blog never keeps its own copy.
 
 ## Private workspace
 
