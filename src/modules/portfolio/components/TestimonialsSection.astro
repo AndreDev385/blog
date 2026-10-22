@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import ChapterHeading from "./ChapterHeading.astro";
 import TestimonialCard from "./TestimonialCard.astro";
 import { resolvePhoto } from "../../../lib/resolvePhoto";
 
@@ -31,17 +32,17 @@ const allTestimonials = allProjects
 
 {
   allTestimonials.length > 0 && (
-    <section class="bg-gradient-to-br from-emerald-50/40 via-white to-teal-50/40 px-6 py-20 md:px-4 md:py-28">
+    <section class="bg-secondary/40 px-6 py-20 md:px-4 md:py-28">
       <div class="mx-auto max-w-6xl">
         {/* ─── Section Header ─── */}
-        <div class="mb-12 text-center" data-reveal>
-          <h2 class="text-4xl font-bold text-gray-900">
-            {t("testimonials.title")}
-          </h2>
-          <p class="mx-auto mt-3 max-w-2xl text-lg text-gray-500">
+        <div class="mb-12" data-reveal>
+          <ChapterHeading
+            chapter={{ key: "testimonials", title: t("testimonials.title") }}
+            size="lg"
+          />
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             {t("testimonials.subtitle")}
           </p>
-          <div class="mx-auto mt-6 h-0.5 w-16 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400" />
         </div>
 
         {/* ─── Testimonial Masonry ─── */}

@@ -1,0 +1,221 @@
+---
+import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import brDashboard1 from "@/assets/br_dashboard1.png";
+import brDashboard2 from "@/assets/br_dashboard2.png";
+import brDashboard3 from "@/assets/br_dashboard3.png";
+
+/* ─────────────────────────────────────────────
+   The signature (design-direction.md, 2026-10-22):
+   "How I Work" as a live pipeline, in the same
+   component language as the CRM this site should
+   look like (br_dashboard*.png) — stage pills with
+   done/current/upcoming states. Each stage shows
+   its outcome and what you walk away with; the
+   footer proves the process shipped real software.
+
+   Progressive: without JS every stage panel is
+   readable; the script collapses them into one
+   interactive stepper.
+   ───────────────────────────────────────────── */
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const stages = [
+  {
+    id: "discovery",
+    num: "01",
+    title: t("services.step1.title"),
+    outcome: t("hero.stage1.outcome"),
+    walkaway: t("services.step1.walkaway"),
+  },
+  {
+    id: "design",
+    num: "02",
+    title: t("services.step2.title"),
+    outcome: t("hero.stage2.outcome"),
+    walkaway: t("services.step2.walkaway"),
+  },
+  {
+    id: "deliver",
+    num: "03",
+    title: t("services.step3.title"),
+    outcome: t("hero.stage3.outcome"),
+    walkaway: t("services.step3.walkaway"),
+  },
+];
+
+const proof = [
+  { src: brDashboard1.src, alt: t("hero.proof.alt1") },
+  { src: brDashboard2.src, alt: t("hero.proof.alt2") },
+  { src: brDashboard3.src, alt: t("hero.proof.alt3") },
+];
+
+const projectHref = `/${lang}/projects/bruschi-rentals`;
+---
+
+<div class="rounded-2xl border border-border bg-card shadow-sm">
+  {/* Card label — the CRM's mono label language */}
+  <div
+    class="flex flex-col items-start gap-2 border-b border-border px-6 py-4 sm:flex-row sm:items-center sm:justify-between"
+  >
+    <p class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase">
+      {t("hero.pipeline.label")}
+    </p>
+    <span
+      class="inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-2.5 py-1 font-mono text-xs text-brand"
+    >
+      <Icon name="mdi:check-circle" class="size-3.5" />
+      {t("hero.pipeline.status")}
+    </span>
+  </div>
+
+  {/* Stage pills — the pipeline mechanic */}
+  <div class="flex flex-wrap items-center gap-x-2 gap-y-2 px-6 pt-5">
+    {
+      stages.map((stage, index) => (
+        <>
+          <button
+            type="button"
+            data-stage-btn={stage.id}
+            data-state={index === 0 ? "current" : "upcoming"}
+            aria-current={index === 0 ? "step" : undefined}
+            class="inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-3 py-1.5 font-mono text-xs font-medium transition-colors duration-200 data-[state=current]:border-primary data-[state=current]:bg-primary data-[state=current]:text-primary-foreground data-[state=done]:border-brand data-[state=done]:bg-brand-soft data-[state=done]:text-brand data-[state=upcoming]:border-border data-[state=upcoming]:text-muted-foreground hover:border-brand hover:text-brand data-[state=current]:hover:text-primary-foreground"
+          >
+            <span data-stage-check class="hidden">
+              <Icon name="mdi:check" class="size-3.5" />
+            </span>
+            <span class="opacity-60">{stage.num}</span>
+            {stage.title}
+          </button>
+          {index < stages.length - 1 && (
+            <Icon
+              name="mdi:chevron-right"
+              class="size-4 text-muted-foreground/50"
+            />
+          )}
+        </>
+      ))
+    }
+  </div>
+
+  {/* Stage panels */}
+  <div class="px-6 pt-6 pb-2">
+    {
+      stages.map((stage, index) => (
+        <div
+          data-stage-panel={stage.id}
+          data-inactive={index === 0 ? undefined : ""}
+          class="pb-4 transition-[opacity,transform] duration-200 ease-out"
+        >
+          <h3 class="text-xl font-semibold">{stage.title}</h3>
+          <p class="mt-2 text-base leading-relaxed text-muted-foreground">
+            {stage.outcome}
+          </p>
+          <ul class="mt-4 space-y-2">
+            {stage.walkaway.map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-foreground">
+                <Icon
+                  name="mdi:check-circle"
+                  class="mt-0.5 size-4 shrink-0 text-brand"
+                />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+
+  {/* Proof strip — the process shipped real software */}
+  <a
+    href={projectHref}
+    class="group flex items-center gap-4 border-t border-border px-6 py-4 transition-colors hover:bg-secondary"
+  >
+    <div class="flex -space-x-3">
+      {
+        proof.map((shot) => (
+          <img
+            src={shot.src}
+            alt={shot.alt}
+            width={72}
+            height={48}
+            loading="lazy"
+            class="h-10 w-16 rounded-md border border-border object-cover"
+          />
+        ))
+      }
+    </div>
+    <div class="min-w-0">
+      <p class="font-mono text-xs text-muted-foreground">
+        {t("hero.proof.label")}
+      </p>
+      <p class="truncate text-sm font-medium group-hover:text-brand">
+        {t("hero.proof.caption")}
+        <Icon
+          name="mdi:arrow-right"
+          class="size-4 inline-block align-[-2px] transition-transform group-hover:translate-x-0.5"
+        />
+      </p>
+    </div>
+  </a>
+</div>
+
+<script is:inline>
+  (function () {
+    var root = document.documentElement;
+    if (root.hasAttribute("data-pipeline-ready")) return;
+
+    var buttons = Array.prototype.slice.call(
+      document.querySelectorAll("[data-stage-btn]"),
+    );
+    if (!buttons.length) return;
+
+    root.setAttribute("data-pipeline-ready", "");
+
+    function select(id) {
+      var passed = true;
+      buttons.forEach(function (btn) {
+        var isActive = btn.getAttribute("data-stage-btn") === id;
+        if (isActive) passed = false;
+        var state = isActive ? "current" : passed ? "done" : "upcoming";
+        btn.setAttribute("data-state", state);
+        if (isActive) btn.setAttribute("aria-current", "step");
+        else btn.removeAttribute("aria-current");
+        var check = btn.querySelector("[data-stage-check]");
+        if (check) check.classList.toggle("hidden", state !== "done");
+      });
+      document
+        .querySelectorAll("[data-stage-panel]")
+        .forEach(function (panel) {
+          panel.toggleAttribute(
+            "data-inactive",
+            panel.getAttribute("data-stage-panel") !== id,
+          );
+        });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        select(btn.getAttribute("data-stage-btn"));
+      });
+    });
+
+    select(buttons[0].getAttribute("data-stage-btn"));
+  })();
+</script>
+
+<style>
+  /* Collapse to one panel only once the script is running */
+  :global(html[data-pipeline-ready]) [data-inactive] {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-stage-panel] {
+      transition: none;
+    }
+  }
+</style>

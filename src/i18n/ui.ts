@@ -24,14 +24,31 @@ export const ui = {
     "404.action": "Go home",
     // post card
     "posted.on": "Posted on",
+    "tags.all": "All posts",
+    "tags.tag": "Tag",
+    "footer.credit": "Made with dedication by André Izarra.",
     // Hero
     "hero.greet": "Hi, I'm",
     "hero.role1": "Software",
     "hero.role2": "Developer",
-    "hero.tagline.default":
-      "I build software — whether it's your next product or my next team.",
-    "hero.tagline.freelance": "Currently available for freelance projects →",
-    "hero.tagline.employee": "Currently open to full-time opportunities →",
+    "hero.claim": "I build tools that augment people.",
+    "hero.sub":
+      "Hard problems, methodical craft, working software — for your product, or for your team.",
+    "hero.pipeline.label": "How I work",
+    "hero.pipeline.status": "Proven on real projects",
+    "hero.stage1.outcome":
+      "A clear diagnosis and a prioritized roadmap — before a line of code.",
+    "hero.stage2.outcome":
+      "A tailored blueprint per problem — technology that serves your business, not the other way around.",
+    "hero.stage3.outcome":
+      "Working software in production, with progress you can see every week.",
+    "hero.proof.label": "Shipped with this process",
+    "hero.proof.caption": "Bruschi Rentals CRM — see the project",
+    "hero.proof.alt1":
+      "Bruschi Rentals CRM buildings table with status indicators",
+    "hero.proof.alt2": "Bruschi Rentals CRM KPIs panel with monthly metrics",
+    "hero.proof.alt3":
+      "Bruschi Rentals CRM client pipeline with stage tracker",
     "hero.cta.freelance": "Hire me for a project",
     "hero.cta.employee": "I'm looking for a developer",
     // About
@@ -170,6 +187,7 @@ export const ui = {
     ],
     // Services Section
     "services.title": "How I Work",
+    "services.step.label": "Step",
     "services.subtitle":
       "A proven approach to turn your business challenges into working software — from discovery to delivery.",
     "services.step1.title": "Discovery",
@@ -237,14 +255,31 @@ export const ui = {
     "404.action": "Volver al inicio",
     // post card
     "posted.on": "Publicado el",
+    "tags.all": "Todos los posts",
+    "tags.tag": "Etiqueta",
+    "footer.credit": "Hecho con dedicación por André Izarra.",
     // Hero
     "hero.greet": "Hola, soy",
     "hero.role1": "Desarrollador",
     "hero.role2": "de Software",
-    "hero.tagline.default":
-      "Construyo software — ya sea tu próximo producto o mi próximo equipo.",
-    "hero.tagline.freelance": "Disponible para proyectos freelance →",
-    "hero.tagline.employee": "Abierto a oportunidades laborales →",
+    "hero.claim": "Construyo herramientas que potencian a las personas.",
+    "hero.sub":
+      "Problemas difíciles, trabajo meticuloso, software que funciona — para tu producto, o para tu equipo.",
+    "hero.pipeline.label": "Cómo trabajo",
+    "hero.pipeline.status": "Probado en proyectos reales",
+    "hero.stage1.outcome":
+      "Un diagnóstico claro y una ruta priorizada — antes de escribir una línea de código.",
+    "hero.stage2.outcome":
+      "Un plan a medida por problema — la tecnología al servicio de tu negocio, no al revés.",
+    "hero.stage3.outcome":
+      "Software funcionando en producción, con avances que ves cada semana.",
+    "hero.proof.label": "Entregado con este proceso",
+    "hero.proof.caption": "CRM de Bruschi Rentals — ver el proyecto",
+    "hero.proof.alt1":
+      "Tabla de edificios del CRM Bruschi Rentals con indicadores de estado",
+    "hero.proof.alt2": "Panel de KPIs del CRM Bruschi Rentals con métricas mensuales",
+    "hero.proof.alt3":
+      "Pipeline de clientes del CRM Bruschi Rentals con seguimiento de etapas",
     "hero.cta.freelance": "Contrátame para un proyecto",
     "hero.cta.employee": "Busco un desarrollador",
     // About
@@ -384,6 +419,7 @@ export const ui = {
     ],
     // Services Section
     "services.title": "Cómo Trabajo",
+    "services.step.label": "Paso",
     "services.subtitle":
       "Un enfoque probado para convertir los desafíos de tu negocio en software funcionando — desde el descubrimiento hasta la entrega.",
     "services.step1.title": "Descubrimiento",

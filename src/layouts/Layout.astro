@@ -4,15 +4,18 @@ import "@fontsource-variable/geist";
 import "@fontsource-variable/geist/wght-italic.css";
 import "@fontsource-variable/geist-mono";
 import "@fontsource-variable/geist-mono/wght-italic.css";
+import "@fontsource-variable/archivo";
 import Header from "@/components/layout/header.astro";
 import SocialIcons from "@/modules/portfolio/components/SocialIcons.astro";
+import authorPhoto from "@/assets/andre-izarra.jpg";
 interface Props {
   title?: string;
   description?: string;
 }
-import { getLangFromUrl } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const SITE_URL = "https://andre-izarra.netlify.app";
 const SITE_NAME = "André Izarra";
@@ -144,17 +147,23 @@ const pageDescription =
     <main class="flex-grow">
       <slot />
     </main>
-    <footer
-      class="border-t bg-white shadow dark:border-gray-700 dark:bg-gray-900"
-    >
+    <footer class="border-t border-border bg-secondary/40">
       <div
         class="container mx-auto flex flex-col items-center gap-4 px-4 py-8 md:flex-row md:justify-between"
       >
-        <p
-          class="text-center text-sm text-gray-500 md:text-left dark:text-gray-400"
-        >
-          &copy; {new Date().getFullYear()} Made with dedication by André Izarra.
-        </p>
+        <div class="flex items-center gap-3">
+          <img
+            src={authorPhoto.src}
+            width="800"
+            height="800"
+            alt="André Izarra"
+            class="size-9 rounded-full object-cover ring-1 ring-border"
+            loading="lazy"
+          />
+          <p class="text-center text-sm text-muted-foreground md:text-left">
+            &copy; {new Date().getFullYear()} {t("footer.credit")}
+          </p>
+        </div>
         <SocialIcons socials={socialLinks} variant="footer" />
       </div>
     </footer>

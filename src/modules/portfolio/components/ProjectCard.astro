@@ -22,9 +22,10 @@ import GamemindIcon from "@/assets/gamemind_icon.png";
    padding, truncated description — and still
    communicate impact. On desktop it breathes.
 
-   Palette matches ProjectLayout: emerald for
-   success/results, amber for problem/tension,
-   white canvas, rich gradient accents.
+   Palette (design-direction.md, 2026-10-22):
+   grayscale ground + one green accent. Green is
+   earned by the CTA and hover feedback only —
+   no gradient glows, no floating circles.
    ───────────────────────────────────────────── */
 
 const lang = getLangFromUrl(Astro.url);
@@ -64,29 +65,9 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
 ---
 
 <div
-  class="group relative overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+  class="group rounded-2xl border border-border bg-card shadow-sm transition-colors duration-300 hover:border-brand/40"
 >
-  {/* Decorative gradient glow — more visible on hover */}
-  <div
-    class="pointer-events-none absolute -inset-1 bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-emerald-500/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
-  >
-  </div>
-  <div
-    class="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-teal-500/0 to-emerald-500/0 opacity-0 transition-opacity duration-500 group-hover:from-emerald-500/[0.03] group-hover:via-teal-500/[0.03] group-hover:to-emerald-500/[0.03] group-hover:opacity-100"
-  >
-  </div>
-
-  {/* Decorative circles — animate on hover */}
-  <div
-    class="absolute -top-8 -right-8 h-28 w-28 rounded-full bg-gradient-to-br from-emerald-400/10 to-teal-400/10 transition-all duration-700 group-hover:scale-150 group-hover:from-emerald-400/20 group-hover:to-teal-400/20"
-  >
-  </div>
-  <div
-    class="absolute -bottom-8 -left-8 h-20 w-20 rounded-full bg-gradient-to-tr from-cyan-400/10 to-emerald-400/10 transition-all duration-700 group-hover:scale-150 group-hover:from-cyan-400/20 group-hover:to-emerald-400/20"
-  >
-  </div>
-
-  <div class="relative flex flex-col gap-4 p-5 md:gap-6 md:p-8">
+  <div class="flex flex-col gap-4 p-5 md:gap-6 md:p-8">
     {/* ─── Header: Logo + Badge + External Link ─── */}
     <div class="flex items-start gap-3 md:gap-4">
       {/* Logo */}
@@ -97,13 +78,13 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
             width={48}
             height={48}
             alt={`${project.data.title} logo`}
-            class="size-10 flex-shrink-0 rounded-xl object-contain ring-1 ring-gray-100 md:size-14"
+            class="size-10 flex-shrink-0 rounded-xl object-contain ring-1 ring-border md:size-14"
           />
         ) : (
-          <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-100 to-teal-100 md:size-14">
+          <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-xl bg-secondary md:size-14">
             <Icon
               name="mdi:package"
-              class="size-6 text-emerald-600 md:size-8"
+              class="size-6 text-muted-foreground md:size-8"
             />
           </div>
         )
@@ -111,12 +92,12 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
 
       <div class="min-w-0 flex-1">
         <span
-          class="inline-block rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-white uppercase shadow-sm md:text-xs"
+          class="inline-block rounded-full border border-border bg-secondary/50 px-2.5 py-0.5 font-mono text-[10px] tracking-[0.14em] text-muted-foreground uppercase md:text-xs"
         >
           {lang === "es" ? "Caso de Estudio" : "Case Study"}
         </span>
         <h2
-          class="mt-2 text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-emerald-700 md:text-2xl"
+          class="mt-2 text-xl font-bold text-foreground transition-colors duration-300 group-hover:text-brand md:text-2xl"
         >
           {project.data.title}
         </h2>
@@ -129,7 +110,7 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
             href={project.data.link}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex flex-shrink-0 items-center rounded-lg p-1.5 text-emerald-600 transition-all duration-300 hover:bg-emerald-50 hover:text-emerald-800 md:p-2"
+            class="inline-flex flex-shrink-0 items-center rounded-lg p-1.5 text-muted-foreground transition-colors duration-200 hover:bg-secondary hover:text-brand md:p-2"
             title={`Visit ${project.data.title}`}
             aria-label="Visit web site"
           >
@@ -141,7 +122,7 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
 
     {/* ─── Description — condensed on mobile ─── */}
     <p
-      class="line-clamp-3 text-sm leading-relaxed text-gray-600 md:line-clamp-none md:text-base"
+      class="line-clamp-3 text-sm leading-relaxed text-muted-foreground md:line-clamp-none md:text-base"
     >
       {project.data.description}
     </p>
@@ -149,19 +130,21 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
     {/* ─── Problem Teaser ─── */}
     {
       project.data.problem && (
-        <div class="rounded-xl border border-amber-100 bg-gradient-to-br from-amber-50 to-orange-50/50 p-3 md:p-4">
+        <div class="rounded-xl border border-border bg-secondary/40 p-3 md:p-4">
           <div class="mb-1 flex items-center gap-2">
-            <div class="flex size-5 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-500 md:size-6">
+            <div class="flex size-5 items-center justify-center rounded-full border border-border bg-card md:size-6">
               <Icon
                 name="mdi:alert-circle-outline"
-                class="size-3 text-white md:size-3.5"
+                class="size-3 text-muted-foreground md:size-3.5"
               />
             </div>
-            <span class="text-[10px] font-bold tracking-wider text-amber-600 uppercase md:text-xs">
+            <span
+              class="font-mono text-[10px] tracking-[0.14em] text-muted-foreground uppercase md:text-xs"
+            >
               {lang === "es" ? "El Problema" : "The Problem"}
             </span>
           </div>
-          <p class="line-clamp-2 text-xs leading-relaxed text-gray-700 md:text-sm">
+          <p class="line-clamp-2 text-xs leading-relaxed text-foreground md:text-sm">
             {project.data.problem}
           </p>
         </div>
@@ -171,7 +154,7 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
     {/* ─── Screenshot Preview Strip ─── */}
     {
       previewScreenshot && (
-        <div class="overflow-hidden rounded-xl border border-gray-100 bg-gray-50">
+        <div class="overflow-hidden rounded-xl border border-border bg-secondary/50">
           <Image
             src={previewScreenshot}
             width={800}
@@ -187,20 +170,14 @@ const detailUrl = `/${lang}/projects/${project.id.split("/").pop()}`;
     <div class="flex">
       <a
         href={detailUrl}
-        class="group/btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-2.5 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg md:w-auto md:px-8 md:py-3 md:text-base"
+        class="group/btn inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-brand-foreground shadow-sm transition-[filter] duration-200 hover:brightness-90 md:w-auto md:px-8 md:py-3 md:text-base"
       >
         <span>{t("projects.cta")}</span>
         <Icon
           name="mdi:arrow-right"
-          class="size-4 transition-transform duration-300 group-hover/btn:translate-x-1 md:size-5"
+          class="size-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 md:size-5"
         />
       </a>
     </div>
-  </div>
-
-  {/* Bottom accent line */}
-  <div
-    class="absolute right-0 bottom-0 left-0 h-1 origin-left scale-x-0 transform bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 transition-transform duration-500 group-hover:scale-x-100"
-  >
   </div>
 </div>

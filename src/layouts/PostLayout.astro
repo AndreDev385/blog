@@ -42,7 +42,16 @@ const { post, headings } = Astro.props;
     <div class="max-w-[68ch] min-w-0 flex-1">
       <article>
         <header class="relative mb-8">
-          <h1 class="text-foreground mb-2 text-4xl font-bold lg:text-5xl">
+          {/* Back link — mono label, green only as hover feedback */}
+          <a
+            href={`/${lang}/tags/${lang === "es" ? "todos" : "all"}`}
+            class="inline-flex items-center gap-1.5 font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase transition-colors hover:text-brand"
+          >
+            &larr; {t("header.blog")}
+          </a>
+          <h1
+            class="mt-4 mb-2 text-4xl leading-tight font-bold tracking-tight text-balance text-foreground lg:text-5xl"
+          >
             {post.data.title}
           </h1>
           <Author
@@ -50,11 +59,14 @@ const { post, headings } = Astro.props;
           />
           {
             post.data.tags && (
-              <div class="mt-2">
+              <div class="mt-4 flex flex-wrap items-center gap-2">
                 {post.data.tags
                   .filter((tag: string) => tag in skillIconMap)
                   .map((tag: string) => (
-                    <a href={`/${lang}/tags/${tag.toLowerCase()}`}>
+                    <a
+                      href={`/${lang}/tags/${tag.toLowerCase()}`}
+                      class="rounded-full transition-colors hover:bg-brand-soft"
+                    >
                       <SkillBadge
                         skill={skillIconMap[tag as keyof typeof skillIconMap]}
                       />

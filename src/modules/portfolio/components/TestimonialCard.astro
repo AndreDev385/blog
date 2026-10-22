@@ -6,11 +6,11 @@ import { Icon } from "astro-icon/components";
    attribution. Used inside ProjectLayout (per-
    project) and TestimonialsSection (homepage).
 
-   Design: Spotlight — bold, authoritative card
-   with a thick left gradient border, inline
-   colored quote marks, and a clean author
-   attribution section. The card lifts on hover
-   with layered shadow.
+   Design (design-direction.md, 2026-10-22): a
+   quiet card in the CRM panel language —
+   border-border on bg-card, shadow-sm, a neutral
+   left rule and muted quote marks. Hover is
+   border feedback only; no lift, no glow.
 
    If photo is omitted, a monogram fallback
    (initials) is shown instead.
@@ -52,30 +52,30 @@ const initials = author
 ---
 
 <div
-  class={`group relative rounded-xl border border-gray-100 bg-white shadow-md transition-all duration-300 hover:shadow-xl ${
+  class={`relative rounded-xl border border-border bg-card shadow-sm transition-colors duration-300 hover:border-brand/40 ${
     isCompact ? "p-6" : "p-6 md:p-8"
   }`}
 >
-  {/* Thick left gradient border */}
+  {/* Left rule */}
   <div
-    class="absolute top-4 bottom-4 left-0 w-[5px] rounded-r-full bg-gradient-to-b from-emerald-500 to-teal-400"
+    class="absolute top-4 bottom-4 left-0 w-[5px] rounded-r-full bg-border"
   >
   </div>
 
   {/* Quote with inline marks */}
   <div class="ml-2">
     <blockquote
-      class={`relative font-medium leading-relaxed text-gray-800 ${
+      class={`relative font-medium leading-relaxed text-foreground ${
         isCompact ? "text-sm" : "text-[15px] md:text-[17px] md:leading-8"
       }`}
     >
       <span
-        class="absolute -top-1 -left-4 text-2xl leading-none text-emerald-400 select-none"
+        class="absolute -top-1 -left-4 text-2xl leading-none text-muted-foreground/40 select-none"
         aria-hidden="true">&ldquo;</span
       >
       {quote}
       <span
-        class="align-bottom text-2xl leading-none text-emerald-400 select-none"
+        class="align-bottom text-2xl leading-none text-muted-foreground/40 select-none"
         aria-hidden="true">&rdquo;</span
       >
     </blockquote>
@@ -85,13 +85,9 @@ const initials = author
   <div
     class={`relative ml-2 flex items-center gap-3 ${isCompact ? "mt-5" : "mt-6"}`}
   >
-    <div
-      class="h-px flex-1 bg-gradient-to-r from-emerald-200/60 to-transparent"
-    >
-    </div>
-    <div class="size-1.5 rounded-full bg-emerald-400"></div>
-    <div class="h-px flex-1 bg-gradient-to-l from-teal-200/60 to-transparent">
-    </div>
+    <div class="h-px flex-1 bg-border"></div>
+    <div class="size-1.5 rounded-full bg-muted-foreground/40"></div>
+    <div class="h-px flex-1 bg-border"></div>
   </div>
 
   {/* Author attribution */}
@@ -102,14 +98,14 @@ const initials = author
         <img
           src={photo}
           alt={author}
-          class={`shrink-0 rounded-full object-cover shadow-sm ring-2 ring-white ${
+          class={`shrink-0 rounded-full object-cover shadow-sm ring-1 ring-border ${
             isCompact ? "size-11" : "size-12 md:size-14"
           }`}
           loading="lazy"
         />
       ) : (
         <div
-          class={`flex shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 font-bold text-emerald-700 shadow-sm ring-2 ring-white ${
+          class={`flex shrink-0 items-center justify-center rounded-full bg-secondary font-bold text-foreground ring-1 ring-border ${
             isCompact ? "size-11 text-xs" : "size-12 text-sm md:size-14"
           }`}
         >
@@ -121,7 +117,7 @@ const initials = author
     <div class="min-w-0 flex-1">
       <div class="flex items-center gap-2">
         <span
-          class={`font-bold text-gray-900 ${isCompact ? "text-sm" : "text-sm md:text-base"}`}
+          class={`font-bold text-foreground ${isCompact ? "text-sm" : "text-sm md:text-base"}`}
         >
           {author}
         </span>
@@ -131,7 +127,7 @@ const initials = author
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex size-6 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors hover:bg-blue-100"
+              class="inline-flex size-6 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-brand-soft hover:text-brand"
               title={`${author} on LinkedIn`}
             >
               <Icon name="mdi:linkedin" class="size-3.5" />
@@ -140,14 +136,14 @@ const initials = author
         }
       </div>
       <p
-        class={`leading-tight text-gray-500 ${isCompact ? "text-xs" : "text-xs md:text-sm"}`}
+        class={`leading-tight text-muted-foreground ${isCompact ? "text-xs" : "text-xs md:text-sm"}`}
       >
         {role}
         {
           company && (
             <>
-              <span class="mx-1.5 text-gray-300">&middot;</span>
-              <span class="font-semibold text-emerald-700">{company}</span>
+              <span class="mx-1.5 text-muted-foreground/40">&middot;</span>
+              <span class="font-semibold text-foreground">{company}</span>
             </>
           )
         }

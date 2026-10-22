@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import authorPhoto from "@/assets/andre-izarra.jpg";
 
 type AuthorAvatarProps = {
   postedString: string;
@@ -6,19 +7,24 @@ type AuthorAvatarProps = {
 
 export function Author({ postedString }: AuthorAvatarProps) {
   return (
-    <div className="my-4 flex items-center space-x-4">
+    <div className="my-6 flex items-center gap-4">
       <Avatar>
         <img
-          src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
-          width="320"
-          height="320"
-          alt="André Izarra, software developer and blogger"
+          src={authorPhoto.src}
+          width="800"
+          height="800"
+          alt="André Izarra, software developer"
+          className="ring-1 ring-border"
         />
         <AvatarFallback>AI</AvatarFallback>
       </Avatar>
       <div>
-        <p className="text-lg leading-none font-bold">André Izarra</p>
-        <time className="text-muted-foreground">{postedString}</time>
+        <p className="font-display text-lg leading-none font-bold">
+          André Izarra
+        </p>
+        <time className="text-muted-foreground font-mono text-xs tracking-[0.12em] uppercase">
+          {postedString}
+        </time>
       </div>
     </div>
   );

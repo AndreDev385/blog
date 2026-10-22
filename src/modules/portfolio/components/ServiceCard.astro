@@ -1,16 +1,21 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+/* Service row (design-direction.md, 2026-10-22): the gradient icon tile and
+   the stock illustration are gone. Left = what the step is; right = the
+   deliverable you walk away with, in a card that looks like the CRM's
+   panels. The green marks the deliverables — proof marks. */
 
 export type Service = {
-  icon: string;
+  /** Mono step marker, e.g. "01" */
+  num: string;
   title: string;
   description: string;
-  /** Tailwind gradient classes for the icon circle, e.g. "from-blue-500 to-purple-500" */
-  gradient: string;
   walkaway: readonly string[];
-  /** Path to an SVG illustration for the visual panel */
-  image?: string;
 };
+
+const t = useTranslations(getLangFromUrl(Astro.url));
 
 const { service, walkawayLabel } = Astro.props as {
   service: Service;
@@ -18,101 +23,39 @@ const { service, walkawayLabel } = Astro.props as {
 };
 ---
 
-<div class="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
-  {/* ─── Left: Content ─── */}
-  <div class="space-y-6">
-    {/* Icon + Title */}
-    <div class="flex items-center gap-4">
-      <div
-        class={`flex size-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} shadow-md`}
-      >
-        <Icon name={service.icon} class="size-7 text-white" />
-      </div>
-      <h3 class="text-2xl font-bold text-gray-900 sm:text-3xl">
-        {service.title}
-      </h3>
-    </div>
-
-    {/* Description */}
-    <p class="text-base leading-relaxed text-gray-600 sm:text-lg">
+<div class="grid gap-10 md:grid-cols-2 md:items-start md:gap-16">
+  {/* ─── Left: the step ─── */}
+  <div>
+    <p class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase">
+      {t("services.step.label")} {service.num}
+    </p>
+    <h3 class="mt-2 text-2xl font-bold sm:text-3xl">{service.title}</h3>
+    <p
+      class="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+    >
       {service.description}
     </p>
-
-    {/* Walkaway Benefits */}
-    <div>
-      <h4
-        class="mb-4 text-xs font-semibold tracking-widest text-gray-400 uppercase"
-      >
-        {walkawayLabel}
-      </h4>
-      <ul class="space-y-3">
-        {
-          service.walkaway.map((item) => (
-            <li class="flex items-start gap-3">
-              <Icon
-                name="mdi:check-circle"
-                class="mt-0.5 size-5 shrink-0 text-emerald-500"
-              />
-              <span class="text-base leading-relaxed text-gray-700">
-                {item}
-              </span>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
   </div>
 
-  {/* ─── Right: Illustration ─── */}
-  <div class="relative overflow-hidden rounded-2xl">
-    {/* Subtle gradient base */}
-    <div
-      class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-5`}
-    >
-    </div>
-
-    {/* Decorative blurred blobs */}
-    <div class="absolute -inset-20">
-      <div
-        class={`absolute right-0 top-0 h-72 w-72 rounded-full bg-gradient-to-br ${service.gradient} opacity-15 blur-3xl`}
-      >
-      </div>
-      <div
-        class={`absolute bottom-0 left-0 h-56 w-56 rounded-full bg-gradient-to-tr ${service.gradient} opacity-10 blur-3xl`}
-      >
-      </div>
-    </div>
-
-    {/* Grid dots pattern */}
-    <div
-      class="absolute inset-0 opacity-[0.03]"
-      style={{
-        backgroundImage:
-          "radial-gradient(circle, currentColor 1px, transparent 1px)",
-        backgroundSize: "24px 24px",
-      }}
-    >
-    </div>
-
-    {/* Centered SVG illustration */}
-    {
-      service.image ? (
-        <div class="relative flex aspect-[5/4] items-center justify-center p-8 sm:aspect-[4/3] sm:p-12">
-          <img
-            src={service.image}
-            alt={`${service.title} illustration`}
-            class="h-full w-full object-contain"
-            loading="lazy"
-          />
-        </div>
-      ) : (
-        <div class="relative flex aspect-[5/4] items-center justify-center sm:aspect-[4/3]">
-          <Icon
-            name={service.icon}
-            class="h-28 w-28 text-gray-900/[0.07] sm:h-36 sm:w-36"
-          />
-        </div>
-      )
-    }
+  {/* ─── Right: the deliverable ─── */}
+  <div class="rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-7">
+    <p class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase">
+      {walkawayLabel}
+    </p>
+    <ul class="mt-4 space-y-3">
+      {
+        service.walkaway.map((item) => (
+          <li class="flex items-start gap-2.5">
+            <Icon
+              name="mdi:check-circle"
+              class="mt-0.5 size-4.5 shrink-0 text-brand"
+            />
+            <span class="text-base leading-relaxed text-foreground">
+              {item}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </div>

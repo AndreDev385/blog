@@ -24,15 +24,12 @@ const faqs: FaqItem[] = [
 
 const chapter = {
   key: "faq",
-  icon: "mdi:chat-question-outline",
-  gradient: "from-blue-400 to-indigo-500",
-  borderColor: "border-blue-400",
   title: t("faq.title"),
 };
 ---
 
 <section
-  class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 px-6 py-20 md:px-4 md:py-28"
+  class="bg-secondary/40 px-6 py-20 md:px-4 md:py-28"
 >
   <div class="mx-auto max-w-3xl">
     {/* ─── Section Header ─── */}
@@ -46,14 +43,14 @@ const chapter = {
         class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
       >
         <div>
-          <p class="text-lg text-gray-500">{t("faq.header1")}</p>
-          <p class="text-xl font-semibold text-gray-800">
+          <p class="text-lg text-muted-foreground">{t("faq.header1")}</p>
+          <p class="text-xl font-semibold text-foreground">
             {t("faq.header2")}
           </p>
         </div>
         <a
           href="mailto:andre@izarra.dev"
-          class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:from-blue-700 hover:to-indigo-700 hover:shadow-lg"
+          class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors duration-300 hover:bg-primary/90"
         >
           {t("faq.cta")}
           <Icon name="mdi:arrow-right" class="size-4" />
@@ -62,24 +59,24 @@ const chapter = {
     </div>
 
     {/* ─── FAQ Accordion ─── */}
-    <div class="divide-y divide-gray-200/80" data-reveal>
+    <div class="divide-y divide-border" data-reveal>
       {
         faqs.map((item, index) => (
           <details
             class="group py-5 transition-all duration-200"
             style={`transition-delay: ${index * 80}ms`}
           >
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-gray-800 transition-colors duration-200 hover:text-blue-700 [&::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left font-semibold text-foreground transition-colors duration-200 hover:text-brand [&::-webkit-details-marker]:hidden">
               <span class="text-base leading-snug md:text-lg">
                 {item.question}
               </span>
               <Icon
                 name="mdi:chevron-down"
-                class="size-5 shrink-0 text-gray-400 transition-transform duration-300 group-open:rotate-180 group-open:text-blue-600"
+                class="size-5 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-180 group-open:text-brand"
               />
             </summary>
 
-            <div class="pt-4 leading-relaxed text-gray-600 transition-all duration-300">
+            <div class="pt-4 leading-relaxed text-muted-foreground transition-all duration-300">
               {item.answer}
             </div>
           </details>

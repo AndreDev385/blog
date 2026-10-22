@@ -1,31 +1,38 @@
 ---
-import { Card } from "@/components/ui/card";
+/* Table of contents (design-direction.md, 2026-10-22): the CRM-panel card
+   idiom — border-border on bg-card, shadow-sm, mono label as its heading.
+   Links are muted; green only as hover feedback on the interactive text.
+   Depth indentation is kept as-is (scoped styles below). */
 
 const { headings } = Astro.props;
 ---
 
-<Card>
-  <nav class="toc" aria-labelledby="toc-heading">
-    <h2 id="toc-heading" class="mb-4 text-lg font-semibold">
-      Table of Contents
-    </h2>
-    <ul class="space-y-3">
-      {
-        headings.map((heading: any) => (
-          <li class={`toc-item toc-item-${heading.depth}`}>
-            <a
-              href={`#${heading.slug}`}
-              class="block text-sm leading-tight text-gray-700 hover:text-gray-900 hover:underline"
-              title={heading.text}
-            >
-              {heading.text}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
-</Card>
+<nav
+  class="toc rounded-2xl border border-border bg-card p-5 shadow-sm"
+  aria-labelledby="toc-heading"
+>
+  <h2
+    id="toc-heading"
+    class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase"
+  >
+    Table of Contents
+  </h2>
+  <ul class="mt-4 space-y-2.5">
+    {
+      headings.map((heading: any) => (
+        <li class={`toc-item toc-item-${heading.depth}`}>
+          <a
+            href={`#${heading.slug}`}
+            class="block text-sm leading-snug text-muted-foreground transition-colors hover:text-brand"
+            title={heading.text}
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
 
 <style>
   .toc-item {

@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 
 import ModeToggle from "@/components/ModeToggle.astro";
+import ProcessPipeline from "./ProcessPipeline.astro";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -11,54 +12,71 @@ const WHATSAPP_URL = "https://wa.me/584241756082";
 const LINKEDIN_URL = "https://www.linkedin.com/in/andr%C3%A9-izarra/";
 ---
 
-<!-- Hero -->
+<!-- Hero — claim on a real axis, the process runs on the stage beside it
+     (design-direction.md, 2026-10-22: refuses the dead-center stack) -->
 <section
   id="hero"
-  class="relative flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"
+  class="relative flex min-h-screen items-center bg-background px-6 py-20 md:px-4"
 >
-  <div class="mx-auto max-w-7xl px-6 text-center">
-    <!-- Greeting -->
-    <h2 class="mb-2 text-3xl font-semibold text-gray-500">
-      {t("hero.greet")}{" "}
-      <span class="text-blue-900">André Izarra</span>
-    </h2>
+  <div
+    class="mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16"
+  >
+    <!-- ─── Left: the claim ─── -->
+    <div>
+      <!-- Greeting — mono, the CRM's label language -->
+      <p class="font-mono text-sm text-muted-foreground">
+        {t("hero.greet")}{" "}
+        <span class="font-medium text-foreground">André Izarra</span>
+      </p>
 
-    <!-- Main Title -->
-    <h1
-      class="mb-10 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-5xl leading-tight font-bold text-transparent md:text-7xl lg:text-8xl"
-    >
-      {t("hero.role1")}{" "}
-      {t("hero.role2")}
-    </h1>
+      <!-- Main claim -->
+      <h1
+        class="mt-6 text-5xl leading-[1.05] font-bold text-balance md:text-6xl lg:text-7xl"
+      >
+        {t("hero.claim")}
+      </h1>
 
-    <!-- Mode Toggle -->
-    <div class="mb-8">
-      <ModeToggle />
+      <!-- Sub -->
+      <p
+        class="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+      >
+        {t("hero.sub")}
+      </p>
+
+      <!-- CTAs (one per mode — mode logic shows the matching one) -->
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <!-- Freelance CTA -->
+        <a
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-freelance inline-flex items-center gap-2.5 rounded-full bg-brand px-7 py-3 text-sm font-semibold text-brand-foreground shadow-sm transition-[filter] duration-200 hover:brightness-90"
+        >
+          <Icon name="mdi:whatsapp" class="size-5" />
+          <span>{t("hero.cta.freelance")}</span>
+        </a>
+
+        <!-- Employee CTA -->
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cta-employee inline-flex items-center gap-2.5 rounded-full border border-border px-7 py-3 text-sm font-semibold text-foreground transition-colors duration-200 hover:bg-secondary"
+        >
+          <Icon name="mdi:linkedin" class="size-5" />
+          <span>{t("hero.cta.employee")}</span>
+        </a>
+      </div>
+
+      <!-- Audience switch (drives sections + CTA below) -->
+      <div class="mt-10">
+        <ModeToggle />
+      </div>
     </div>
 
-    <!-- Dual CTAs -->
-    <div class="flex flex-wrap items-center justify-center gap-4">
-      <!-- Freelance CTA -->
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cta-freelance inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
-      >
-        <Icon name="mdi:whatsapp" class="size-5" />
-        <span>{t("hero.cta.freelance")}</span>
-      </a>
-
-      <!-- Employee CTA -->
-      <a
-        href={LINKEDIN_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cta-employee inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 px-7 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl"
-      >
-        <Icon name="mdi:linkedin" class="size-5" />
-        <span>{t("hero.cta.employee")}</span>
-      </a>
+    <!-- ─── Right: the signature — "How I Work" as a live pipeline ─── -->
+    <div data-reveal>
+      <ProcessPipeline />
     </div>
   </div>
 </section>

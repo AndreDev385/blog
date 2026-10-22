@@ -1,10 +1,16 @@
 ---
 import SkillBadge from "@/components/SkillBadge.astro";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { skillIconMap } from "@/lib/skillIconMap";
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
 import { formatDate } from "../utils/formatDate";
+
+/* Listing card (design-direction.md, 2026-10-22): the CRM-panel idiom —
+   border-border on bg-card, shadow-sm, hover is border feedback only
+   (no glow, no lift). Hierarchy: mono "posted on" label, display-font
+   title, muted description, neutral outline skill pills. The whole card
+   stays clickable through the wrapping <a>; the image column keeps its
+   photo behind a rounded-xl border. */
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -14,48 +20,56 @@ const url = `/${post.id.split("/")[0]}/blog/${post.id.split("/")[1]}`;
 ---
 
 <a href={url} class="group block">
-  <Card
+  <article
     id={post.data.title}
-    className="card grid grid-cols-1 gap-4 rounded-2xl border border-black/10 p-4 transition-all duration-300 hover:shadow-[0px_4px_64px_0px_rgba(148,163,184,0.6)] md:grid-cols-3 dark:border-white/10"
+    class="grid grid-cols-1 gap-6 rounded-2xl border border-border bg-card p-6 shadow-sm transition-colors duration-300 hover:border-brand/40 md:grid-cols-3 md:p-7"
   >
-    <div class="md:col-span-2">
-      <div class="grid gap-4">
-        <CardHeader>
-          <h2 class="text-3xl leading-tight font-bold">{post.data.title}</h2>
-        </CardHeader>
-        <CardContent className="grid grid-cols-5 gap-4">
-          <div class="col-span-5 space-y-4">
-            <time datetime={post.data.date.toISOString()}
-              >{t("posted.on")}
-              {formatDate(post.data.date, lang)}</time
-            >
-            <p class="text-sm">
-              {post.data.description}
-            </p>
-            <div class="flex items-center space-x-4 overflow-hidden">
-              {
-                post.data.tags
-                  .filter((tag: string) => tag in skillIconMap)
-                  .map((tag: string) => (
-                    <SkillBadge
-                      skill={skillIconMap[tag as keyof typeof skillIconMap]}
-                    />
-                  ))
-              }
-            </div>
-          </div>
-        </CardContent>
+    <div class="flex min-w-0 flex-col md:col-span-2">
+      {/* Mono metadata label */}
+      <p
+        class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase"
+      >
+        {t("posted.on")}
+        <time datetime={post.data.date.toISOString()}>
+          {formatDate(post.data.date, lang)}</time
+        >
+      </p>
+
+      {/* Display-font title */}
+      <h2
+        class="mt-3 text-2xl leading-tight font-bold tracking-tight text-foreground transition-colors group-hover:text-brand sm:text-3xl"
+      >
+        {post.data.title}
+      </h2>
+
+      <p class="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
+        {post.data.description}
+      </p>
+
+      {/* Neutral outline skill pills */}
+      <div class="mt-auto flex flex-wrap items-center gap-2 pt-5">
+        {
+          post.data.tags
+            .filter((tag: string) => tag in skillIconMap)
+            .map((tag: string) => (
+              <SkillBadge
+                skill={skillIconMap[tag as keyof typeof skillIconMap]}
+              />
+            ))
+        }
       </div>
     </div>
+
+    {/* Image column */}
     <div
-      class="relative hidden h-full overflow-hidden rounded-lg md:col-span-1 md:block"
+      class="relative hidden min-h-44 overflow-hidden rounded-xl border border-border md:col-span-1 md:block"
     >
       <img
         src={post.data.image}
         alt={`Featured image for "${post.data.title}"`}
-        class="object-cover transition-all duration-300 group-hover:scale-125"
-        style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;"
+        class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        loading="lazy"
       />
     </div>
-  </Card>
+  </article>
 </a>

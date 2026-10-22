@@ -3,6 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
+/* 404 (design-direction.md, 2026-10-22): mono code label + display heading,
+   muted explanation, one ink CTA back to the home of the current language.
+   Wording is untouched — the strings already live in the i18n table. */
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -14,16 +18,22 @@ const t = useTranslations(lang);
   <div
     class="flex min-h-[calc(100vh-200px)] flex-col items-center justify-center px-4 text-center"
   >
-    <h1 class="mb-4 text-6xl font-bold text-gray-900">404</h1>
-    <p class="mb-8 text-2xl font-semibold text-gray-700">
-      {t("404.title")}
+    <p
+      class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase"
+    >
+      404
     </p>
-    <div class="mb-8 max-w-md text-gray-600">
-      <p>{t("404.message")}</p>
-    </div>
-    <div class="space-x-4">
+    <h1
+      class="mt-4 max-w-2xl text-4xl font-bold tracking-tight text-balance text-foreground sm:text-5xl"
+    >
+      {t("404.title")}
+    </h1>
+    <p class="mt-4 max-w-md leading-relaxed text-muted-foreground">
+      {t("404.message")}
+    </p>
+    <div class="mt-8">
       <Button asChild>
-        <a href="/">&larr; {t("404.action")}</a>
+        <a href={`/${lang}`}>&larr; {t("404.action")}</a>
       </Button>
     </div>
   </div>

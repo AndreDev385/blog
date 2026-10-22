@@ -6,10 +6,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class="flex flex-col items-center gap-3" data-mode-toggle>
+<div class="flex flex-col items-start gap-3" data-mode-toggle>
   <!-- Label -->
   <p
-    class="text-[11px] font-medium tracking-[0.12em] text-gray-400/60 uppercase"
+    class="text-[11px] font-medium tracking-[0.12em] text-muted-foreground uppercase"
   >
     {t("mode.label")}
   </p>
@@ -17,7 +17,7 @@ const t = useTranslations(lang);
   <!-- Two option cards -->
   <div class="flex gap-3">
     <button
-      class="inline-flex cursor-pointer items-center gap-2 rounded-xl border-none px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
+      class="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
       data-mode="freelance"
       aria-checked="true"
     >
@@ -26,7 +26,7 @@ const t = useTranslations(lang);
     </button>
 
     <button
-      class="inline-flex cursor-pointer items-center gap-2 rounded-xl border-none px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
+      class="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
       data-mode="employee"
       aria-checked="false"
     >
@@ -44,81 +44,54 @@ const t = useTranslations(lang);
     var html = document.documentElement;
     var KEY = "portfolio-mode";
 
+    /* Ink-on-white states (design-direction.md, 2026-10-22): no per-mode
+       gradients or colored glows. Active = ink fill with white text, a
+       matching border and one subtle shadow. Inactive = white card with
+       muted ink text and a light border. */
     var COLORS = {
-      freelance: {
-        bgActive: "linear-gradient(135deg, #3b82f6, #a855f7)",
-        textActive: "#fff",
-        shadowActive: "0 4px 14px -4px rgba(59,130,246,0.4)",
+      active: {
+        bg: "#161A1E",
+        text: "#ffffff",
+        border: "#161A1E",
+        shadow: "0 1px 2px 0 rgba(22, 26, 30, 0.24)",
       },
-      employee: {
-        bgActive: "linear-gradient(135deg, #10b981, #14b8a6)",
-        textActive: "#fff",
-        shadowActive: "0 4px 14px -4px rgba(16,185,129,0.4)",
+      inactive: {
+        bg: "#ffffff",
+        text: "#5A6169",
+        border: "#E2E5E9",
+        shadow: "none",
       },
-      inactiveBg: "rgba(255,255,255,0.7)",
-      inactiveBgHover: "rgba(255,255,255,0.92)",
-      inactiveText: "#6b7280",
-      inactiveShadow:
-        "0 1px 3px -1px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05)",
-      inactiveShadowHover:
-        "0 4px 6px -2px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.05)",
-      blur: "blur(8px)",
+      inactiveTextHover: "#161A1E",
     };
 
-    function setCardStyle(card, bg, text, shadow) {
+    function setCardStyle(card, bg, text, border, shadow) {
       card.style.background = bg;
       card.style.color = text;
+      card.style.borderColor = border;
       card.style.boxShadow = shadow;
+    }
+
+    function applyCardState(card, active) {
+      var s = active ? COLORS.active : COLORS.inactive;
+      setCardStyle(card, s.bg, s.text, s.border, s.shadow);
     }
 
     function setCardHover(card) {
       var cur = card.getAttribute("aria-checked") === "true";
       if (!cur) {
-        card.style.background = COLORS.inactiveBgHover;
-        card.style.boxShadow = COLORS.inactiveShadowHover;
+        card.style.color = COLORS.inactiveTextHover;
       }
     }
 
     function setCardLeave(card) {
-      var m = card.getAttribute("data-mode");
-      var cur = card.getAttribute("aria-checked") === "true";
-      if (cur) {
-        setCardStyle(
-          card,
-          COLORS[m].bgActive,
-          COLORS[m].textActive,
-          COLORS[m].shadowActive,
-        );
-      } else {
-        setCardStyle(
-          card,
-          COLORS.inactiveBg,
-          COLORS.inactiveText,
-          COLORS.inactiveShadow,
-        );
-      }
+      applyCardState(card, card.getAttribute("aria-checked") === "true");
     }
 
     function activate(mode) {
       cards.forEach(function (c) {
-        var m = c.getAttribute("data-mode");
-        var on = m === mode;
+        var on = c.getAttribute("data-mode") === mode;
         c.setAttribute("aria-checked", on ? "true" : "false");
-        if (on) {
-          setCardStyle(
-            c,
-            COLORS[m].bgActive,
-            COLORS[m].textActive,
-            COLORS[m].shadowActive,
-          );
-        } else {
-          setCardStyle(
-            c,
-            COLORS.inactiveBg,
-            COLORS.inactiveText,
-            COLORS.inactiveShadow,
-          );
-        }
+        applyCardState(c, on);
       });
 
       if (mode) {
