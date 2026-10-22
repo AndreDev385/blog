@@ -26,6 +26,7 @@ Personal portfolio + bilingual blog (EN/ES) for **André Izarra** (software deve
 7. **No absolute URLs without SITE_URL** — use the constant in `Layout.astro` for canonical/OG/JSON-LD.
 8. **Nothing deploys without André's explicit go** — pushing to `main` is the deploy, and it is a person check (`_internal/CONTEXT.md`).
 9. **Voice is one home** — `../content-writing/_shared/voice.md`; the blog never keeps its own copy.
+10. **Contact data is sacred** — emails, phone/WhatsApp, socials, scheduling links come from André verbatim. Never invent, guess, or "improve" them; one wrong contact link loses a real client. (2026-10-22, after `andre@izarra.dev` shipped to production.)
 
 ## Private workspace
 

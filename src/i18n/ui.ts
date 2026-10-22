@@ -236,7 +236,7 @@ export const ui = {
     "faq.q6.q": "How do you ensure code quality?",
     "faq.q6.a":
       "I write automated tests, do code reviews, use continuous integration, and controlled deployments. Your project works well today and stays maintainable long-term.",
-    "faq.cta": "Book a call",
+    "faq.cta": "Write to me",
     "faq.header1": "Got any questions?",
     "faq.header2": "We're here for you 👇",
   },
@@ -468,7 +468,7 @@ export const ui = {
     "faq.q6.q": "¿Cómo aseguras la calidad del código?",
     "faq.q6.a":
       "Escribo tests automatizados, hago code review, uso integración continua y despliegues controlados. Tu proyecto no solo funciona bien hoy, sino que es mantenible a largo plazo.",
-    "faq.cta": "Agenda una llamada",
+    "faq.cta": "Escríbeme",
     "faq.header1": "¿Tienes preguntas?",
     "faq.header2": "Estamos aquí para ti 👇",
   },
