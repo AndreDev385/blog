@@ -33,11 +33,11 @@ pnpm format       # prettier over the repo
 src/
 ├── layouts/        # Global shell (Layout.astro) + post wrapper (PostLayout.astro)
 ├── pages/          # / (redirect to /es/), /en/*, /es/*, sitemap.xml.ts
+├── content.config.ts  # Collection schemas (blog, projects)
 ├── content/
-│   ├── content.config.ts  # Collection schemas (blog, projects)
 │   ├── blog/{en,es}/    # Bilingual blog posts (markdown)
 │   └── projects/{en,es}/ # Project pages (markdown)
-├── modules/        # blog, portfolio, projects feature modules
+├── modules/        # blog, portfolio feature modules
 ├── components/     # Shared components (Author, SkillBadge, ui/)
 ├── i18n/           # Translation strings + helpers
 └── lib/            # Utilities, skill icon map
