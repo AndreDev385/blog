@@ -19,7 +19,7 @@ const t = useTranslations(lang);
     <button
       class="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
       data-mode="freelance"
-      aria-checked="true"
+      aria-pressed="true"
     >
       <Icon name="mdi:briefcase-outline" />
       <span>{t("mode.freelance")}</span>
@@ -28,7 +28,7 @@ const t = useTranslations(lang);
     <button
       class="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-sm font-semibold transition-all duration-200 select-none"
       data-mode="employee"
-      aria-checked="false"
+      aria-pressed="false"
     >
       <Icon name="mdi:account-tie-outline" />
       <span>{t("mode.employee")}</span>
@@ -77,20 +77,20 @@ const t = useTranslations(lang);
     }
 
     function setCardHover(card) {
-      var cur = card.getAttribute("aria-checked") === "true";
+      var cur = card.getAttribute("aria-pressed") === "true";
       if (!cur) {
         card.style.color = COLORS.inactiveTextHover;
       }
     }
 
     function setCardLeave(card) {
-      applyCardState(card, card.getAttribute("aria-checked") === "true");
+      applyCardState(card, card.getAttribute("aria-pressed") === "true");
     }
 
     function activate(mode) {
       cards.forEach(function (c) {
         var on = c.getAttribute("data-mode") === mode;
-        c.setAttribute("aria-checked", on ? "true" : "false");
+        c.setAttribute("aria-pressed", on ? "true" : "false");
         applyCardState(c, on);
       });
 

@@ -22,6 +22,11 @@ if (process.argv.includes("dev")) {
 export default defineConfig({
   markdown: {
     remarkPlugins: [[remarkToc, { heading: "toc", maxDepth: 3 }]],
+    shikiConfig: {
+      // GitHub Dark's comment color (#6a737d) fails contrast on its own ground
+      // (3.04:1) — the high-contrast variant passes the craft floor.
+      theme: "github-dark-high-contrast",
+    },
   },
   image: {
     service: passthroughImageService(),
