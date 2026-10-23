@@ -26,6 +26,9 @@ export const ui = {
     "posted.on": "Posted on",
     "tags.all": "All posts",
     "tags.tag": "Tag",
+    "post.min_read": "min read",
+    "post.prev": "Previous post",
+    "post.next": "Next post",
     "footer.credit": "Made with dedication by André Izarra.",
     // Hero
     "hero.greet": "Hi, I'm",
@@ -257,6 +260,9 @@ export const ui = {
     "posted.on": "Publicado el",
     "tags.all": "Todos los posts",
     "tags.tag": "Etiqueta",
+    "post.min_read": "min de lectura",
+    "post.prev": "Post anterior",
+    "post.next": "Siguiente post",
     "footer.credit": "Hecho con dedicación por André Izarra.",
     // Hero
     "hero.greet": "Hola, soy",

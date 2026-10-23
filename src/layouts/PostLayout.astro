@@ -1,5 +1,6 @@
 ---
 import "@/styles/markdown.css";
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import TableOfContent from "@/modules/blog/components/TableOfContent.astro";
 import SkillBadge from "@/components/SkillBadge.astro";
@@ -14,9 +15,26 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const { post, headings } = Astro.props;
+
+// Reading time — ~200 words per minute
+const wordCount = (post.body ?? "").trim().split(/\s+/).filter(Boolean).length;
+const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+
+// Previous (older) / next (newer) in the same language
+const siblings = (await getCollection("blog"))
+  .filter((p) => p.id.startsWith(`${lang}/`))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const index = siblings.findIndex((p) => p.id === post.id);
+const olderPost = index >= 0 && index < siblings.length - 1 ? siblings[index + 1] : null;
+const newerPost = index > 0 ? siblings[index - 1] : null;
+const postHref = (p: (typeof siblings)[number]) => `/${lang}/blog/${p.id.split("/")[1]}`;
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+>
   <!-- Structured Data: BlogPosting -->
   <script
     type="application/ld+json"
@@ -55,7 +73,7 @@ const { post, headings } = Astro.props;
             {post.data.title}
           </h1>
           <Author
-            postedString={`${t("posted.on")} ${formatDate(post.data.date, lang)}`}
+            postedString={`${t("posted.on")} ${formatDate(post.data.date, lang)} · ${readingMinutes} ${t("post.min_read")}`}
           />
           {
             post.data.tags && (
@@ -80,6 +98,43 @@ const { post, headings } = Astro.props;
           <slot />
         </div>
       </article>
+
+      {/* Reading flow — previous (older) / next (newer) */}
+      {
+        (olderPost || newerPost) && (
+          <nav
+            class="mt-12 grid gap-4 border-t border-border pt-8 sm:grid-cols-2"
+            aria-label={t("header.blog")}
+          >
+            {olderPost && (
+              <a
+                href={postHref(olderPost)}
+                class="group rounded-2xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-brand/40"
+              >
+                <p class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase">
+                  &larr; {t("post.prev")}
+                </p>
+                <p class="mt-2 font-display text-lg font-semibold text-balance group-hover:text-brand">
+                  {olderPost.data.title}
+                </p>
+              </a>
+            )}
+            {newerPost && (
+              <a
+                href={postHref(newerPost)}
+                class={`group rounded-2xl border border-border bg-card p-5 shadow-sm transition-colors hover:border-brand/40 ${olderPost ? "sm:text-right" : "sm:col-start-2 sm:text-right"}`}
+              >
+                <p class="font-mono text-xs tracking-[0.14em] text-muted-foreground uppercase">
+                  {t("post.next")} &rarr;
+                </p>
+                <p class="mt-2 font-display text-lg font-semibold text-balance group-hover:text-brand">
+                  {newerPost.data.title}
+                </p>
+              </a>
+            )}
+          </nav>
+        )
+      }
     </div>
     <aside class="hidden w-64 flex-shrink-0 lg:block">
       <div class="sticky top-8">

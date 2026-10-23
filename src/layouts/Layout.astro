@@ -11,6 +11,8 @@ import authorPhoto from "@/assets/andre-izarra.jpg";
 interface Props {
   title?: string;
   description?: string;
+  /** Page-specific social image; defaults to the site OG card */
+  image?: string;
 }
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
@@ -83,14 +85,14 @@ const pageDescription =
     <meta property="og:url" content={SITE_URL + Astro.url.pathname} />
     <meta
       property="og:image"
-      content="https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp"
+      content={Astro.props.image ?? SITE_URL + "/images/og.png"}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta
       name="twitter:image"
-      content="https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp"
+      content={Astro.props.image ?? SITE_URL + "/images/og.png"}
     />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -131,14 +133,6 @@ const pageDescription =
         name: SITE_NAME,
         description: pageDescription,
         inLanguage: lang,
-        potentialAction: {
-          "@type": "SearchAction",
-          target: {
-            "@type": "EntryPoint",
-            urlTemplate: `${SITE_URL}/{lang}/search?q={search_term_string}`,
-          },
-          "query-input": "required name=search_term_string",
-        },
       })}
     />
   </head>
