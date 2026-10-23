@@ -97,7 +97,7 @@ fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, Pars
 
 In this function, we used the `?` operator to return the error if the string is not a valid value to be parsed as an integer (number). This eliminates the verbosity of `match/if` statement to check if the parse is successful.
 
-This level of conciseness isn't achievable using a wrapper class like `Result` in TypeScript, resulting in more verbose code. The caller always has to deal with the `Error` case using an `if` statement, as in [Go](https://go.dev/).
+This level of conciseness isn't achievable using a wrapper class like `Result` in TypeScript, resulting in more verbose code. The caller always has to deal with the `Error` case using an `if` statement, as in [the Go language](https://go.dev/).
 
 ```go
 func Hello(name string) (string, error) {

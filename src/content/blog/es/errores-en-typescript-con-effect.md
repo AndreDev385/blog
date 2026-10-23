@@ -32,7 +32,7 @@ Al crear un efecto se hacen explícitos tres elementos:
 - El error obtenido en caso de fallo.
 - Las dependencias necesarias para ejecutar el efecto.
 
-Al ejecutarlo es obligatorio manejar cada posible error que pueda retornar tu función. Es similar a cómo funcionan [Go](https://go.dev/) o [Rust](https://rust-lang.org/): el manejo de errores es explícito en tu proyecto.
+Al ejecutarlo es obligatorio manejar cada posible error que pueda retornar tu función. Es similar a cómo funcionan [el lenguaje Go](https://go.dev/) o [Rust](https://rust-lang.org/): el manejo de errores es explícito en tu proyecto.
 
 Además, Effect permite componer efectos, lo cual lo hace más interesante, práctico y útil. Usando _pipes_ o generadores puedes construir flujos más complejos. Ambos mecanismos funcionan con _short-circuiting_, es decir, la función avanza paso a paso hasta que ocurre un error. Si eso pasa, ese error se retorna inmediatamente. Como cada posible error es conocido por el sistema de tipos, tu código lo manejará con gracia sin importar cuánto crezca el proyecto. Effect se encarga de proporcionar robustez y seguridad a tu producto, evitando que errores no manejados lleguen a producción.
 

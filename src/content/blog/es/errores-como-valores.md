@@ -96,7 +96,7 @@ fn multiply(first_number_str: &str, second_number_str: &str) -> Result<i32, Pars
 
 En esta función, usamos el operador `?` para devolver el error si el `string` no es una cadena que pueda ser convertida en un `integer` (número). Esto elimina lo repetitivo de manejar ambos casos y mejora la legibilidad.
 
-Este resultado no es posible de conseguir utilizando la clase `Result` en TypeScript, haciendo que tengamos que manejar el error explícitamente con un `if` chequeando que el valor es un `Err`, como se hace en [Go](https://go.dev/)
+Este resultado no es posible de conseguir utilizando la clase `Result` en TypeScript, haciendo que tengamos que manejar el error explícitamente con un `if` chequeando que el valor es un `Err`, como se hace en [el lenguaje Go](https://go.dev/)
 
 ```go
 func Hello(name string) (string, error) {
