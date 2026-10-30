@@ -2,13 +2,13 @@
 title: Entities
 description: Learn about Entities in DDD, how they differ from Value Objects and how to implement them correctly in TypeScript.
 date: 2025-08-12
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/entities.png
+image: ../../../assets/blog/entities.png
 tags:
   - typescript
   - ddd
 ---
 
-![Entities in Domain-Driven Design - conceptual illustration](https://andre385.sirv.com/Portfolio%20%26%20Blog/entities.png?w=1280)
+![Entities in Domain-Driven Design - conceptual illustration](../../../assets/blog/entities.png)
 
 # Entities
 

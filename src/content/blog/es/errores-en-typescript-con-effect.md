@@ -2,13 +2,13 @@
 title: Manejando errores con Effect
 description: "Effect es, en mi opinión, la mejor forma de lograr que tu codebase en TypeScript tenga un manejo de errores robusto y confiable."
 date: 2026-07-02
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/effect.jpg
+image: ../../../assets/blog/effect.jpg
 tags:
   - typescript
   - effect
 ---
 
-![Logo de Effect, librería de TypeScript para manejo de errores tipados](https://andre385.sirv.com/Portfolio%20%26%20Blog/effect.jpg)
+![Logo de Effect, librería de TypeScript para manejo de errores tipados](../../../assets/blog/effect.jpg)
 
 Hace un tiempo publiqué un post sobre [errores como valores en TypeScript](/es/blog/errores-como-valores) y sobre cómo el sistema de `throw` traía más problemas de los que resolvía. En un proyecto grande termina siendo más perjudicial que útil, en mi opinión. Aunque existen varios _workarounds_, ninguno es del todo fiable y quedas muy expuesto a que uno de esos errores ocultos llegue a producción.
 

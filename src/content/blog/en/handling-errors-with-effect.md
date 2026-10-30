@@ -2,13 +2,13 @@
 title: Handling errors with Effect
 description: "Effect is, in my opinion, the best way to make your TypeScript codebase have robust and reliable error handling."
 date: 2026-07-02
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/effect.jpg
+image: ../../../assets/blog/effect.jpg
 tags:
   - typescript
   - effect
 ---
 
-![Effect logo, TypeScript library for typed error handling](https://andre385.sirv.com/Portfolio%20%26%20Blog/effect.jpg)
+![Effect logo, TypeScript library for typed error handling](../../../assets/blog/effect.jpg)
 
 A while ago I published a post about [errors as values in TypeScript](/en/blog/errors-as-values) and how the `throw` system brings more problems than it solves. In a large project, it ends up being more harmful than useful, in my opinion. Although there are several workarounds, none of them are fully reliable, and you are very exposed to one of those hidden errors reaching production.
 

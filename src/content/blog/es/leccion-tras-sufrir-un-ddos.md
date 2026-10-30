@@ -2,13 +2,13 @@
 title: Leccion de seguridad tras sufrir un DDoS
 description: "Un ataque DDoS dejó Bruschi Rentals inoperativo por días: 520$ en Twilio, 900 usuarios falsos y una tarjeta bloqueada. Así fue como lo viví, lo resolví y lo que aprendí en el proceso."
 date: 2026-06-12
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg
+image: ../../../assets/blog/sec.jpg
 tags:
   - go
   - security
 ---
 
-![Cyber Security](https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg)
+![Cyber Security](../../../assets/blog/sec.jpg)
 
 # Lo que aprendí tras sufrir un DDoS
 

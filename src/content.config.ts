@@ -37,13 +37,14 @@ const archAreaSchema = z.object({
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/content/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().max(200),
-    date: z.date(),
-    tags: z.array(z.string().toLowerCase()),
-    image: z.string(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().max(200),
+      date: z.date(),
+      tags: z.array(z.string().toLowerCase()),
+      image: image(),
+    }),
 });
 
 const projects = defineCollection({

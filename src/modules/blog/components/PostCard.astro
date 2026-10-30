@@ -1,5 +1,6 @@
 ---
 import SkillBadge from "@/components/SkillBadge.astro";
+import { Image } from "astro:assets";
 
 import { skillIconMap } from "@/lib/skillIconMap";
 import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
@@ -64,10 +65,12 @@ const url = `/${post.id.split("/")[0]}/blog/${post.id.split("/")[1]}`;
     <div
       class="relative hidden min-h-44 overflow-hidden rounded-xl border border-border md:col-span-1 md:block"
     >
-      <img
+      <Image
         src={post.data.image}
         alt={`Featured image for "${post.data.title}"`}
         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+        width={800}
+        height={450}
         loading="lazy"
       />
     </div>

@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import profilePic from "@/assets/profile_pic.jpeg";
 import { Icon } from "astro-icon/components";
 
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
@@ -91,7 +92,7 @@ const interests = [
           >
             <Image
               class="h-full w-full rounded-xl object-cover"
-              src="https://andre385.sirv.com/Portfolio%20%26%20Blog/profile_pic.jpeg?w=320&h=320"
+              src={profilePic}
               width="320"
               height="320"
               alt="André Izarra, full-stack software developer with 4+ years of experience"

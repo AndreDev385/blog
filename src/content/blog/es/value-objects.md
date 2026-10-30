@@ -2,13 +2,13 @@
 title: Value Objects
 description: El concepto base de DDD y Clean Architecture. Evita el code smell primitive obsession.
 date: 2025-07-11
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/ddd.png
+image: ../../../assets/blog/ddd.png
 tags:
   - typescript
   - ddd
 ---
 
-![Value Objects en Domain-Driven Design - ilustración conceptual](https://andre385.sirv.com/Portfolio%20%26%20Blog/ddd.png)
+![Value Objects en Domain-Driven Design - ilustración conceptual](../../../assets/blog/ddd.png)
 
 # Value objects
 

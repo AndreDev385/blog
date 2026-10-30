@@ -8,6 +8,7 @@ import "@fontsource-variable/archivo";
 import Header from "@/components/layout/header.astro";
 import SocialIcons from "@/modules/portfolio/components/SocialIcons.astro";
 import authorPhoto from "@/assets/andre-izarra.jpg";
+import { SITE_URL } from "@/consts";
 interface Props {
   title?: string;
   description?: string;
@@ -19,7 +20,6 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const SITE_URL = "https://andre-izarra.netlify.app";
 const SITE_NAME = "André Izarra";
 
 const socialLinks = [

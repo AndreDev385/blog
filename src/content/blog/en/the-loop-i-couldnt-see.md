@@ -2,14 +2,14 @@
 title: "It wasn't a straight line: it was a broken loop"
 description: "Four years freelancing with a process that was a straight line full of leaks: value escaped in four places and I couldn't see it. This is how I wrote it down and closed it."
 date: 2026-10-22
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/thumb.es.png
+image: ../../../assets/blog/definiendo-el-loop.png
 tags:
   - freelance
   - productivity
   - systems
 ---
 
-![Diagram of the four-phase loop with the return to clients broken, loose sheets escaping through the leak, and the Spanish headline El loop estaba roto](https://andre385.sirv.com/Portfolio%20%26%20Blog/thumb.es.png)
+![Diagram of the four-phase loop with the return to clients broken, loose sheets escaping through the leak, and the Spanish headline El loop estaba roto](../../../assets/blog/definiendo-el-loop.png)
 
 # It wasn't a straight line: it was a broken loop
 

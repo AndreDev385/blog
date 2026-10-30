@@ -2,12 +2,12 @@
 title: Errores como valores en Typescript
 description: Aprende a cómo utilizar el sistema de tipado para mejorar la forma en que manejas los errores en tu código de TypeScript
 date: 2024-10-23
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png
+image: ../../../assets/blog/typescript.png
 tags:
   - typescript
 ---
 
-![Logo de TypeScript - imagen destacada para errores como valores en TypeScript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
+![Logo de TypeScript - imagen destacada para errores como valores en TypeScript](../../../assets/blog/typescript.png)
 Uno de los problemas más importantes con el que me encuentro en el ecosistema de JavaScript/TypeScript es el flujo oculto de los errores. Cuándo vas a invocar una función no hay forma de saber si esta función puede fallar y enviar un error mirando la firma de la función. Ir hasta la definición de la función no es exactamente la mejor idea. Si tu base de código es lo suficientemente grande, puedes tener muchas funciones que puedan fallar.
 
 Encuentro esa situación bastante problemática. Terminaremos con muchos casos no manejados apropiadamente y esos errores pueden permanecer ocultos hasta tiempo de ejecución, por supuesto, nadie quiere que errores inesperados aparezcan en producción.

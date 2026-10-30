@@ -10,6 +10,7 @@ import { Author } from "@/components/Author";
 
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { formatDate } from "@/modules/blog/utils/formatDate";
+import { SITE_URL } from "@/consts";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -19,6 +20,9 @@ const { post, headings } = Astro.props;
 // Reading time — ~200 words per minute
 const wordCount = (post.body ?? "").trim().split(/\s+/).filter(Boolean).length;
 const readingMinutes = Math.max(1, Math.round(wordCount / 200));
+
+// Social image — absolute URL from the local asset (AGENTS.md rule 7)
+const ogImage = new URL(post.data.image.src, SITE_URL).href;
 
 // Previous (older) / next (newer) in the same language
 const siblings = (await getCollection("blog"))
@@ -33,7 +37,7 @@ const postHref = (p: (typeof siblings)[number]) => `/${lang}/blog/${p.id.split("
 <Layout
   title={post.data.title}
   description={post.data.description}
-  image={post.data.image}
+  image={ogImage}
 >
   <!-- Structured Data: BlogPosting -->
   <script
@@ -49,7 +53,7 @@ const postHref = (p: (typeof siblings)[number]) => `/${lang}/blog/${p.id.split("
         "@type": "Person",
         name: "André Izarra",
       },
-      image: post.data.image,
+      image: ogImage,
       keywords: post.data.tags?.join(", ") || "",
     })}
   />

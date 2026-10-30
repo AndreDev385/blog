@@ -2,14 +2,14 @@
 title: "No era una línea recta: era un loop (y no lo veía)"
 description: "Cuatro años freelance con un proceso que era una línea recta llena de fugas: el valor se me escapaba en cuatro lugares y no lo veía. Así lo escribí y lo cerré."
 date: 2026-10-22
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/thumb.es.png
+image: ../../../assets/blog/definiendo-el-loop.png
 tags:
   - freelance
   - productivity
   - systems
 ---
 
-![Diagrama del loop de cuatro fases con la vuelta hacia los clientes rota, hojas sueltas escapándose por la fuga y el título El loop estaba roto](https://andre385.sirv.com/Portfolio%20%26%20Blog/thumb.es.png)
+![Diagrama del loop de cuatro fases con la vuelta hacia los clientes rota, hojas sueltas escapándose por la fuga y el título El loop estaba roto](../../../assets/blog/definiendo-el-loop.png)
 
 # No era una línea recta: era un loop (y no lo veía)
 

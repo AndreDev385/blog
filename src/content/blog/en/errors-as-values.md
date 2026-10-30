@@ -2,12 +2,12 @@
 title: Errors as values in Typescript
 description: Learn how to rely on the type system to improve the way you handle errors in your typescript code
 date: 2024-10-23
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png
+image: ../../../assets/blog/typescript.png
 tags:
   - typescript
 ---
 
-![TypeScript logo - featured image for errors as values in TypeScript](https://andre385.sirv.com/Portfolio%20%26%20Blog/typescript.png)
+![TypeScript logo - featured image for errors as values in TypeScript](../../../assets/blog/typescript.png)
 
 One of the most important problems I find in the JavaScript/Typescript ecosystem is the hidden flow of errors. When you're about to consume a function, there's no way to know if that function throws an error by looking just at the function signature. Looking at the function definition isn't a good solution at all. If your code base is big enough, you can have a lot of functions that can throw errors.
 

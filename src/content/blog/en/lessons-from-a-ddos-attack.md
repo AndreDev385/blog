@@ -2,13 +2,13 @@
 title: Security lessons after suffering a DDoS
 description: "A DDoS attack took Bruschi Rentals offline for days: $520 in Twilio, 900 fake users, and a blocked card. This is how I experienced it, how I fixed it, and what I learned along the way."
 date: 2026-06-12
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg
+image: ../../../assets/blog/sec.jpg
 tags:
   - go
   - security
 ---
 
-![Cyber Security](https://andre385.sirv.com/Portfolio%20%26%20Blog/sec.jpg)
+![Cyber Security](../../../assets/blog/sec.jpg)
 
 # What I learned after suffering a DDoS
 

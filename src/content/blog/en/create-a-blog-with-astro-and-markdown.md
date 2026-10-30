@@ -2,13 +2,13 @@
 title: Create a blog with astro and markdown P1
 description: Discover how to create yout own blog with astro, a web framework for fast content sites and mardown, a markup language with a great ease to use to write content and take notes.
 date: 2024-09-30
-image: https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp
+image: ../../../assets/blog/astro_post.webp
 tags:
   - astro
   - markdown
 ---
 
-![Astro framework logo - featured image for creating a blog with Astro and Markdown](https://andre385.sirv.com/Portfolio%20%26%20Blog/Create%20a%20blog%20with%20astro%20and%20markdown/astro_post.webp)
+![Astro framework logo - featured image for creating a blog with Astro and Markdown](../../../assets/blog/astro_post.webp)
 
 I created this blog to share content about my personal experiences in programming.
 For the first post I was wondering what to write about, so I thought if I'm going to share my experiences why not to start with how I built this blog?.
